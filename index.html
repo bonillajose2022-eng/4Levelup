@@ -1,0 +1,4024 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🌟 English Fun Zone</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ===========================
+   ROOT VARIABLES & RESET
+   =========================== */
+:root {
+  --primary: #FF6B6B;
+  --secondary: #4ECDC4;
+  --accent: #FFE66D;
+  --purple: #A78BFA;
+  --orange: #FFA07A;
+  --green: #6BCB77;
+  --pink: #FF8FAB;
+  --blue: #74B9FF;
+  --navy: #2D3561;
+  --white: #FFFFFF;
+  --light-gray: #F8F9FA;
+  --text: #333;
+  --shadow: 0 4px 20px rgba(0,0,0,0.1);
+  --shadow-hover: 0 8px 30px rgba(0,0,0,0.2);
+  --radius: 16px;
+  --radius-sm: 8px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Nunito', sans-serif;
+  color: var(--text);
+  background: #FAFBFF;
+  overflow-x: hidden;
+}
+h1, h2, h3, h4 { font-family: 'Fredoka One', cursive; }
+
+/* ===========================
+   WELCOME MODAL
+   =========================== */
+#welcome-overlay {
+  position: fixed; inset: 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.welcome-card {
+  background: white;
+  border-radius: 30px;
+  padding: 40px;
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+@keyframes popIn {
+  from { transform: scale(0.5); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+.welcome-card img {
+  width: 150px; height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid var(--accent);
+  margin-bottom: 20px;
+}
+.welcome-card h1 { font-size: 2.2rem; color: var(--purple); margin-bottom: 8px; }
+.welcome-card p { color: #666; font-size: 1rem; margin-bottom: 20px; }
+.welcome-card .subtitle { font-size: 0.9rem; color: #888; margin-bottom: 25px; }
+.welcome-input {
+  width: 100%;
+  padding: 14px 20px;
+  border: 3px solid var(--secondary);
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-family: 'Nunito', sans-serif;
+  outline: none;
+  text-align: center;
+  transition: border-color 0.3s;
+  margin-bottom: 20px;
+}
+.welcome-input:focus { border-color: var(--purple); }
+.btn-start {
+  background: linear-gradient(135deg, var(--primary), var(--purple));
+  color: white;
+  border: none;
+  padding: 16px 40px;
+  border-radius: 50px;
+  font-size: 1.2rem;
+  font-family: 'Fredoka One', cursive;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: var(--shadow);
+}
+.btn-start:hover { transform: scale(1.05); box-shadow: var(--shadow-hover); }
+
+/* ===========================
+   NAVBAR
+   =========================== */
+nav {
+  position: sticky; top: 0; z-index: 1000;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.2);
+  flex-wrap: wrap;
+}
+.nav-title {
+  font-family: 'Fredoka One', cursive;
+  color: white;
+  font-size: 1.4rem;
+  white-space: nowrap;
+}
+.nav-links {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  flex: 1;
+}
+.nav-links a {
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 50px;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.nav-links a:hover { background: rgba(255,255,255,0.25); color: white; }
+.nav-student {
+  background: rgba(255,255,255,0.25);
+  color: white;
+  padding: 6px 16px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+/* ===========================
+   SECTIONS
+   =========================== */
+section {
+  padding: 60px 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.section-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.section-header h2 {
+  font-size: 2.4rem;
+  margin-bottom: 10px;
+}
+.section-header p { font-size: 1.05rem; color: #555; max-width: 700px; margin: 0 auto; }
+.bilingual-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+@media (max-width: 640px) { .bilingual-box { grid-template-columns: 1fr; } }
+.lang-card {
+  padding: 24px;
+  border-radius: var(--radius);
+  background: white;
+  box-shadow: var(--shadow);
+}
+.lang-card .lang-flag { font-size: 1.5rem; margin-bottom: 8px; }
+.lang-card h3 { margin-bottom: 12px; font-size: 1.2rem; }
+.lang-card p, .lang-card li { font-size: 0.95rem; line-height: 1.7; }
+.lang-card ul { padding-left: 20px; }
+
+/* Section wrappers with colored bands */
+.section-band { padding: 40px 0; }
+.band-1 { background: linear-gradient(180deg, #FFF9E6 0%, #FFF0F5 100%); }
+.band-2 { background: linear-gradient(180deg, #E8F8F5 0%, #EAF4FF 100%); }
+.band-3 { background: linear-gradient(180deg, #F5EEFF 0%, #FFF5E6 100%); }
+.band-4 { background: linear-gradient(180deg, #E6F9FF 0%, #F0FFF0 100%); }
+.band-5 { background: linear-gradient(180deg, #FFF0FA 0%, #F0F5FF 100%); }
+.band-6 { background: linear-gradient(180deg, #FFFBE6 0%, #F0FFF8 100%); }
+.band-progress { background: linear-gradient(135deg, #667eea22, #764ba222); }
+
+/* ===========================
+   TOPIC IMAGES
+   =========================== */
+.topic-images {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+.topic-images img {
+  width: 200px; height: 140px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: transform 0.3s;
+}
+.topic-images img:hover { transform: scale(1.05); }
+
+/* ===========================
+   TIMELINE (Sequencing)
+   =========================== */
+.timeline {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin: 30px 0;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.tl-item {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+.tl-bubble {
+  background: linear-gradient(135deg, var(--primary), var(--purple));
+  color: white;
+  padding: 12px 20px;
+  border-radius: 50px;
+  font-family: 'Fredoka One', cursive;
+  font-size: 1rem;
+  white-space: nowrap;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s;
+}
+.tl-bubble:hover { transform: scale(1.1); }
+.tl-arrow {
+  color: var(--primary);
+  font-size: 1.5rem;
+  padding: 0 6px;
+}
+
+/* ===========================
+   VIDEO GRID
+   =========================== */
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin: 30px 0;
+}
+.video-wrapper {
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  background: #000;
+}
+.video-wrapper p {
+  background: var(--navy);
+  color: white;
+  padding: 10px 16px;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+.responsive-iframe {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+}
+.responsive-iframe iframe {
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 100%;
+  border: 0;
+}
+
+/* ===========================
+   EXERCISES
+   =========================== */
+.exercise-container {
+  background: white;
+  border-radius: var(--radius);
+  padding: 30px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow);
+}
+.exercise-container h3 {
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+  color: var(--navy);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.exercise-question {
+  font-size: 1rem;
+  margin-bottom: 14px;
+  line-height: 1.6;
+  padding: 16px;
+  background: var(--light-gray);
+  border-radius: var(--radius-sm);
+}
+.exercise-question input[type="text"] {
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+  min-width: 120px;
+}
+.exercise-question input[type="text"]:focus { border-color: var(--secondary); }
+.mc-options { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+.mc-btn {
+  padding: 10px 20px;
+  border: 2px solid #ddd;
+  border-radius: 50px;
+  background: white;
+  cursor: pointer;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  transition: all 0.2s;
+}
+.mc-btn:hover { border-color: var(--secondary); background: #E8F8F5; }
+.mc-btn.correct { background: #D4EDDA; border-color: var(--green); color: #155724; animation: correctPop 0.4s; }
+.mc-btn.wrong { background: #F8D7DA; border-color: var(--primary); color: #721C24; animation: shake 0.4s; }
+@keyframes correctPop { 0%,100%{transform:scale(1)} 50%{transform:scale(1.12)} }
+@keyframes shake { 0%,100%{transform:translateX(0)} 20%,60%{transform:translateX(-6px)} 40%,80%{transform:translateX(6px)} }
+
+.btn-check {
+  background: linear-gradient(135deg, var(--secondary), #2A9D8F);
+  color: white;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-family: 'Fredoka One', cursive;
+  cursor: pointer;
+  margin-top: 14px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: var(--shadow);
+}
+.btn-check:hover { transform: scale(1.05); box-shadow: var(--shadow-hover); }
+
+.feedback {
+  margin-top: 12px;
+  padding: 12px 18px;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 1rem;
+  display: none;
+  animation: fadeIn 0.3s;
+}
+@keyframes fadeIn { from{opacity:0;transform:translateY(-6px)} to{opacity:1;transform:translateY(0)} }
+.feedback.correct { background: #D4EDDA; color: #155724; display: block; }
+.feedback.wrong { background: #F8D7DA; color: #721C24; display: block; }
+
+.match-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 16px 0;
+}
+@media (max-width: 640px) { .match-grid { grid-template-columns: 1fr; } }
+.match-col { display: flex; flex-direction: column; gap: 10px; }
+.match-item {
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  border: 2px solid #ddd;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+  user-select: none;
+  text-align: center;
+}
+.match-item:hover { border-color: var(--secondary); background: #E8F8F5; }
+.match-item.selected { border-color: var(--purple); background: #F5EEFF; font-weight: 700; }
+.match-item.matched { background: #D4EDDA; border-color: var(--green); cursor: default; }
+.match-item.wrong-match { background: #F8D7DA; border-color: var(--primary); animation: shake 0.4s; }
+
+/* Writing exercise */
+.writing-textarea {
+  width: 100%;
+  min-height: 160px;
+  padding: 16px;
+  border: 2px solid #ddd;
+  border-radius: var(--radius-sm);
+  font-family: 'Nunito', sans-serif;
+  font-size: 1rem;
+  resize: vertical;
+  outline: none;
+  transition: border-color 0.2s;
+  line-height: 1.7;
+}
+.writing-textarea:focus { border-color: var(--secondary); }
+.word-tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
+.word-tag {
+  padding: 6px 14px;
+  border-radius: 50px;
+  background: #eee;
+  font-size: 0.85rem;
+  font-weight: 700;
+  transition: all 0.3s;
+}
+.word-tag.found { background: var(--green); color: white; }
+.char-count { font-size: 0.85rem; color: #888; margin-top: 6px; }
+
+/* Flashcard */
+.flashcard-wrap { perspective: 800px; margin: 0 auto 20px; max-width: 380px; }
+.flashcard {
+  position: relative;
+  width: 100%;
+  padding-bottom: 60%;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+}
+.flashcard.flipped { transform: rotateY(180deg); }
+.flashcard-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  box-shadow: var(--shadow);
+  font-family: 'Fredoka One', cursive;
+}
+.flashcard-front { background: linear-gradient(135deg, var(--purple), var(--blue)); color: white; }
+.flashcard-back { background: linear-gradient(135deg, var(--green), var(--secondary)); color: white; transform: rotateY(180deg); }
+.flashcard-face h2 { font-size: 2.5rem; margin-bottom: 8px; }
+.flashcard-face p { font-size: 1rem; opacity: 0.85; }
+.flashcard-nav { display: flex; gap: 12px; justify-content: center; align-items: center; flex-wrap: wrap; margin-top: 12px; }
+.flashcard-nav .btn-check { margin-top: 0; }
+
+/* Verb Table */
+.verb-search {
+  width: 100%;
+  padding: 14px 20px;
+  border: 3px solid var(--secondary);
+  border-radius: 50px;
+  font-size: 1rem;
+  font-family: 'Nunito', sans-serif;
+  outline: none;
+  margin-bottom: 24px;
+}
+.verb-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+.verb-card {
+  background: white;
+  border-radius: var(--radius);
+  padding: 18px;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s, box-shadow 0.2s;
+  border-left: 4px solid var(--purple);
+}
+.verb-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+.verb-card .verb-emoji { font-size: 1.5rem; float: right; }
+.verb-card .verb-forms { display: flex; gap: 8px; flex-wrap: wrap; margin: 8px 0; }
+.verb-form-badge {
+  padding: 4px 10px;
+  border-radius: 50px;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+.badge-inf { background: #E8F4FD; color: #1a6dad; }
+.badge-past { background: #FFF3CD; color: #856404; }
+.badge-pp { background: #D4EDDA; color: #155724; }
+.badge-es { background: #F8EAFF; color: #5c2d91; }
+.verb-card .verb-example { font-size: 0.82rem; color: #666; margin-top: 8px; line-height: 1.5; font-style: italic; }
+
+/* Spelling rule colors */
+.rule-add { background: #E8F5E9; border-left: 3px solid var(--green); }
+.rule-double { background: #FFF3E0; border-left: 3px solid var(--orange); }
+.rule-drope { background: #E3F2FD; border-left: 3px solid var(--blue); }
+.rule-ied { background: #F3E5F5; border-left: 3px solid var(--purple); }
+
+/* Connectives icons */
+.connector-examples {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin: 20px 0;
+}
+.connector-card {
+  background: white;
+  border-radius: var(--radius);
+  padding: 20px;
+  text-align: center;
+  box-shadow: var(--shadow);
+  border-top: 4px solid var(--accent);
+}
+.connector-card .icon { font-size: 2rem; margin-bottom: 8px; }
+.connector-card h4 { font-size: 1.2rem; color: var(--navy); margin-bottom: 8px; }
+.connector-card p { font-size: 0.88rem; color: #555; line-height: 1.5; }
+
+/* Present Perfect table */
+.pp-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+.pp-table th {
+  background: linear-gradient(90deg, var(--purple), var(--blue));
+  color: white;
+  padding: 14px;
+  font-family: 'Fredoka One', cursive;
+  font-size: 1rem;
+}
+.pp-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid #eee;
+  font-size: 0.9rem;
+}
+.pp-table tr:nth-child(even) { background: #F8F9FA; }
+.pp-table tr:hover { background: #EEF2FF; }
+
+/* Since/For visual */
+.since-for-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin: 20px 0;
+}
+@media (max-width: 640px) { .since-for-grid { grid-template-columns: 1fr; } }
+.since-card {
+  border-radius: var(--radius);
+  padding: 24px;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+.since-card h3 { font-size: 1.8rem; margin-bottom: 12px; }
+.since-card.for-card { background: linear-gradient(135deg, #FFF3E0, #FFF8E1); border: 3px solid var(--orange); }
+.since-card.since-card2 { background: linear-gradient(135deg, #E3F2FD, #E8F5E9); border: 3px solid var(--blue); }
+.since-examples { list-style: none; padding: 0; }
+.since-examples li { padding: 6px 0; font-size: 0.9rem; border-bottom: 1px dashed #ddd; }
+.since-examples li:last-child { border-bottom: none; }
+
+/* Progress Section */
+.progress-dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin: 30px 0;
+}
+.progress-topic-card {
+  background: white;
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--shadow);
+}
+.progress-topic-card h4 { font-size: 1.1rem; margin-bottom: 14px; color: var(--navy); }
+.progress-bar-wrap {
+  background: #eee;
+  border-radius: 50px;
+  height: 16px;
+  overflow: hidden;
+  margin: 8px 0;
+}
+.progress-bar-fill {
+  height: 100%;
+  border-radius: 50px;
+  background: linear-gradient(90deg, var(--secondary), var(--green));
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.badge-display {
+  font-size: 1.8rem;
+  text-align: center;
+  margin-top: 10px;
+}
+.total-score-box {
+  text-align: center;
+  background: linear-gradient(135deg, var(--purple), var(--blue));
+  color: white;
+  border-radius: var(--radius);
+  padding: 30px;
+  margin-bottom: 30px;
+  box-shadow: var(--shadow);
+}
+.total-score-box h2 { font-size: 2rem; }
+.total-score-box .score-num { font-size: 3.5rem; font-family: 'Fredoka One', cursive; }
+.btn-reset {
+  background: linear-gradient(135deg, var(--primary), #c0392b);
+  color: white;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-family: 'Fredoka One', cursive;
+  cursor: pointer;
+  transition: transform 0.2s;
+  margin-top: 16px;
+}
+.btn-reset:hover { transform: scale(1.05); }
+
+/* Confetti Canvas */
+#confetti-canvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 9998;
+}
+
+/* Back to Top */
+#back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: linear-gradient(135deg, var(--purple), var(--primary));
+  color: white;
+  border: none;
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  font-size: 1.4rem;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s, opacity 0.3s;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 500;
+}
+#back-to-top.visible { opacity: 1; pointer-events: all; }
+#back-to-top:hover { transform: scale(1.1); }
+
+/* Footer */
+footer {
+  background: var(--navy);
+  color: rgba(255,255,255,0.8);
+  text-align: center;
+  padding: 24px;
+  font-size: 0.95rem;
+}
+
+/* Ordering drag-drop */
+.order-list { list-style: none; padding: 0; }
+.order-item {
+  background: white;
+  border: 2px solid #ddd;
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  margin-bottom: 8px;
+  cursor: grab;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: box-shadow 0.2s;
+  user-select: none;
+  font-size: 0.95rem;
+}
+.order-item:active { cursor: grabbing; }
+.order-item.dragging { opacity: 0.5; box-shadow: var(--shadow-hover); }
+.order-item.drag-over { border-color: var(--secondary); background: #E8F8F5; }
+.order-num {
+  background: var(--purple);
+  color: white;
+  border-radius: 50%;
+  width: 28px; height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+  font-family: 'Fredoka One', cursive;
+}
+
+/* Score indicator */
+.score-indicator {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: var(--light-gray);
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-top: 12px;
+}
+.score-indicator .score-text { color: var(--navy); }
+
+/* Tabs */
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+.tab-btn {
+  padding: 10px 20px;
+  border: 2px solid #ddd;
+  border-radius: 50px;
+  background: white;
+  cursor: pointer;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+.tab-btn.active { background: var(--purple); border-color: var(--purple); color: white; }
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+/* Comparison highlight */
+.highlight-since { color: #1565C0; font-weight: 800; }
+.highlight-for { color: #E65100; font-weight: 800; }
+
+/* Mistakes box */
+.mistakes-box {
+  background: #FFF3E0;
+  border-left: 4px solid var(--orange);
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+  margin: 16px 0;
+}
+.mistakes-box h4 { color: var(--orange); margin-bottom: 8px; }
+.mistakes-box ul { padding-left: 20px; font-size: 0.9rem; line-height: 1.8; }
+
+/* ===========================
+   RESPONSIVE
+   =========================== */
+@media (max-width: 768px) {
+  .section-header h2 { font-size: 1.8rem; }
+  nav { padding: 10px 12px; gap: 8px; }
+  .nav-title { font-size: 1.1rem; }
+  .nav-links a { font-size: 0.75rem; padding: 5px 10px; }
+}
+
+.hidden { display: none !important; }
+
+/* ===========================
+   GRADE SELECTOR CARDS
+   =========================== */
+.grade-selector {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 50px 20px 30px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.grade-card {
+  background: white;
+  border-radius: 24px;
+  padding: 36px 40px;
+  text-align: center;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  transition: transform 0.25s, box-shadow 0.25s;
+  flex: 1;
+  min-width: 220px;
+  max-width: 320px;
+  border: 3px solid transparent;
+}
+.grade-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-hover); }
+.grade-card.g3 { border-color: var(--green); }
+.grade-card.g4 { border-color: #b0b0b0; }
+.grade-card .grade-icon { font-size: 3.5rem; margin-bottom: 12px; }
+.grade-card h3 { font-size: 1.8rem; margin-bottom: 8px; }
+.grade-card p { font-size: 0.95rem; color: #666; }
+.grade-card.g3 h3 { color: var(--green); }
+.grade-card.g4 h3 { color: #888; }
+
+/* PASSWORD MODAL */
+#pw-modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: 8000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.pw-modal {
+  background: white;
+  border-radius: 28px;
+  padding: 40px 36px;
+  max-width: 440px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  animation: popIn 0.4s cubic-bezier(0.175,0.885,0.32,1.275);
+}
+.pw-modal h2 { font-size: 2rem; color: var(--green); margin-bottom: 10px; }
+.pw-modal p { color: #666; font-size: 0.95rem; margin-bottom: 22px; }
+.pw-input {
+  width: 100%;
+  padding: 14px 20px;
+  border: 3px solid var(--secondary);
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-family: 'Nunito', sans-serif;
+  outline: none;
+  text-align: center;
+  letter-spacing: 3px;
+  margin-bottom: 16px;
+  transition: border-color 0.3s;
+}
+.pw-input:focus { border-color: var(--green); }
+.pw-error {
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+  display: none;
+  animation: shake 0.4s;
+}
+.pw-error.show { display: block; }
+.btn-pw-submit {
+  background: linear-gradient(135deg, var(--green), #2E8B57);
+  color: white;
+  border: none;
+  padding: 14px 36px;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-family: 'Fredoka One', cursive;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: var(--shadow);
+  margin-right: 10px;
+}
+.btn-pw-submit:hover { transform: scale(1.05); }
+.btn-pw-cancel {
+  background: #eee;
+  color: #666;
+  border: none;
+  padding: 14px 24px;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-family: 'Fredoka One', cursive;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.btn-pw-cancel:hover { background: #ddd; }
+
+/* COMING SOON MODAL */
+#coming-soon-modal {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: 8000;
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px;
+}
+.coming-soon-card {
+  background: white;
+  border-radius: 28px;
+  padding: 40px;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  animation: popIn 0.4s cubic-bezier(0.175,0.885,0.32,1.275);
+}
+.coming-soon-card .cs-icon { font-size: 4rem; margin-bottom: 16px; }
+.coming-soon-card h2 { font-size: 2rem; color: #888; margin-bottom: 10px; }
+.coming-soon-card p { color: #999; margin-bottom: 24px; }
+
+/* ===========================
+   THIRD GRADE SECTION
+   =========================== */
+.band-3g { background: linear-gradient(180deg, #E8FFF0 0%, #E0F8FF 100%); }
+.tg-section-header {
+  text-align: center;
+  margin-bottom: 40px;
+  position: relative;
+}
+.tg-section-header h2 { font-size: 2.4rem; margin-bottom: 10px; }
+.tg-section-header p { font-size: 1.05rem; color: #555; }
+.tg-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--green), var(--secondary));
+  color: white;
+  padding: 6px 18px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+}
+/* Structure box */
+.structure-box {
+  background: linear-gradient(135deg, #F0FFF4, #E0F8FF);
+  border: 3px solid var(--green);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  margin: 20px 0;
+  text-align: center;
+}
+.structure-box h4 { font-size: 1.1rem; color: var(--green); margin-bottom: 10px; }
+.structure-formula {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.4rem;
+  color: var(--navy);
+  background: white;
+  display: inline-block;
+  padding: 10px 24px;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  margin-bottom: 12px;
+}
+.structure-examples { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 10px; }
+.struct-ex {
+  background: white;
+  border: 2px solid var(--secondary);
+  border-radius: 50px;
+  padding: 6px 16px;
+  font-size: 0.88rem;
+  color: var(--navy);
+  font-weight: 700;
+}
+
+/* Example sentences grid */
+.ex-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 14px;
+  margin: 20px 0;
+}
+.ex-card {
+  background: white;
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  box-shadow: var(--shadow);
+  border-left: 4px solid var(--green);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+.ex-card .ex-emoji { font-size: 1.4rem; margin-bottom: 6px; }
+.ex-card strong { color: var(--navy); }
+.ex-card em { color: #888; font-size: 0.85rem; }
+
+/* Topic divider */
+.topic-divider {
+  text-align: center;
+  margin: 40px 0 30px;
+  position: relative;
+}
+.topic-divider::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--secondary), transparent);
+}
+.topic-divider span {
+  position: relative;
+  background: #E8FFF0;
+  padding: 0 20px;
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.5rem;
+  color: var(--navy);
+}
+
+/* Progress bar for 3G */
+.tg-progress-wrap {
+  background: white;
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  margin-bottom: 30px;
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.tg-progress-label { font-weight: 800; color: var(--navy); font-size: 1rem; white-space: nowrap; }
+.tg-bar-wrap { flex: 1; min-width: 150px; background: #eee; border-radius: 50px; height: 14px; overflow: hidden; }
+.tg-bar-fill { height: 100%; border-radius: 50px; background: linear-gradient(90deg, var(--green), var(--secondary)); transition: width 0.8s; }
+.tg-score-label { font-size: 0.9rem; font-weight: 700; color: var(--green); white-space: nowrap; }
+
+/* Sample answer box */
+.sample-answer {
+  background: linear-gradient(135deg, #F0FFF4, #E0F8FF);
+  border-left: 4px solid var(--green);
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+  margin-top: 14px;
+  display: none;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  animation: fadeIn 0.3s;
+}
+.sample-answer.show { display: block; }
+.sample-answer strong { color: var(--green); }
+
+/* Topic complete badge */
+.topic-complete {
+  text-align: center;
+  padding: 24px;
+  background: linear-gradient(135deg, #D4EDDA, #C3F8C3);
+  border-radius: var(--radius);
+  margin-top: 20px;
+  display: none;
+  animation: popIn 0.5s cubic-bezier(0.175,0.885,0.32,1.275);
+}
+.topic-complete.show { display: block; }
+.topic-complete h3 { font-size: 2rem; color: #155724; }
+.topic-complete p { color: #155724; font-size: 1rem; }
+
+/* Will section color overrides */
+.will-color .structure-box { background: linear-gradient(135deg, #FFF8E1, #FFF3E0); border-color: var(--orange); }
+.will-color .structure-box h4 { color: var(--orange); }
+.will-color .ex-card { border-left-color: var(--orange); }
+.will-color .tg-bar-fill { background: linear-gradient(90deg, var(--orange), var(--primary)); }
+</style>
+</head>
+<body>
+
+<!-- CONFETTI CANVAS -->
+<canvas id="confetti-canvas"></canvas>
+
+<!-- WELCOME OVERLAY -->
+<div id="welcome-overlay">
+  <div class="welcome-card">
+    <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=300&h=300&fit=crop" alt="Student">
+    <h1>🌟 English Fun Zone</h1>
+    <p>¡Bienvenido! Welcome to your English adventure! 🎉</p>
+    <p class="subtitle">Enter your name to start learning / Escribe tu nombre para comenzar</p>
+    <input type="text" class="welcome-input" id="student-name-input" placeholder="Your name / Tu nombre..." maxlength="30">
+    <br>
+    <button class="btn-start" id="btn-start-learning">Let's Start Learning! 🚀</button>
+  </div>
+</div>
+
+<!-- NAVIGATION -->
+<nav>
+  <div class="nav-title">🌟 English Fun Zone</div>
+  <div class="nav-links">
+    <a href="#third-grade-section" id="nav-3g-link" style="display:none">🌟 3rd Grade</a>
+    <a href="#sequencing">🔢 Sequencing</a>
+    <a href="#connectives">🔗 Connectives</a>
+    <a href="#present-perfect">✅ Present Perfect</a>
+    <a href="#since-for">⏳ Since &amp; For</a>
+    <a href="#irregular">📚 Irregular</a>
+    <a href="#regular">📝 Regular</a>
+    <a href="#progress">🏆 Progress</a>
+  </div>
+  <div class="nav-student" id="nav-student-name">👤 Guest</div>
+</nav>
+
+<!-- PASSWORD MODAL -->
+<div id="pw-modal-overlay" class="hidden">
+  <div class="pw-modal">
+    <div style="font-size:3rem;margin-bottom:10px">🔐</div>
+    <h2>Third Grade 🌟</h2>
+    <p>This section is for teachers and students with access.<br>Please enter the password to continue.</p>
+    <input type="password" class="pw-input" id="pw-input" placeholder="Enter password..." maxlength="20">
+    <div class="pw-error" id="pw-error">Oops! Wrong password. Try again! 🔒</div>
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+      <button class="btn-pw-submit" id="pw-submit-btn">Unlock 🔓</button>
+      <button class="btn-pw-cancel" id="pw-cancel-btn">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- COMING SOON MODAL -->
+<div id="coming-soon-modal" class="hidden">
+  <div class="coming-soon-card">
+    <div class="cs-icon">🚀</div>
+    <h2>Coming Soon!</h2>
+    <p>Fourth Grade content is being prepared by our teachers.<br>Check back soon for exciting new lessons! 🌟</p>
+    <button class="btn-pw-submit" id="cs-close-btn" style="background:linear-gradient(135deg,#888,#555)">Got it! 👍</button>
+  </div>
+</div>
+
+<!-- GRADE SELECTOR -->
+<div style="background:linear-gradient(180deg,#F0FFF4,#E8F4FF);padding-bottom:10px">
+  <div style="text-align:center;padding-top:40px;padding-bottom:10px">
+    <h2 style="font-family:'Fredoka One',cursive;font-size:2rem;color:var(--navy)">📚 Choose Your Grade / Elige tu grado</h2>
+    <p style="color:#666;font-size:1rem;margin-top:6px">Select your class to start learning! / ¡Selecciona tu clase para empezar!</p>
+  </div>
+  <div class="grade-selector">
+    <div class="grade-card g3" id="g3-card">
+      <div class="grade-icon">🌟</div>
+      <h3>Third Grade</h3>
+      <p>May, Might &amp; Will<br><em style="font-size:0.82rem;color:#aaa">🔐 Password required</em></p>
+    </div>
+    <div class="grade-card g4" id="g4-card">
+      <div class="grade-icon">🚀</div>
+      <h3>Fourth Grade</h3>
+      <p style="color:#bbb">Coming Soon!<br><em style="font-size:0.82rem">🔒 Locked</em></p>
+    </div>
+  </div>
+</div>
+
+<!-- =====================
+     THIRD GRADE SECTION (hidden until password)
+     ===================== -->
+<div id="third-grade-section" class="hidden section-band band-3g">
+<section>
+  <!-- Header -->
+  <div class="tg-section-header">
+    <div class="tg-badge">🌟 THIRD GRADE</div>
+    <h2 style="color:var(--green)">Third Grade English 🌟</h2>
+    <p>Welcome! In this section you will learn <strong>MAY &amp; MIGHT</strong> and <strong>WILL</strong>.<br>
+    <span style="font-size:0.9rem;color:#888">Let's explore the future together! 🚀</span></p>
+  </div>
+
+  <!-- Student greeting -->
+  <div id="tg-greeting" style="text-align:center;margin-bottom:20px;font-size:1.1rem;color:var(--navy);font-weight:700"></div>
+
+  <!-- Progress tracker -->
+  <div class="tg-progress-wrap">
+    <span class="tg-progress-label">🏆 My Progress:</span>
+    <div class="tg-bar-wrap"><div class="tg-bar-fill" id="tg-bar" style="width:0%"></div></div>
+    <span class="tg-score-label" id="tg-score-label">0 / 0 correct</span>
+  </div>
+
+  <!-- ========================
+       TOPIC 1: MAY & MIGHT
+       ======================== -->
+  <div class="topic-divider"><span>🌤️ Topic 1: MAY &amp; MIGHT</span></div>
+
+  <!-- Explanation -->
+  <div class="bilingual-box">
+    <div class="lang-card" style="border-top:4px solid var(--secondary)">
+      <div class="lang-flag">🇬🇧 English</div>
+      <h3 style="color:var(--secondary)">What are MAY and MIGHT?</h3>
+      <p>We use <strong>MAY</strong> and <strong>MIGHT</strong> to talk about something that is <strong>possible</strong> — it could happen, but we are not sure!</p>
+      <ul style="margin-top:12px">
+        <li>🌧️ <strong>May</strong> = it is possible (50/50 chance)</li>
+        <li>🤔 <strong>Might</strong> = it is possible but less certain</li>
+        <li>Both are followed by the <strong>base form</strong> of the verb</li>
+        <li>They do NOT change for he/she/it (no -s!)</li>
+      </ul>
+    </div>
+    <div class="lang-card" style="border-top:4px solid var(--green)">
+      <div class="lang-flag">🎓 Key Rules</div>
+      <h3 style="color:var(--green)">Remember! 📌</h3>
+      <ul>
+        <li>✅ <strong>Positive:</strong> I <em>may/might</em> + verb</li>
+        <li>❌ <strong>Negative:</strong> I <em>may not / might not</em> + verb</li>
+        <li>❓ <strong>Questions:</strong> usually use <em>Do you think...?</em></li>
+        <li>🚫 Never: <del>She mights go</del> → ✅ She might go</li>
+        <li>🚫 Never: <del>He mays come</del> → ✅ He may come</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Structure Boxes -->
+  <div class="structure-box">
+    <h4>📐 Structure: MAY &amp; MIGHT</h4>
+    <div class="structure-formula">Subject + MAY / MIGHT + base verb</div>
+    <div class="structure-examples">
+      <span class="struct-ex">It <strong>may</strong> rain today. 🌧️</span>
+      <span class="struct-ex">She <strong>might</strong> come to the party. 🎉</span>
+      <span class="struct-ex">They <strong>may not</strong> be home. 🏠</span>
+      <span class="struct-ex">I <strong>might not</strong> finish in time. ⏰</span>
+    </div>
+  </div>
+
+  <!-- Example sentences -->
+  <h3 style="margin:24px 0 14px;color:var(--secondary)">📝 Example Sentences</h3>
+  <div class="ex-grid">
+    <div class="ex-card"><div class="ex-emoji">🌤️</div><strong>It may be sunny tomorrow.</strong><br><em>The weather could be good.</em></div>
+    <div class="ex-card"><div class="ex-emoji">🐱</div><strong>The cat might be hungry.</strong><br><em>We are not sure if it's hungry.</em></div>
+    <div class="ex-card"><div class="ex-emoji">🏫</div><strong>We may have a test next week.</strong><br><em>The teacher hasn't confirmed yet.</em></div>
+    <div class="ex-card"><div class="ex-emoji">⚽</div><strong>He might play football today.</strong><br><em>It depends on the weather.</em></div>
+    <div class="ex-card"><div class="ex-emoji">🍕</div><strong>Mom may cook pizza tonight.</strong><br><em>She is thinking about it.</em></div>
+    <div class="ex-card"><div class="ex-emoji">🐶</div><strong>The dog might not come inside.</strong><br><em>He likes being in the garden.</em></div>
+  </div>
+
+  <!-- Images -->
+  <div class="topic-images">
+    <img src="https://images.unsplash.com/photo-1534088568595-a066f410bcda?w=400&h=280&fit=crop" alt="Cloudy weather">
+    <img src="https://images.unsplash.com/photo-1500622944204-b135684e99fd?w=400&h=280&fit=crop" alt="Rain clouds">
+    <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=400&h=280&fit=crop" alt="Thinking child">
+  </div>
+
+  <!-- Videos -->
+  <div class="video-grid">
+    <div class="video-wrapper">
+      <p>📹 Uso de MAY y MIGHT</p>
+      <div class="responsive-iframe">
+        <iframe src="https://www.youtube.com/embed/zd31yR8Z1bs" allowfullscreen title="May and Might usage"></iframe>
+      </div>
+    </div>
+    <div class="video-wrapper">
+      <p>📹 MAY &amp; MIGHT for kids - Mr. Pea</p>
+      <div class="responsive-iframe">
+        <iframe src="https://www.youtube.com/embed/xZ_npl6W5Ak" allowfullscreen title="May Might for kids"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXERCISE MM1: Fill in the Blank -->
+  <div class="exercise-container">
+    <h3>✏️ Exercise 1 — Fill in the Blank <small style="font-family:Nunito;font-size:0.8rem;color:#888">(Type may or might)</small></h3>
+    <p style="font-size:0.88rem;color:#888;margin-bottom:14px">Both <strong>may</strong> and <strong>might</strong> are accepted unless the sentence specifies one.</p>
+    <div id="mm-fill-questions"></div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px">
+      <button class="btn-check" onclick="checkMMFill()">Check Answers ✅</button>
+      <button class="btn-check" onclick="resetMMFill()" style="background:linear-gradient(135deg,var(--orange),#E65100)">Try Again 🔄</button>
+    </div>
+    <div class="feedback" id="mm-fill-feedback"></div>
+    <div class="score-indicator" id="mm-fill-score" style="display:none"></div>
+  </div>
+
+  <!-- EXERCISE MM2: Multiple Choice -->
+  <div class="exercise-container">
+    <h3>🎯 Exercise 2 — Multiple Choice</h3>
+    <div id="mm-mc-questions"></div>
+    <div class="score-indicator" id="mm-mc-score" style="display:none"></div>
+  </div>
+
+  <!-- EXERCISE MM3: Matching -->
+  <div class="exercise-container">
+    <h3>🔗 Exercise 3 — Matching</h3>
+    <p style="font-size:0.9rem;color:#888;margin-bottom:14px">Click a sentence on the left, then its meaning on the right. / Haz clic en la oración y luego en su significado.</p>
+    <div class="match-grid">
+      <div class="match-col" id="mm-match-left"></div>
+      <div class="match-col" id="mm-match-right"></div>
+    </div>
+    <button class="btn-check" onclick="checkMMMatch()">Check ✅</button>
+    <div class="feedback" id="mm-match-feedback"></div>
+    <div class="score-indicator" id="mm-match-score" style="display:none"></div>
+  </div>
+
+  <!-- EXERCISE MM4: Writing -->
+  <div class="exercise-container">
+    <h3>✍️ Exercise 4 — Writing</h3>
+    <div id="mm-writing-prompts"></div>
+  </div>
+
+  <!-- May/Might complete badge -->
+  <div class="topic-complete" id="mm-complete">
+    <h3>🎉 Amazing work!</h3>
+    <p id="mm-complete-msg">You completed all MAY &amp; MIGHT exercises!</p>
+  </div>
+
+  <!-- ========================
+       TOPIC 2: WILL
+       ======================== -->
+  <div class="topic-divider" style="margin-top:60px"><span>🚀 Topic 2: WILL (Simple Future)</span></div>
+
+  <div class="bilingual-box will-color">
+    <div class="lang-card" style="border-top:4px solid var(--orange)">
+      <div class="lang-flag">🇬🇧 English</div>
+      <h3 style="color:var(--orange)">What is WILL?</h3>
+      <p>We use <strong>WILL</strong> to talk about the future — things we are <strong>sure about</strong>, predictions, or promises!</p>
+      <ul style="margin-top:12px">
+        <li>🔮 <strong>Predictions:</strong> "It will be cold tomorrow."</li>
+        <li>🤝 <strong>Promises:</strong> "I will help you!"</li>
+        <li>⚡ <strong>Decisions made now:</strong> "I'll have the pizza."</li>
+        <li>WILL is followed by the <strong>base form</strong> of the verb</li>
+      </ul>
+    </div>
+    <div class="lang-card" style="border-top:4px solid var(--primary)">
+      <div class="lang-flag">🎓 Key Rules</div>
+      <h3 style="color:var(--primary)">Remember! 📌</h3>
+      <ul>
+        <li>✅ <strong>Positive:</strong> I/She/They <em>will</em> + verb</li>
+        <li>❌ <strong>Negative:</strong> I <em>won't</em> (will not) + verb</li>
+        <li>❓ <strong>Question:</strong> <em>Will</em> you + verb...?</li>
+        <li>🔑 Contraction: <em>will</em> → <em>'ll</em> (I'll, she'll, they'll)</li>
+        <li>🚫 Never: <del>She wills go</del> → ✅ She will go</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Will Structure Box -->
+  <div class="structure-box will-color">
+    <h4>📐 Structure: WILL</h4>
+    <div class="structure-formula" style="color:var(--orange)">Subject + WILL + base verb</div>
+    <div class="structure-examples">
+      <span class="struct-ex" style="border-color:var(--orange)">I <strong>will</strong> visit my grandma. 👵</span>
+      <span class="struct-ex" style="border-color:var(--orange)">It <strong>will</strong> be sunny tomorrow. ☀️</span>
+      <span class="struct-ex" style="border-color:var(--orange)">She <strong>won't</strong> eat broccoli. 🥦</span>
+      <span class="struct-ex" style="border-color:var(--orange)"><strong>Will</strong> you come to my party? 🎂</span>
+    </div>
+  </div>
+
+  <!-- Will example sentences -->
+  <h3 style="margin:24px 0 14px;color:var(--orange)">📝 Example Sentences</h3>
+  <div class="ex-grid will-color">
+    <div class="ex-card" style="border-left-color:var(--orange)"><div class="ex-emoji">☀️</div><strong>It will be sunny on Saturday.</strong><br><em>We are predicting the weather.</em></div>
+    <div class="ex-card" style="border-left-color:var(--orange)"><div class="ex-emoji">📚</div><strong>I will study for the test tonight.</strong><br><em>A decision made now.</em></div>
+    <div class="ex-card" style="border-left-color:var(--orange)"><div class="ex-emoji">🐘</div><strong>The zoo will open at 9am.</strong><br><em>We are sure about this fact.</em></div>
+    <div class="ex-card" style="border-left-color:var(--orange)"><div class="ex-emoji">⚽</div><strong>She will score a goal!</strong><br><em>A confident prediction.</em></div>
+    <div class="ex-card" style="border-left-color:var(--orange)"><div class="ex-emoji">🍰</div><strong>I'll make a cake for your birthday.</strong><br><em>A promise to someone.</em></div>
+    <div class="ex-card" style="border-left-color:var(--orange)"><div class="ex-emoji">🚀</div><strong>Robots will be everywhere in the future!</strong><br><em>A prediction about the future.</em></div>
+  </div>
+
+  <!-- Will images -->
+  <div class="topic-images">
+    <img src="https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?w=400&h=280&fit=crop" alt="Rocket future">
+    <img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=400&h=280&fit=crop" alt="Calendar planning">
+    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=280&fit=crop" alt="Future technology">
+  </div>
+
+  <!-- Will videos -->
+  <div class="video-grid">
+    <div class="video-wrapper">
+      <p>📹 Simple Future with WILL</p>
+      <div class="responsive-iframe">
+        <iframe src="https://www.youtube.com/embed/n14zCZAvSjI" allowfullscreen title="Simple Future Will"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXERCISE W1: Fill in the Blank -->
+  <div class="exercise-container">
+    <h3>✏️ Exercise 1 — Fill in the Blank <small style="font-family:Nunito;font-size:0.8rem;color:#888">(Use WILL or WON'T)</small></h3>
+    <div id="will-fill-questions"></div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px">
+      <button class="btn-check" onclick="checkWillFill()" style="background:linear-gradient(135deg,var(--orange),#E65100)">Check Answers ✅</button>
+      <button class="btn-check" onclick="resetWillFill()" style="background:linear-gradient(135deg,#888,#555)">Try Again 🔄</button>
+    </div>
+    <div class="feedback" id="will-fill-feedback"></div>
+    <div class="score-indicator" id="will-fill-score" style="display:none"></div>
+  </div>
+
+  <!-- EXERCISE W2: Multiple Choice -->
+  <div class="exercise-container">
+    <h3>🎯 Exercise 2 — Multiple Choice</h3>
+    <div id="will-mc-questions"></div>
+    <div class="score-indicator" id="will-mc-score" style="display:none"></div>
+  </div>
+
+  <!-- EXERCISE W3: Matching -->
+  <div class="exercise-container">
+    <h3>🔗 Exercise 3 — Matching</h3>
+    <p style="font-size:0.9rem;color:#888;margin-bottom:14px">Match each sentence to its use of WILL. / Une cada oración con su uso de WILL.</p>
+    <div class="match-grid">
+      <div class="match-col" id="will-match-left"></div>
+      <div class="match-col" id="will-match-right"></div>
+    </div>
+    <button class="btn-check" onclick="checkWillMatch()" style="background:linear-gradient(135deg,var(--orange),#E65100)">Check ✅</button>
+    <div class="feedback" id="will-match-feedback"></div>
+    <div class="score-indicator" id="will-match-score" style="display:none"></div>
+  </div>
+
+  <!-- EXERCISE W4: Writing -->
+  <div class="exercise-container">
+    <h3>✍️ Exercise 4 — Writing</h3>
+    <div id="will-writing-prompts"></div>
+  </div>
+
+  <!-- Will complete badge -->
+  <div class="topic-complete" id="will-complete">
+    <h3>🏆 Superstar!</h3>
+    <p id="will-complete-msg">You completed all WILL exercises! You're a grammar champion! 🎓</p>
+  </div>
+
+</section>
+</div>
+
+<!-- =====================
+     TOPIC 1: SEQUENCING WORDS
+     ===================== -->
+<div class="section-band band-1" id="sequencing">
+<section>
+  <div class="section-header">
+    <h2 style="color: var(--primary);">🔢 Sequencing Words</h2>
+    <p>Learn how to organize your ideas in order! / ¡Aprende a organizar tus ideas en orden!</p>
+  </div>
+
+  <div class="bilingual-box">
+    <div class="lang-card" style="border-top: 4px solid var(--primary)">
+      <div class="lang-flag">🇬🇧 English</div>
+      <h3 style="color:var(--primary)">What are sequencing words?</h3>
+      <p>Sequencing words help us tell stories and explain processes in the right order. They show the reader <strong>when</strong> each thing happens. We use them in narratives, instructions, and descriptions.</p>
+      <ul style="margin-top:12px">
+        <li><strong>First</strong> → the beginning</li>
+        <li><strong>Next / Then</strong> → what comes after</li>
+        <li><strong>After that</strong> → following an action</li>
+        <li><strong>Finally</strong> → the last step</li>
+      </ul>
+    </div>
+    <div class="lang-card" style="border-top: 4px solid var(--orange)">
+      <div class="lang-flag">🇪🇸 Español</div>
+      <h3 style="color:var(--orange)">¿Qué son los conectores de secuencia?</h3>
+      <p>Los conectores de secuencia nos ayudan a contar historias y explicar procesos en el orden correcto. Indican al lector <strong>cuándo</strong> ocurre cada cosa.</p>
+      <ul style="margin-top:12px">
+        <li><strong>First</strong> → primero</li>
+        <li><strong>Next / Then</strong> → luego / después</li>
+        <li><strong>After that</strong> → después de eso</li>
+        <li><strong>Finally</strong> → finalmente</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Timeline -->
+  <div class="timeline">
+    <div class="tl-item"><div class="tl-bubble" style="background:linear-gradient(135deg,#FF6B6B,#FF8E53)">🥇 First</div><div class="tl-arrow">→</div></div>
+    <div class="tl-item"><div class="tl-bubble" style="background:linear-gradient(135deg,#FFA07A,#FFD700)">2️⃣ Next</div><div class="tl-arrow">→</div></div>
+    <div class="tl-item"><div class="tl-bubble" style="background:linear-gradient(135deg,#4ECDC4,#44A08D)">3️⃣ Then</div><div class="tl-arrow">→</div></div>
+    <div class="tl-item"><div class="tl-bubble" style="background:linear-gradient(135deg,#A78BFA,#7C3AED)">4️⃣ After that</div><div class="tl-arrow">→</div></div>
+    <div class="tl-item"><div class="tl-bubble" style="background:linear-gradient(135deg,#6BCB77,#2E8B57)">🏁 Finally</div></div>
+  </div>
+
+  <!-- Images -->
+  <div class="topic-images">
+    <img src="https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?w=400&h=280&fit=crop" alt="Morning routine">
+    <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=280&fit=crop" alt="Cooking steps">
+    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=280&fit=crop" alt="Step sequence">
+  </div>
+
+  <!-- Videos -->
+  <div class="video-grid">
+    <div class="video-wrapper">
+      <p>📹 Adverbs of sequence</p>
+      <div class="responsive-iframe">
+        <iframe src="https://www.youtube.com/embed/ZaKDYmKYHbk" allowfullscreen title="Adverbs of sequence"></iframe>
+      </div>
+    </div>
+    <div class="video-wrapper">
+      <p>📹 ADVERBIOS DE SECUENCIA EN INGLÉS - MR.PEA</p>
+      <div class="responsive-iframe">
+        <iframe src="https://www.youtube.com/embed/pIUiuuv1xYs" allowfullscreen title="Adverbios de secuencia"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXERCISE 1: Fill in the Blank -->
+  <div class="exercise-container">
+    <h3>✏️ Exercise 1 — Fill in the Blank <small style="font-family:Nunito;font-size:0.8rem;color:#888">(Complete the sentences)</small></h3>
+    <div id="seq-fill-questions"></div>
+    <button class="btn-check" onclick="checkSeqFill()">Check ✅</button>
+    <div class="feedback" id="seq-fill-feedback"></div>
+    <div class="score-indicator" id="seq-fill-score" style="display:none"></div>
+  </div>
+
+  <!-- EXERCISE 2: Multiple Choice -->
+  <div class="exercise-container">
+    <h3>🎯 Exercise 2 — Multiple Choice <small style="font-family:Nunito;font-size:0.8rem;color:#888">(Choose the best word)</small></h3>
+    <div id="seq-mc-questions"></div>
+    <div class="score-indicator" id="seq-mc-score" style="display:none"></div>
+  </div>
+
+  <!-- EXERCISE 3: Ordering -->
+  <div class="exercise-container">
+    <h3>🔀 Exercise 3 — Put in Order <small style="font-family:Nunito;font-size:0.8rem;color:#888">(Drag the sentences)</small></h3>
+    <p style="font-size:0.9rem;color:#888;margin-bottom:14px">Morning Routine — drag to arrange in the correct order / Arrastra para ordenar la rutina</p>
+    <ul class="order-list" id="seq-order-list"></ul>
+    <button class="btn-check" onclick="checkSeqOrder()">Check Order ✅</button>
+    <div class="feedback" id="seq-order-feedback"></div>
+  </div>
+
+  <!-- EXERCISE 4: Writing -->
+  <div class="exercise-container">
+    <h3>✍️ Exercise 4 — Writing / Escritura</h3>
+    <p style="margin-bottom:12px;font-size:0.95rem">Write 5 sentences about your morning routine using <strong>all 5 sequencing words</strong>! / Escribe 5 oraciones sobre tu rutina matutina usando las 5 palabras.</p>
+    <div class="word-tags" id="seq-word-tags"></div>
+    <textarea class="writing-textarea" id="seq-writing" placeholder="First, I wake up at 7am. Next, I..."></textarea>
+    <div class="char-count" id="seq-char-count">0 characters</div>
+    <button class="btn-check" onclick="checkSeqWriting()">Submit Writing ✍️</button>
+    <div class="feedback" id="seq-writing-feedback"></div>
+  </div>
+</section>
+</div>
+
+<!-- =====================
+     TOPIC 2: CONNECTIVES
+     ===================== -->
+<div class="section-band band-2" id="connectives">
+<section>
+  <div class="section-header">
+    <h2 style="color: var(--secondary);">🔗 Simple Connectives</h2>
+    <p>Connect your ideas like a pro! / ¡Conecta tus ideas como un profesional!</p>
+  </div>
+
+  <div class="bilingual-box">
+    <div class="lang-card" style="border-top: 4px solid var(--secondary)">
+      <div class="lang-flag">🇬🇧 English</div>
+      <h3 style="color:var(--secondary)">What are connectives?</h3>
+      <p>Connectives (conjunctions) join two ideas or sentences together. The three most important ones are:</p>
+      <ul style="margin-top:12px">
+        <li>➕ <strong>and</strong> — adds information</li>
+        <li>🔄 <strong>but</strong> — shows contrast or surprise</li>
+        <li>❓ <strong>because</strong> — gives a reason</li>
+      </ul>
+    </div>
+    <div class="lang-card" style="border-top: 4px solid var(--green)">
+      <div class="lang-flag">🇪🇸 Español</div>
+      <h3 style="color:var(--green)">¿Qué son los conectores?</h3>
+      <p>Los conectores unen dos ideas u oraciones. Los tres más importantes son:</p>
+      <ul style="margin-top:12px">
+        <li>➕ <strong>and</strong> (y) — añade información</li>
+        <li>🔄 <strong>but</strong> (pero) — muestra contraste</li>
+        <li>❓ <strong>because</strong> (porque) — da una razón</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="connector-examples">
+    <div class="connector-card" style="border-top-color: var(--green)">
+      <div class="icon">➕</div>
+      <h4 style="color:var(--green)">AND</h4>
+      <p>I like cats <strong>and</strong> I like dogs.<br><em>Me gustan los gatos y me gustan los perros.</em></p>
+    </div>
+    <div class="connector-card" style="border-top-color: var(--orange)">
+      <div class="icon">🔄</div>
+      <h4 style="color:var(--orange)">BUT</h4>
+      <p>I like cats <strong>but</strong> I don't like dogs.<br><em>Me gustan los gatos pero no me gustan los perros.</em></p>
+    </div>
+    <div class="connector-card" style="border-top-color: var(--purple)">
+      <div class="icon">❓</div>
+      <h4 style="color:var(--purple)">BECAUSE</h4>
+      <p>I like cats <strong>because</strong> they are cute.<br><em>Me gustan los gatos porque son lindos.</em></p>
+    </div>
+  </div>
+
+  <div class="topic-images">
+    <img src="https://images.unsplash.com/photo-1529465230221-a0d10e46fcbb?w=400&h=280&fit=crop" alt="Connection">
+    <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&h=280&fit=crop" alt="Writing">
+    <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400&h=280&fit=crop" alt="Books">
+  </div>
+
+  <div class="video-grid">
+    <div class="video-wrapper">
+      <p>📹 CONJUNCIONES BÁSICAS: AND, BUT, SO, BECAUSE - MR.PEA</p>
+      <div class="responsive-iframe">
+        <iframe src="https://www.youtube.com/embed/tUwFYcRCF2o" allowfullscreen title="Conjunctions"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- Exercise 1: Fill Blank -->
+  <div class="exercise-container">
+    <h3>✏️ Exercise 1 — Fill in the Blank</h3>
+    <div id="conn-fill-questions"></div>
+    <button class="btn-check" onclick="checkConnFill()">Check ✅</button>
+    <div class="feedback" id="conn-fill-feedback"></div>
+    <div class="score-indicator" id="conn-fill-score" style="display:none"></div>
+  </div>
+
+  <!-- Exercise 2: MC -->
+  <div class="exercise-container">
+    <h3>🎯 Exercise 2 — Multiple Choice</h3>
+    <div id="conn-mc-questions"></div>
+    <div class="score-indicator" id="conn-mc-score" style="display:none"></div>
+  </div>
+
+  <!-- Exercise 3: Matching -->
+  <div class="exercise-container">
+    <h3>🔗 Exercise 3 — Matching: Complete the Sentence</h3>
+    <p style="font-size:0.9rem;color:#888;margin-bottom:14px">Click a beginning, then click its ending / Haz clic en una frase y luego en su continuación</p>
+    <div class="match-grid">
+      <div class="match-col" id="conn-match-left"></div>
+      <div class="match-col" id="conn-match-right"></div>
+    </div>
+    <button class="btn-check" onclick="checkConnMatch()">Check ✅</button>
+    <div class="feedback" id="conn-match-feedback"></div>
+    <div class="score-indicator" id="conn-match-score" style="display:none"></div>
+  </div>
+
+  <!-- Exercise 4: Writing -->
+  <div class="exercise-container">
+    <h3>✍️ Exercise 4 — Writing</h3>
+    <p style="margin-bottom:12px;font-size:0.95rem">Write 3 sentences using <strong>and</strong>, 3 using <strong>but</strong>, and 3 using <strong>because</strong>.</p>
+    <div class="word-tags" id="conn-word-tags"></div>
+    <textarea class="writing-textarea" id="conn-writing" placeholder="I have a dog and I have a cat. I love pizza but I don't like mushrooms. I am tired because I studied all day..."></textarea>
+    <div class="char-count" id="conn-char-count">0 characters</div>
+    <button class="btn-check" onclick="checkConnWriting()">Submit ✍️</button>
+    <div class="feedback" id="conn-writing-feedback"></div>
+  </div>
+</section>
+</div>
+
+<!-- =====================
+     TOPIC 3: PRESENT PERFECT
+     ===================== -->
+<div class="section-band band-3" id="present-perfect">
+<section>
+  <div class="section-header">
+    <h2 style="color: var(--purple);">✅ Present Perfect</h2>
+    <p>have/has + past participle</p>
+  </div>
+
+  <div class="bilingual-box">
+    <div class="lang-card" style="border-top: 4px solid var(--purple)">
+      <div class="lang-flag">🇬🇧 English</div>
+      <h3 style="color:var(--purple)">What is the Present Perfect?</h3>
+      <p>The Present Perfect connects the past with the present. We use it for:</p>
+      <ul style="margin-top:12px">
+        <li>✅ Experiences: <em>"I have visited Paris."</em></li>
+        <li>✅ Recent actions: <em>"She has just arrived."</em></li>
+        <li>✅ With since/for: <em>"I have lived here for 5 years."</em></li>
+      </ul>
+      <p style="margin-top:12px"><strong>Structure:</strong> Subject + <span style="color:var(--purple)">have/has</span> + past participle</p>
+    </div>
+    <div class="lang-card" style="border-top: 4px solid var(--orange)">
+      <div class="lang-flag">🇪🇸 Español</div>
+      <h3 style="color:var(--orange)">¿Qué es el Presente Perfecto?</h3>
+      <p>El Presente Perfecto conecta el pasado con el presente. Lo usamos para:</p>
+      <ul style="margin-top:12px">
+        <li>✅ Experiencias: <em>"He visitado París."</em></li>
+        <li>✅ Acciones recientes: <em>"Ella acaba de llegar."</em></li>
+        <li>✅ Con since/for: <em>"He vivido aquí por 5 años."</em></li>
+      </ul>
+      <p style="margin-top:12px"><strong>Estructura:</strong> Sujeto + <span style="color:var(--purple)">have/has</span> + participio pasado</p>
+    </div>
+  </div>
+
+  <!-- Structure table -->
+  <table class="pp-table">
+    <thead>
+      <tr><th>Form / Forma</th><th>Example 🇬🇧</th><th>Example 🇪🇸</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>✅ Affirmative</strong><br>I/You/We/They + have<br>He/She/It + has</td><td>I <em>have eaten</em> pizza.<br>She <em>has gone</em> home.</td><td>He comido pizza.<br>Ella se ha ido a casa.</td></tr>
+      <tr><td><strong>❌ Negative</strong><br>have not (haven't)<br>has not (hasn't)</td><td>I <em>haven't seen</em> that film.<br>He <em>hasn't finished</em>.</td><td>No he visto esa película.<br>Él no ha terminado.</td></tr>
+      <tr><td><strong>❓ Question</strong><br>Have + subject?<br>Has + subject?</td><td><em>Have</em> you ever been to London?<br><em>Has</em> she called you?</td><td>¿Has estado alguna vez en Londres?<br>¿Te ha llamado ella?</td></tr>
+    </tbody>
+  </table>
+
+  <!-- Comparison table PP vs Simple Past -->
+  <h3 style="margin:24px 0 12px;color:var(--purple)">Present Perfect vs Simple Past</h3>
+  <table class="pp-table">
+    <thead>
+      <tr><th>Present Perfect ✅</th><th>Simple Past ⏰</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>I <strong>have eaten</strong> sushi. (experience, no specific time)</td><td>I <strong>ate</strong> sushi yesterday. (specific time)</td></tr>
+      <tr><td>She <strong>has lost</strong> her keys. (still relevant now)</td><td>She <strong>lost</strong> her keys last week. (finished event)</td></tr>
+      <tr><td><strong>Has</strong> he ever been to Spain? (experience)</td><td>Did he go to Spain last summer? (specific trip)</td></tr>
+    </tbody>
+  </table>
+
+  <div class="topic-images">
+    <img src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=400&h=280&fit=crop" alt="Timeline past to present">
+    <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=400&h=280&fit=crop" alt="Classroom">
+    <img src="https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?w=400&h=280&fit=crop" alt="Study">
+  </div>
+
+  <div class="video-grid">
+    <div class="video-wrapper">
+      <p>📹 PRESENT PERFECT - INGLÉS PARA NIÑOS CON MR.PEA</p>
+      <div class="responsive-iframe">
+        <iframe src="https://www.youtube.com/embed/7aw7bQtPYCE" allowfullscreen></iframe>
+      </div>
+    </div>
+    <div class="video-wrapper">
+      <p>📹 Presente perfecto: gramática y tiempos verbales</p>
+      <div class="responsive-iframe">
+        <iframe src="https://www.youtube.com/embed/553eeL1Dvho" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- Exercises -->
+  <div class="exercise-container">
+    <h3>✏️ Exercise 1 — Fill in the Blank (have/has + past participle)</h3>
+    <div id="pp-fill-questions"></div>
+    <button class="btn-check" onclick="checkPPFill()">Check ✅</button>
+    <div class="feedback" id="pp-fill-feedback"></div>
+    <div class="score-indicator" id="pp-fill-score" style="display:none"></div>
+  </div>
+
+  <div class="exercise-container">
+    <h3>🎯 Exercise 2 — Multiple Choice</h3>
+    <div id="pp-mc-questions"></div>
+    <div class="score-indicator" id="pp-mc-score" style="display:none"></div>
+  </div>
+
+  <div class="exercise-container">
+    <h3>🔗 Exercise 3 — Matching: Usage</h3>
+    <p style="font-size:0.9rem;color:#888;margin-bottom:14px">Match each sentence to its usage / Une cada oración con su uso</p>
+    <div class="match-grid">
+      <div class="match-col" id="pp-match-left"></div>
+      <div class="match-col" id="pp-match-right"></div>
+    </div>
+    <button class="btn-check" onclick="checkPPMatch()">Check ✅</button>
+    <div class="feedback" id="pp-match-feedback"></div>
+  </div>
+
+  <div class="exercise-container">
+    <h3>✍️ Exercise 4 — Writing</h3>
+    <p style="margin-bottom:12px;font-size:0.95rem">Write 5 sentences about things <strong>you have done</strong> in your life using the present perfect.</p>
+    <textarea class="writing-textarea" id="pp-writing" placeholder="I have visited the beach three times. I have eaten sushi..."></textarea>
+    <div class="char-count" id="pp-char-count">0 characters</div>
+    <button class="btn-check" onclick="checkPPWriting()">Submit ✍️</button>
+    <div class="feedback" id="pp-writing-feedback"></div>
+  </div>
+</section>
+</div>
+
+<!-- =====================
+     TOPIC 4: SINCE & FOR
+     ===================== -->
+<div class="section-band band-4" id="since-for">
+<section>
+  <div class="section-header">
+    <h2 style="color: var(--blue);">⏳ Since &amp; For</h2>
+    <p>Using time expressions with the Present Perfect</p>
+  </div>
+
+  <div class="since-for-grid">
+    <div class="since-card since-card2">
+      <h3 style="color:var(--blue)">⏰ SINCE</h3>
+      <p style="font-size:0.9rem;color:#555;margin-bottom:12px"><em>Punto específico en el tiempo / A specific point in time</em></p>
+      <ul class="since-examples">
+        <li>since <strong class="highlight-since">2010</strong></li>
+        <li>since <strong class="highlight-since">Monday</strong></li>
+        <li>since <strong class="highlight-since">I was born</strong></li>
+        <li>since <strong class="highlight-since">last year</strong></li>
+        <li>since <strong class="highlight-since">the morning</strong></li>
+      </ul>
+      <p style="margin-top:14px;font-size:0.88rem;background:#E3F2FD;padding:10px;border-radius:8px">I have lived here <strong class="highlight-since">since 2015</strong>.<br><em>He vivido aquí desde 2015.</em></p>
+    </div>
+    <div class="since-card for-card">
+      <h3 style="color:var(--orange)">📅 FOR</h3>
+      <p style="font-size:0.9rem;color:#555;margin-bottom:12px"><em>Período de tiempo / A period of time</em></p>
+      <ul class="since-examples">
+        <li>for <strong class="highlight-for">3 years</strong></li>
+        <li>for <strong class="highlight-for">a week</strong></li>
+        <li>for <strong class="highlight-for">a long time</strong></li>
+        <li>for <strong class="highlight-for">two months</strong></li>
+        <li>for <strong class="highlight-for">ages</strong></li>
+      </ul>
+      <p style="margin-top:14px;font-size:0.88rem;background:#FFF3E0;padding:10px;border-radius:8px">I have lived here <strong class="highlight-for">for 10 years</strong>.<br><em>He vivido aquí por 10 años.</em></p>
+    </div>
+  </div>
+
+  <div class="bilingual-box">
+    <div class="lang-card" style="border-top: 4px solid var(--blue)">
+      <div class="lang-flag">🇬🇧 English</div>
+      <h3 style="color:var(--blue)">How to remember the difference</h3>
+      <p><strong>SINCE</strong> = from a specific point until now. Think of an arrow starting at a date.<br><br>
+      <strong>FOR</strong> = for a length of time. Think of a ruler measuring duration.<br><br>
+      <em>Tip: If you can put a number of days/weeks/months → use FOR</em></p>
+    </div>
+    <div class="lang-card" style="border-top: 4px solid var(--orange)">
+      <div class="lang-flag">🇪🇸 Español</div>
+      <h3 style="color:var(--orange)">Cómo recordar la diferencia</h3>
+      <p><strong>SINCE</strong> = desde un punto específico hasta ahora. Piensa en una flecha que empieza en una fecha.<br><br>
+      <strong>FOR</strong> = durante un período de tiempo. Piensa en una regla midiendo duración.<br><br>
+      <em>Tip: Si puedes poner número de días/semanas/meses → usa FOR</em></p>
+    </div>
+  </div>
+
+  <div class="mistakes-box">
+    <h4>⚠️ Common Mistakes / Errores comunes</h4>
+    <ul>
+      <li>❌ "I have studied since two hours." → ✅ "I have studied <strong>for</strong> two hours."</li>
+      <li>❌ "She has worked for Monday." → ✅ "She has worked <strong>since</strong> Monday."</li>
+      <li>❌ "We have lived here since 5 years." → ✅ "We have lived here <strong>for</strong> 5 years."</li>
+    </ul>
+  </div>
+
+  <div class="topic-images">
+    <img src="https://images.unsplash.com/photo-1543722530-d2c3201371e7?w=400&h=280&fit=crop" alt="Clock time">
+    <img src="https://images.unsplash.com/photo-1508962914676-134849a727f0?w=400&h=280&fit=crop" alt="Calendar">
+    <img src="https://images.unsplash.com/photo-1606189934846-a527add8a77b?w=400&h=280&fit=crop" alt="Hourglass">
+  </div>
+
+  <!-- Exercises -->
+  <div class="exercise-container">
+    <h3>✏️ Exercise 1 — since or for?</h3>
+    <div id="sf-fill-questions"></div>
+    <button class="btn-check" onclick="checkSFFill()">Check ✅</button>
+    <div class="feedback" id="sf-fill-feedback"></div>
+    <div class="score-indicator" id="sf-fill-score" style="display:none"></div>
+  </div>
+
+  <div class="exercise-container">
+    <h3>🎯 Exercise 2 — Multiple Choice</h3>
+    <div id="sf-mc-questions"></div>
+    <div class="score-indicator" id="sf-mc-score" style="display:none"></div>
+  </div>
+
+  <div class="exercise-container">
+    <h3>🔗 Exercise 3 — Matching: since or for?</h3>
+    <p style="font-size:0.9rem;color:#888;margin-bottom:14px">Click a time expression, then click SINCE or FOR</p>
+    <div id="sf-match-container"></div>
+    <div class="score-indicator" id="sf-match-score" style="display:none"></div>
+  </div>
+
+  <div class="exercise-container">
+    <h3>✍️ Exercise 4 — Writing</h3>
+    <p style="margin-bottom:12px;font-size:0.95rem">Write 4 sentences about yourself using <strong class="highlight-since">since</strong> and <strong class="highlight-for">for</strong> (2 each).</p>
+    <div class="word-tags" id="sf-word-tags"></div>
+    <textarea class="writing-textarea" id="sf-writing" placeholder="I have studied English for 3 years. I have had my dog since 2020..."></textarea>
+    <div class="char-count" id="sf-char-count">0 characters</div>
+    <button class="btn-check" onclick="checkSFWriting()">Submit ✍️</button>
+    <div class="feedback" id="sf-writing-feedback"></div>
+  </div>
+</section>
+</div>
+
+<!-- =====================
+     TOPIC 5: IRREGULAR VERBS
+     ===================== -->
+<div class="section-band band-5" id="irregular">
+<section>
+  <div class="section-header">
+    <h2 style="color: var(--pink);">📚 Irregular Verbs</h2>
+    <p>The 50 most important irregular verbs / Los 50 verbos irregulares más importantes</p>
+  </div>
+
+  <div class="bilingual-box">
+    <div class="lang-card" style="border-top: 4px solid var(--pink)">
+      <div class="lang-flag">🇬🇧 English</div>
+      <h3 style="color:var(--pink)">What are irregular verbs?</h3>
+      <p>Irregular verbs do <strong>not</strong> follow the normal -ed rule when forming the past tense or past participle. You need to memorise them! Examples: go → went → gone, see → saw → seen.</p>
+    </div>
+    <div class="lang-card" style="border-top: 4px solid var(--purple)">
+      <div class="lang-flag">🇪🇸 Español</div>
+      <h3 style="color:var(--purple)">¿Qué son los verbos irregulares?</h3>
+      <p>Los verbos irregulares <strong>no</strong> siguen la regla normal del -ed para formar el pasado o el participio. ¡Tienes que memorizarlos! Ejemplos: go → went → gone, see → saw → seen.</p>
+    </div>
+  </div>
+
+  <input type="text" class="verb-search" id="irreg-search" placeholder="🔍 Search / Buscar a verb...">
+
+  <div class="verb-grid" id="irreg-verb-grid"></div>
+
+  <!-- Exercises -->
+  <div class="exercise-container" style="margin-top:30px">
+    <h3>✏️ Exercise 1 — Fill in the Blank (past tense)</h3>
+    <div id="irreg-fill-questions"></div>
+    <button class="btn-check" onclick="checkIrregFill()">Check ✅</button>
+    <div class="feedback" id="irreg-fill-feedback"></div>
+    <div class="score-indicator" id="irreg-fill-score" style="display:none"></div>
+  </div>
+
+  <div class="exercise-container">
+    <h3>🎯 Exercise 2 — Multiple Choice</h3>
+    <div id="irreg-mc-questions"></div>
+    <div class="score-indicator" id="irreg-mc-score" style="display:none"></div>
+  </div>
+
+  <div class="exercise-container">
+    <h3>🔗 Exercise 3 — Matching</h3>
+    <p style="font-size:0.9rem;color:#888;margin-bottom:14px">Match the infinitive to its past tense / Une el infinitivo con su pasado</p>
+    <div class="match-grid">
+      <div class="match-col" id="irreg-match-left"></div>
+      <div class="match-col" id="irreg-match-right"></div>
+    </div>
+    <button class="btn-check" onclick="checkIrregMatch()">Check ✅</button>
+    <div class="feedback" id="irreg-match-feedback"></div>
+  </div>
+
+  <div class="exercise-container">
+    <h3>🃏 Exercise 4 — Flashcard Quiz</h3>
+    <p style="font-size:0.9rem;color:#888;margin-bottom:16px">Click the card to flip it! Then type the Simple Past below. / ¡Haz clic para voltear y escribe el pasado!</p>
+    <div class="flashcard-wrap" onclick="flipIrregCard()">
+      <div class="flashcard" id="irreg-flashcard">
+        <div class="flashcard-face flashcard-front">
+          <h2 id="irreg-fc-word">go</h2>
+          <p>Tap to see answer / Toca para ver</p>
+        </div>
+        <div class="flashcard-face flashcard-back">
+          <h2 id="irreg-fc-answer">went</h2>
+          <p id="irreg-fc-es">ir</p>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:14px">
+      <input type="text" class="welcome-input" id="irreg-fc-input" placeholder="Type Simple Past..." style="max-width:250px;margin-bottom:0">
+      <button class="btn-check" style="margin-top:0" onclick="checkIrregFlashcard()">Check ✅</button>
+    </div>
+    <div class="flashcard-nav">
+      <button class="btn-check" onclick="prevIrregCard()" style="background:linear-gradient(135deg,var(--orange),var(--primary))">← Prev</button>
+      <span id="irreg-fc-counter" style="font-weight:700;color:var(--navy)">1 / 50</span>
+      <button class="btn-check" onclick="nextIrregCard()">Next →</button>
+    </div>
+    <div class="feedback" id="irreg-fc-feedback"></div>
+    <div class="score-indicator" id="irreg-fc-score" style="display:none"></div>
+  </div>
+</section>
+</div>
+
+<!-- =====================
+     TOPIC 6: REGULAR VERBS
+     ===================== -->
+<div class="section-band band-6" id="regular">
+<section>
+  <div class="section-header">
+    <h2 style="color: var(--orange);">📝 Regular Verbs</h2>
+    <p>The -ed rule / La regla del -ed</p>
+  </div>
+
+  <div class="bilingual-box">
+    <div class="lang-card" style="border-top: 4px solid var(--orange)">
+      <div class="lang-flag">🇬🇧 English</div>
+      <h3 style="color:var(--orange)">The -ed spelling rules</h3>
+      <ul>
+        <li>🟢 Most verbs: just add <strong>-ed</strong> → walk → walked</li>
+        <li>🟠 Ends in -e: drop e, add <strong>-d</strong> → dance → danced</li>
+        <li>🔵 Short vowel + consonant: double consonant → stop → stopped</li>
+        <li>🟣 Consonant + y: change y → <strong>ied</strong> → study → studied</li>
+      </ul>
+    </div>
+    <div class="lang-card" style="border-top: 4px solid var(--green)">
+      <div class="lang-flag">🇪🇸 Español</div>
+      <h3 style="color:var(--green)">Las reglas ortográficas del -ed</h3>
+      <ul>
+        <li>🟢 La mayoría: solo añadir <strong>-ed</strong> → walk → walked</li>
+        <li>🟠 Termina en -e: quitar e, añadir <strong>-d</strong> → dance → danced</li>
+        <li>🔵 Vocal corta + consonante: doblar consonante → stop → stopped</li>
+        <li>🟣 Consonante + y: cambiar y → <strong>ied</strong> → study → studied</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="topic-images">
+    <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=400&h=280&fit=crop" alt="Studying">
+    <img src="https://images.unsplash.com/photo-1503676382389-4809596d5290?w=400&h=280&fit=crop" alt="Learning English">
+    <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=400&h=280&fit=crop" alt="Notebook">
+  </div>
+
+  <input type="text" class="verb-search" id="reg-search" placeholder="🔍 Search / Buscar a verb...">
+
+  <div class="verb-grid" id="reg-verb-grid"></div>
+
+  <!-- Exercises -->
+  <div class="exercise-container" style="margin-top:30px">
+    <h3>✏️ Exercise 1 — Write the Past Tense</h3>
+    <div id="reg-fill-questions"></div>
+    <button class="btn-check" onclick="checkRegFill()">Check ✅</button>
+    <div class="feedback" id="reg-fill-feedback"></div>
+    <div class="score-indicator" id="reg-fill-score" style="display:none"></div>
+  </div>
+
+  <div class="exercise-container">
+    <h3>🎯 Exercise 2 — Multiple Choice (correct -ed spelling)</h3>
+    <div id="reg-mc-questions"></div>
+    <div class="score-indicator" id="reg-mc-score" style="display:none"></div>
+  </div>
+
+  <div class="exercise-container">
+    <h3>🔗 Exercise 3 — Matching</h3>
+    <div class="match-grid">
+      <div class="match-col" id="reg-match-left"></div>
+      <div class="match-col" id="reg-match-right"></div>
+    </div>
+    <button class="btn-check" onclick="checkRegMatch()">Check ✅</button>
+    <div class="feedback" id="reg-match-feedback"></div>
+  </div>
+
+  <div class="exercise-container">
+    <h3>🃏 Exercise 4 — Flashcard Quiz</h3>
+    <div class="flashcard-wrap" onclick="flipRegCard()">
+      <div class="flashcard" id="reg-flashcard">
+        <div class="flashcard-face flashcard-front">
+          <h2 id="reg-fc-word">walk</h2>
+          <p>Tap to see answer</p>
+        </div>
+        <div class="flashcard-face flashcard-back">
+          <h2 id="reg-fc-answer">walked</h2>
+          <p id="reg-fc-es">caminar</p>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:14px">
+      <input type="text" class="welcome-input" id="reg-fc-input" placeholder="Type past tense..." style="max-width:250px;margin-bottom:0">
+      <button class="btn-check" style="margin-top:0" onclick="checkRegFlashcard()">Check ✅</button>
+    </div>
+    <div class="flashcard-nav">
+      <button class="btn-check" onclick="prevRegCard()" style="background:linear-gradient(135deg,var(--orange),var(--primary))">← Prev</button>
+      <span id="reg-fc-counter" style="font-weight:700;color:var(--navy)">1 / 50</span>
+      <button class="btn-check" onclick="nextRegCard()">Next →</button>
+    </div>
+    <div class="feedback" id="reg-fc-feedback"></div>
+    <div class="score-indicator" id="reg-fc-score" style="display:none"></div>
+  </div>
+
+  <div class="exercise-container">
+    <h3>🔤 Exercise 5 — Spelling Challenge</h3>
+    <p style="font-size:0.9rem;color:#888;margin-bottom:14px">Identify the spelling rule used! / ¡Identifica la regla ortográfica usada!</p>
+    <div id="reg-spell-questions"></div>
+    <div class="score-indicator" id="reg-spell-score" style="display:none"></div>
+  </div>
+</section>
+</div>
+
+<!-- =====================
+     PROGRESS SECTION
+     ===================== -->
+<div class="section-band band-progress" id="progress">
+<section>
+  <div class="section-header">
+    <h2 style="color: var(--navy);">🏆 My Progress</h2>
+    <p>See how well you're doing! / ¡Mira qué bien lo estás haciendo!</p>
+  </div>
+
+  <div class="total-score-box">
+    <h2>🌟 Total Score</h2>
+    <div class="score-num" id="total-score-display">0%</div>
+    <p id="total-badge-display">Keep going! You're doing great! 💪</p>
+  </div>
+
+  <div class="progress-dashboard" id="progress-dashboard"></div>
+
+  <div style="text-align:center;margin-top:20px">
+    <button class="btn-reset" onclick="resetProgress()">🗑️ Reset My Progress</button>
+  </div>
+</section>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>Made with ❤️ for English learners | 🌟 English Fun Zone</p>
+</footer>
+
+<!-- BACK TO TOP -->
+<button id="back-to-top">⬆️</button>
+
+<script>
+/* ================================================
+   DATA
+   ================================================ */
+
+const IRREGULAR_VERBS = [
+  {inf:'be',past:'was/were',pp:'been',es:'ser/estar',emoji:'🌟',ex:'She was happy yesterday.',exES:'Ella estuvo feliz ayer.'},
+  {inf:'have',past:'had',pp:'had',es:'tener',emoji:'✋',ex:'I had a great time.',exES:'Tuve un gran tiempo.'},
+  {inf:'do',past:'did',pp:'done',es:'hacer',emoji:'✅',ex:'She did her homework.',exES:'Ella hizo su tarea.'},
+  {inf:'say',past:'said',pp:'said',es:'decir',emoji:'💬',ex:'He said hello.',exES:'Él dijo hola.'},
+  {inf:'go',past:'went',pp:'gone',es:'ir',emoji:'🚶',ex:'We went to the park.',exES:'Fuimos al parque.'},
+  {inf:'get',past:'got',pp:'got/gotten',es:'obtener',emoji:'🎁',ex:'I got a new book.',exES:'Obtuve un libro nuevo.'},
+  {inf:'make',past:'made',pp:'made',es:'hacer/crear',emoji:'🔨',ex:'She made a cake.',exES:'Ella hizo un pastel.'},
+  {inf:'know',past:'knew',pp:'known',es:'saber/conocer',emoji:'🧠',ex:'I knew the answer.',exES:'Supe la respuesta.'},
+  {inf:'think',past:'thought',pp:'thought',es:'pensar',emoji:'💭',ex:'He thought about it.',exES:'Él pensó en eso.'},
+  {inf:'take',past:'took',pp:'taken',es:'tomar/llevar',emoji:'🤲',ex:'She took the bus.',exES:'Ella tomó el autobús.'},
+  {inf:'see',past:'saw',pp:'seen',es:'ver',emoji:'👀',ex:'We saw a rainbow.',exES:'Vimos un arcoíris.'},
+  {inf:'come',past:'came',pp:'come',es:'venir',emoji:'🚀',ex:'They came to visit.',exES:'Vinieron a visitar.'},
+  {inf:'want',past:'wanted',pp:'wanted',es:'querer',emoji:'❤️',ex:'She wanted ice cream.',exES:'Ella quería helado.'},
+  {inf:'look',past:'looked',pp:'looked',es:'mirar',emoji:'🔍',ex:'He looked at the sky.',exES:'Él miró el cielo.'},
+  {inf:'use',past:'used',pp:'used',es:'usar',emoji:'🛠️',ex:'I used a pen.',exES:'Usé un bolígrafo.'},
+  {inf:'find',past:'found',pp:'found',es:'encontrar',emoji:'🔎',ex:'She found her keys.',exES:'Ella encontró sus llaves.'},
+  {inf:'give',past:'gave',pp:'given',es:'dar',emoji:'🎀',ex:'He gave me a gift.',exES:'Él me dio un regalo.'},
+  {inf:'tell',past:'told',pp:'told',es:'decir/contar',emoji:'📢',ex:'She told a story.',exES:'Ella contó una historia.'},
+  {inf:'work',past:'worked',pp:'worked',es:'trabajar',emoji:'💼',ex:'We worked all day.',exES:'Trabajamos todo el día.'},
+  {inf:'call',past:'called',pp:'called',es:'llamar',emoji:'📞',ex:'He called his mom.',exES:'Él llamó a su mamá.'},
+  {inf:'keep',past:'kept',pp:'kept',es:'guardar/mantener',emoji:'🔐',ex:'She kept the secret.',exES:'Ella guardó el secreto.'},
+  {inf:'let',past:'let',pp:'let',es:'dejar/permitir',emoji:'🚪',ex:'They let us in.',exES:'Nos dejaron entrar.'},
+  {inf:'begin',past:'began',pp:'begun',es:'comenzar',emoji:'🌱',ex:'The show began.',exES:'El espectáculo comenzó.'},
+  {inf:'show',past:'showed',pp:'shown',es:'mostrar',emoji:'🎭',ex:'She showed us the way.',exES:'Ella nos mostró el camino.'},
+  {inf:'hear',past:'heard',pp:'heard',es:'escuchar/oír',emoji:'👂',ex:'I heard a noise.',exES:'Escuché un ruido.'},
+  {inf:'play',past:'played',pp:'played',es:'jugar/tocar',emoji:'🎮',ex:'He played football.',exES:'Él jugó fútbol.'},
+  {inf:'run',past:'ran',pp:'run',es:'correr',emoji:'🏃',ex:'She ran to school.',exES:'Ella corrió a la escuela.'},
+  {inf:'move',past:'moved',pp:'moved',es:'mover/mudarse',emoji:'📦',ex:'We moved to a new house.',exES:'Nos mudamos a una casa nueva.'},
+  {inf:'live',past:'lived',pp:'lived',es:'vivir',emoji:'🏡',ex:'They lived in Spain.',exES:'Vivieron en España.'},
+  {inf:'believe',past:'believed',pp:'believed',es:'creer',emoji:'🙏',ex:'I believed in magic.',exES:'Creí en la magia.'},
+  {inf:'hold',past:'held',pp:'held',es:'sostener',emoji:'🤝',ex:'She held the baby.',exES:'Ella sostuvo al bebé.'},
+  {inf:'bring',past:'brought',pp:'brought',es:'traer',emoji:'🎒',ex:'He brought snacks.',exES:'Él trajo bocadillos.'},
+  {inf:'happen',past:'happened',pp:'happened',es:'ocurrir/pasar',emoji:'⚡',ex:'What happened here?',exES:'¿Qué pasó aquí?'},
+  {inf:'write',past:'wrote',pp:'written',es:'escribir',emoji:'✍️',ex:'She wrote a letter.',exES:'Ella escribió una carta.'},
+  {inf:'sit',past:'sat',pp:'sat',es:'sentarse',emoji:'🪑',ex:'He sat on the bench.',exES:'Él se sentó en el banco.'},
+  {inf:'stand',past:'stood',pp:'stood',es:'estar de pie',emoji:'🧍',ex:'We stood in line.',exES:'Estuvimos en fila.'},
+  {inf:'lose',past:'lost',pp:'lost',es:'perder',emoji:'😢',ex:'She lost her phone.',exES:'Ella perdió su teléfono.'},
+  {inf:'pay',past:'paid',pp:'paid',es:'pagar',emoji:'💰',ex:'He paid the bill.',exES:'Él pagó la cuenta.'},
+  {inf:'meet',past:'met',pp:'met',es:'conocer/reunirse',emoji:'👋',ex:'We met at the cafe.',exES:'Nos conocimos en el café.'},
+  {inf:'set',past:'set',pp:'set',es:'establecer/poner',emoji:'⚙️',ex:'She set the table.',exES:'Ella puso la mesa.'},
+  {inf:'learn',past:'learned/learnt',pp:'learned/learnt',es:'aprender',emoji:'📖',ex:'I learned Spanish.',exES:'Aprendí español.'},
+  {inf:'change',past:'changed',pp:'changed',es:'cambiar',emoji:'🔄',ex:'He changed his mind.',exES:'Él cambió de opinión.'},
+  {inf:'lead',past:'led',pp:'led',es:'liderar/llevar',emoji:'🏆',ex:'She led the team.',exES:'Ella lideró el equipo.'},
+  {inf:'understand',past:'understood',pp:'understood',es:'entender',emoji:'💡',ex:'I understood the lesson.',exES:'Entendí la lección.'},
+  {inf:'watch',past:'watched',pp:'watched',es:'mirar/ver',emoji:'📺',ex:'We watched a film.',exES:'Vimos una película.'},
+  {inf:'follow',past:'followed',pp:'followed',es:'seguir',emoji:'➡️',ex:'She followed the map.',exES:'Ella siguió el mapa.'},
+  {inf:'stop',past:'stopped',pp:'stopped',es:'parar/detener',emoji:'🛑',ex:'He stopped the car.',exES:'Él paró el coche.'},
+  {inf:'create',past:'created',pp:'created',es:'crear',emoji:'🎨',ex:'She created a painting.',exES:'Ella creó una pintura.'},
+  {inf:'speak',past:'spoke',pp:'spoken',es:'hablar',emoji:'🗣️',ex:'He spoke clearly.',exES:'Él habló claramente.'},
+  {inf:'read',past:'read',pp:'read',es:'leer',emoji:'📚',ex:'I read that book.',exES:'Leí ese libro.'}
+];
+
+const REGULAR_VERBS = [
+  {inf:'walk',past:'walked',es:'caminar',rule:'add',ex:'She walked to school.',exES:'Ella caminó a la escuela.'},
+  {inf:'talk',past:'talked',es:'hablar/platicar',rule:'add',ex:'We talked for hours.',exES:'Hablamos por horas.'},
+  {inf:'ask',past:'asked',es:'preguntar',rule:'add',ex:'He asked a question.',exES:'Él hizo una pregunta.'},
+  {inf:'answer',past:'answered',es:'responder',rule:'add',ex:'She answered quickly.',exES:'Ella respondió rápido.'},
+  {inf:'help',past:'helped',es:'ayudar',rule:'add',ex:'They helped their friend.',exES:'Ayudaron a su amigo.'},
+  {inf:'want',past:'wanted',es:'querer',rule:'add',ex:'I wanted some water.',exES:'Quería agua.'},
+  {inf:'need',past:'needed',es:'necesitar',rule:'add',ex:'We needed more time.',exES:'Necesitábamos más tiempo.'},
+  {inf:'use',past:'used',es:'usar',rule:'drope',ex:'She used a ruler.',exES:'Ella usó una regla.'},
+  {inf:'like',past:'liked',es:'gustar',rule:'drope',ex:'He liked the movie.',exES:'Le gustó la película.'},
+  {inf:'love',past:'loved',es:'amar',rule:'drope',ex:'They loved the song.',exES:'Les encantó la canción.'},
+  {inf:'open',past:'opened',es:'abrir',rule:'add',ex:'She opened the window.',exES:'Ella abrió la ventana.'},
+  {inf:'close',past:'closed',es:'cerrar',rule:'drope',ex:'He closed the door.',exES:'Él cerró la puerta.'},
+  {inf:'start',past:'started',es:'empezar/comenzar',rule:'add',ex:'The game started.',exES:'El juego comenzó.'},
+  {inf:'finish',past:'finished',es:'terminar',rule:'add',ex:'I finished my homework.',exES:'Terminé mi tarea.'},
+  {inf:'stop',past:'stopped',es:'parar',rule:'double',ex:'She stopped walking.',exES:'Ella paró de caminar.'},
+  {inf:'play',past:'played',es:'jugar',rule:'add',ex:'We played in the park.',exES:'Jugamos en el parque.'},
+  {inf:'watch',past:'watched',es:'ver/mirar',rule:'add',ex:'They watched TV.',exES:'Ellos miraron la TV.'},
+  {inf:'listen',past:'listened',es:'escuchar',rule:'add',ex:'He listened to music.',exES:'Él escuchó música.'},
+  {inf:'learn',past:'learned',es:'aprender',rule:'add',ex:'We learned new words.',exES:'Aprendimos nuevas palabras.'},
+  {inf:'practice',past:'practiced',es:'practicar',rule:'drope',ex:'She practiced every day.',exES:'Ella practicó todos los días.'},
+  {inf:'study',past:'studied',es:'estudiar',rule:'ied',ex:'He studied for the test.',exES:'Él estudió para el examen.'},
+  {inf:'work',past:'worked',es:'trabajar',rule:'add',ex:'She worked hard.',exES:'Ella trabajó duro.'},
+  {inf:'clean',past:'cleaned',es:'limpiar',rule:'add',ex:'We cleaned the house.',exES:'Limpiamos la casa.'},
+  {inf:'cook',past:'cooked',es:'cocinar',rule:'add',ex:'Mom cooked dinner.',exES:'Mamá cocinó la cena.'},
+  {inf:'wash',past:'washed',es:'lavar',rule:'add',ex:'I washed my hands.',exES:'Me lavé las manos.'},
+  {inf:'jump',past:'jumped',es:'saltar',rule:'add',ex:'The dog jumped up.',exES:'El perro saltó.'},
+  {inf:'kick',past:'kicked',es:'patear',rule:'add',ex:'He kicked the ball.',exES:'Él pateó la pelota.'},
+  {inf:'push',past:'pushed',es:'empujar',rule:'add',ex:'She pushed the door.',exES:'Ella empujó la puerta.'},
+  {inf:'pull',past:'pulled',es:'jalar/tirar',rule:'add',ex:'They pulled the rope.',exES:'Ellos jalaron la cuerda.'},
+  {inf:'turn',past:'turned',es:'girar/voltear',rule:'add',ex:'He turned the page.',exES:'Él pasó la página.'},
+  {inf:'move',past:'moved',es:'mover',rule:'drope',ex:'She moved the chair.',exES:'Ella movió la silla.'},
+  {inf:'visit',past:'visited',es:'visitar',rule:'add',ex:'We visited grandma.',exES:'Visitamos a la abuela.'},
+  {inf:'call',past:'called',es:'llamar',rule:'add',ex:'He called his friend.',exES:'Él llamó a su amigo.'},
+  {inf:'miss',past:'missed',es:'extrañar/fallar',rule:'add',ex:'She missed the bus.',exES:'Ella perdió el autobús.'},
+  {inf:'wait',past:'waited',es:'esperar',rule:'add',ex:'I waited for an hour.',exES:'Esperé una hora.'},
+  {inf:'try',past:'tried',es:'intentar',rule:'ied',ex:'He tried his best.',exES:'Él lo intentó con todo.'},
+  {inf:'carry',past:'carried',es:'cargar/llevar',rule:'ied',ex:'She carried the bag.',exES:'Ella cargó la bolsa.'},
+  {inf:'enjoy',past:'enjoyed',es:'disfrutar',rule:'add',ex:'We enjoyed the party.',exES:'Disfrutamos la fiesta.'},
+  {inf:'smile',past:'smiled',es:'sonreír',rule:'drope',ex:'She smiled at me.',exES:'Ella me sonrió.'},
+  {inf:'laugh',past:'laughed',es:'reír',rule:'add',ex:'They laughed a lot.',exES:'Ellos se rieron mucho.'},
+  {inf:'cry',past:'cried',es:'llorar',rule:'ied',ex:'The baby cried.',exES:'El bebé lloró.'},
+  {inf:'paint',past:'painted',es:'pintar',rule:'add',ex:'He painted a picture.',exES:'Él pintó un cuadro.'},
+  {inf:'dance',past:'danced',es:'bailar',rule:'drope',ex:'She danced at the party.',exES:'Ella bailó en la fiesta.'},
+  {inf:'sing',past:'sang',es:'cantar',rule:'add',ex:'We sang together.',exES:'Cantamos juntos.'},
+  {inf:'type',past:'typed',es:'escribir (teclado)',rule:'drope',ex:'He typed an email.',exES:'Él escribió un email.'},
+  {inf:'save',past:'saved',es:'guardar/salvar',rule:'drope',ex:'She saved the file.',exES:'Ella guardó el archivo.'},
+  {inf:'check',past:'checked',es:'revisar/verificar',rule:'add',ex:'I checked my answers.',exES:'Revisé mis respuestas.'},
+  {inf:'pick',past:'picked',es:'recoger/escoger',rule:'add',ex:'He picked some flowers.',exES:'Él recogió flores.'},
+  {inf:'look',past:'looked',es:'mirar/buscar',rule:'add',ex:'She looked for her book.',exES:'Ella buscó su libro.'},
+  {inf:'drop',past:'dropped',es:'dejar caer',rule:'double',ex:'I dropped my pencil.',exES:'Dejé caer mi lápiz.'},
+  {inf:'chat',past:'chatted',es:'charlar',rule:'double',ex:'We chatted online.',exES:'Charlamos en línea.'}
+];
+
+/* ================================================
+   PROGRESS TRACKING
+   ================================================ */
+let studentName = '';
+let progressKey = '';
+let progress = {};
+
+const topicKeys = ['sequencing','connectives','present_perfect','since_for','irregular','regular'];
+const topicNames = {
+  sequencing: '🔢 Sequencing Words',
+  connectives: '🔗 Connectives',
+  present_perfect: '✅ Present Perfect',
+  since_for: '⏳ Since & For',
+  irregular: '📚 Irregular Verbs',
+  regular: '📝 Regular Verbs'
+};
+
+function loadProgress() {
+  const raw = localStorage.getItem(progressKey);
+  if (raw) {
+    progress = JSON.parse(raw);
+  } else {
+    progress = {};
+    topicKeys.forEach(k => {
+      progress[k] = { attempted: 0, correct: 0 };
+    });
+  }
+}
+
+function saveProgress() {
+  localStorage.setItem(progressKey, JSON.stringify(progress));
+  updateProgressDashboard();
+}
+
+function addScore(topic, correct, total) {
+  if (!progress[topic]) progress[topic] = { attempted: 0, correct: 0 };
+  progress[topic].attempted += total;
+  progress[topic].correct += correct;
+  saveProgress();
+  if (correct > 0) launchConfetti();
+}
+
+function getBadge(pct) {
+  if (pct >= 80) return '🥇 Gold';
+  if (pct >= 50) return '🥈 Silver';
+  if (pct > 0) return '🥉 Bronze';
+  return '—';
+}
+
+function updateProgressDashboard() {
+  const dash = document.getElementById('progress-dashboard');
+  if (!dash) return;
+  let totalAtt = 0, totalCorr = 0;
+  dash.innerHTML = '';
+
+  topicKeys.forEach(k => {
+    const d = progress[k] || { attempted: 0, correct: 0 };
+    const pct = d.attempted > 0 ? Math.round((d.correct / d.attempted) * 100) : 0;
+    totalAtt += d.attempted;
+    totalCorr += d.correct;
+    const badge = getBadge(pct);
+    const card = document.createElement('div');
+    card.className = 'progress-topic-card';
+    card.innerHTML = `
+      <h4>${topicNames[k]}</h4>
+      <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:${pct}%"></div></div>
+      <small>${d.correct} / ${d.attempted} correct — ${pct}%</small>
+      <div class="badge-display">${badge}</div>
+    `;
+    dash.appendChild(card);
+  });
+
+  const totalPct = totalAtt > 0 ? Math.round((totalCorr / totalAtt) * 100) : 0;
+  document.getElementById('total-score-display').textContent = totalPct + '%';
+  const badge = getBadge(totalPct);
+  document.getElementById('total-badge-display').textContent =
+    totalPct === 0 ? "Keep going! You're doing great! 💪" :
+    totalPct < 50 ? "Good start, keep practicing! 💪" :
+    totalPct < 80 ? "You're doing well! Keep it up! 🌟" :
+    "Amazing work! You're a star! 🏆";
+}
+
+function resetProgress() {
+  if (confirm('Reset all your progress? / ¿Borrar todo tu progreso?')) {
+    topicKeys.forEach(k => { progress[k] = { attempted: 0, correct: 0 }; });
+    saveProgress();
+  }
+}
+
+/* ================================================
+   WELCOME / NAME HANDLING
+   ================================================ */
+function startLearning() {
+  const input = document.getElementById('student-name-input');
+  const name = input.value.trim();
+  if (!name) { input.placeholder = 'Please enter your name! / ¡Escribe tu nombre!'; input.style.borderColor='#FF6B6B'; return; }
+  studentName = name;
+  const prefix = location.pathname.replace(/\//g,'_') || '_';
+  progressKey = 'EnglishFunZone_' + prefix + '_' + name + '_progress';
+  loadProgress();
+  document.getElementById('nav-student-name').textContent = '👤 ' + name;
+  document.getElementById('welcome-overlay').style.display = 'none';
+  updateProgressDashboard();
+  initAllExercises();
+}
+
+/* ================================================
+   SOUND (Web Audio API)
+   ================================================ */
+let audioCtx = null;
+function getAudioCtx() {
+  if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  return audioCtx;
+}
+function playCorrect() {
+  try {
+    const ctx = getAudioCtx();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.connect(gain); gain.connect(ctx.destination);
+    osc.frequency.setValueAtTime(523.25, ctx.currentTime);
+    osc.frequency.setValueAtTime(659.25, ctx.currentTime + 0.1);
+    osc.frequency.setValueAtTime(783.99, ctx.currentTime + 0.2);
+    gain.gain.setValueAtTime(0.3, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.5);
+    osc.start(ctx.currentTime); osc.stop(ctx.currentTime + 0.5);
+  } catch(e){}
+}
+function playWrong() {
+  try {
+    const ctx = getAudioCtx();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'square';
+    osc.connect(gain); gain.connect(ctx.destination);
+    osc.frequency.setValueAtTime(200, ctx.currentTime);
+    osc.frequency.setValueAtTime(150, ctx.currentTime + 0.15);
+    gain.gain.setValueAtTime(0.2, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.4);
+    osc.start(ctx.currentTime); osc.stop(ctx.currentTime + 0.4);
+  } catch(e){}
+}
+
+/* ================================================
+   CONFETTI
+   ================================================ */
+function launchConfetti() {
+  const canvas = document.getElementById('confetti-canvas');
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  const particles = [];
+  const colors = ['#FF6B6B','#4ECDC4','#FFE66D','#A78BFA','#6BCB77','#FF8FAB','#74B9FF','#FFA07A'];
+  for (let i = 0; i < 120; i++) {
+    particles.push({
+      x: Math.random() * canvas.width,
+      y: -20,
+      r: Math.random() * 8 + 4,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      speed: Math.random() * 4 + 2,
+      angle: Math.random() * Math.PI * 2,
+      spin: (Math.random() - 0.5) * 0.2,
+      tilt: Math.random() * 10 - 5
+    });
+  }
+  let frame = 0;
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => {
+      ctx.save();
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.angle);
+      ctx.fillStyle = p.color;
+      ctx.fillRect(-p.r/2, -p.r/2, p.r, p.r * 2);
+      ctx.restore();
+      p.y += p.speed;
+      p.x += Math.sin(p.angle) * 2;
+      p.angle += p.spin;
+    });
+    frame++;
+    if (frame < 100) requestAnimationFrame(draw);
+    else ctx.clearRect(0, 0, canvas.width, canvas.height);
+  }
+  draw();
+}
+
+/* ================================================
+   FEEDBACK HELPER
+   ================================================ */
+function showFeedback(id, correct, msg) {
+  const el = document.getElementById(id);
+  el.className = 'feedback ' + (correct ? 'correct' : 'wrong');
+  el.textContent = msg;
+  if (correct) playCorrect(); else playWrong();
+}
+
+function showScore(id, correct, total) {
+  const el = document.getElementById(id);
+  el.style.display = 'flex';
+  const pct = Math.round(correct/total*100);
+  el.innerHTML = `<span class="score-text">Score: ${correct}/${total} (${pct}%) ${pct>=80?'🏆':pct>=50?'⭐':'💪'}</span>`;
+}
+
+/* ================================================
+   INIT ALL EXERCISES
+   ================================================ */
+function initAllExercises() {
+  buildSeqFill();
+  buildSeqMC();
+  buildSeqOrder();
+  buildSeqWritingTags();
+  buildConnFill();
+  buildConnMC();
+  buildConnMatch();
+  buildConnWritingTags();
+  buildPPFill();
+  buildPPMC();
+  buildPPMatch();
+  buildSFFill();
+  buildSFMC();
+  buildSFMatchCont();
+  buildSFWritingTags();
+  buildIrregVerbGrid();
+  buildIrregFill();
+  buildIrregMC();
+  buildIrregMatch();
+  initIrregFlashcard();
+  buildRegVerbGrid();
+  buildRegFill();
+  buildRegMC();
+  buildRegMatch();
+  initRegFlashcard();
+  buildRegSpell();
+  addWritingListeners();
+}
+
+/* ================================================
+   TOPIC 1: SEQUENCING
+   ================================================ */
+const seqWords = ['First','Next','Then','After that','Finally'];
+
+const seqFillData = [
+  { sentence: '___ , I wake up at 7 o\'clock.', answer: 'First', note: 'Beginning / Principio' },
+  { sentence: '___ , I brush my teeth.', answer: 'Next', note: 'Second step' },
+  { sentence: '___ , I eat breakfast.', answer: 'Then', note: 'Following action' },
+  { sentence: '___ , I get dressed.', answer: 'After that', note: 'After another action' },
+  { sentence: '___ , I go to school.', answer: 'Finally', note: 'Last step / Último paso' },
+  { sentence: '___ , add the ingredients to the bowl.', answer: 'First', note: '' },
+  { sentence: '___ , mix everything together.', answer: 'Next', note: '' },
+  { sentence: '___ , bake in the oven.', answer: 'Then', note: '' },
+];
+
+function buildSeqFill() {
+  const cont = document.getElementById('seq-fill-questions');
+  cont.innerHTML = '';
+  seqFillData.forEach((q, i) => {
+    const div = document.createElement('div');
+    div.className = 'exercise-question';
+    div.innerHTML = `<strong>Q${i+1}.</strong> ${q.sentence.replace('___', `<input type="text" id="seq-fill-${i}" placeholder="..." autocomplete="off">`)} <em style="color:#888;font-size:0.82rem">${q.note}</em>`;
+    cont.appendChild(div);
+  });
+}
+
+function checkSeqFill() {
+  let correct = 0;
+  seqFillData.forEach((q, i) => {
+    const input = document.getElementById(`seq-fill-${i}`);
+    const val = input.value.trim().toLowerCase();
+    const ans = q.answer.toLowerCase();
+    if (val === ans) {
+      correct++;
+      input.style.borderColor = 'var(--green)';
+      input.style.background = '#D4EDDA';
+    } else {
+      input.style.borderColor = 'var(--primary)';
+      input.style.background = '#F8D7DA';
+    }
+  });
+  const total = seqFillData.length;
+  showFeedback('seq-fill-feedback', correct === total,
+    correct === total ? `🎉 Perfect, ${studentName}! All correct!` : `${correct}/${total} correct. Answers: ${seqFillData.map(q=>q.answer).join(', ')}`);
+  showScore('seq-fill-score', correct, total);
+  addScore('sequencing', correct, total);
+}
+
+const seqMCData = [
+  { q: 'I put on my shoes. ___ , I tied the laces.', opts: ['First','After that','Finally','Because'], ans: 1 },
+  { q: '___ , I was nervous. ___ , I felt much better.', opts: ['First / Finally','Next / Then','Because / And','After that / But'], ans: 0 },
+  { q: 'I cooked the pasta. ___ , I added the sauce.', opts: ['First','Finally','Then','Also'], ans: 2 },
+  { q: '___ , we arrived at the beach.', opts: ['Next','Then','After that','Finally'], ans: 3 },
+  { q: '___ , I read the instructions carefully.', opts: ['Finally','First','After that','Next'], ans: 1 },
+  { q: 'I washed the vegetables. ___ , I cut them.', opts: ['Finally','Next','First','After'], ans: 1 },
+];
+
+function buildSeqMC() {
+  const cont = document.getElementById('seq-mc-questions');
+  cont.innerHTML = '';
+  let scores = { correct: 0, total: 0 };
+  seqMCData.forEach((q, i) => {
+    const div = document.createElement('div');
+    div.className = 'exercise-question';
+    const optsHTML = q.opts.map((o, j) => `<button class="mc-btn" onclick="checkSeqMCItem(this,${i},${j},'seq-mc-score')">${o}</button>`).join('');
+    div.innerHTML = `<strong>Q${i+1}.</strong> ${q.q}<div class="mc-options">${optsHTML}</div>`;
+    cont.appendChild(div);
+  });
+}
+
+let seqMCScore = {c:0, t:0};
+function checkSeqMCItem(btn, qi, oi, scoreId) {
+  const q = seqMCData[qi];
+  const btns = btn.parentElement.querySelectorAll('.mc-btn');
+  btns.forEach(b => b.disabled = true);
+  if (oi === q.ans) {
+    btn.classList.add('correct');
+    playCorrect();
+    seqMCScore.c++;
+    addScore('sequencing', 1, 1);
+  } else {
+    btn.classList.add('wrong');
+    btns[q.ans].classList.add('correct');
+    playWrong();
+    addScore('sequencing', 0, 1);
+  }
+  seqMCScore.t++;
+  showScore(scoreId, seqMCScore.c, seqMCScore.t);
+}
+
+const seqOrderData = [
+  { text: 'First, I wake up and turn off my alarm.', order: 0 },
+  { text: 'Next, I take a shower and get clean.', order: 1 },
+  { text: 'Then, I have breakfast with my family.', order: 2 },
+  { text: 'After that, I pack my school bag.', order: 3 },
+  { text: 'Finally, I walk to the school bus.', order: 4 },
+];
+
+function buildSeqOrder() {
+  const list = document.getElementById('seq-order-list');
+  const shuffled = [...seqOrderData].sort(() => Math.random() - 0.5);
+  list.innerHTML = '';
+  shuffled.forEach((item, i) => {
+    const li = document.createElement('li');
+    li.className = 'order-item';
+    li.draggable = true;
+    li.dataset.order = item.order;
+    li.innerHTML = `<span class="order-num">${i+1}</span><span>${item.text}</span>`;
+    addDragEvents(li, list);
+    list.appendChild(li);
+  });
+}
+
+let dragSrc = null;
+function addDragEvents(el, list) {
+  el.addEventListener('dragstart', () => { dragSrc = el; el.classList.add('dragging'); });
+  el.addEventListener('dragend', () => { el.classList.remove('dragging'); dragSrc = null; updateOrderNumbers(list); });
+  el.addEventListener('dragover', e => { e.preventDefault(); el.classList.add('drag-over'); });
+  el.addEventListener('dragleave', () => el.classList.remove('drag-over'));
+  el.addEventListener('drop', e => {
+    e.preventDefault();
+    el.classList.remove('drag-over');
+    if (dragSrc && dragSrc !== el) {
+      const items = [...list.querySelectorAll('li')];
+      const srcI = items.indexOf(dragSrc);
+      const tgtI = items.indexOf(el);
+      if (srcI < tgtI) list.insertBefore(dragSrc, el.nextSibling);
+      else list.insertBefore(dragSrc, el);
+    }
+  });
+}
+function updateOrderNumbers(list) {
+  list.querySelectorAll('li').forEach((li, i) => {
+    li.querySelector('.order-num').textContent = i+1;
+  });
+}
+
+function checkSeqOrder() {
+  const list = document.getElementById('seq-order-list');
+  const items = list.querySelectorAll('li');
+  let correct = 0;
+  items.forEach((li, i) => {
+    if (parseInt(li.dataset.order) === i) correct++;
+  });
+  const total = items.length;
+  showFeedback('seq-order-feedback', correct === total,
+    correct === total ? `🎉 Perfect order, ${studentName}!` : `${correct}/${total} in the right place. Try again!`);
+  addScore('sequencing', correct, total);
+}
+
+function buildSeqWritingTags() {
+  const tags = document.getElementById('seq-word-tags');
+  tags.innerHTML = seqWords.map(w => `<span class="word-tag" id="seq-tag-${w.replace(/\s/g,'_')}">${w}</span>`).join('');
+}
+
+document.addEventListener('input', function(e) {
+  if (e.target.id === 'seq-writing') {
+    const val = e.target.value.toLowerCase();
+    seqWords.forEach(w => {
+      const tag = document.getElementById('seq-tag-' + w.replace(/\s/g,'_'));
+      if (tag) tag.className = 'word-tag' + (val.includes(w.toLowerCase()) ? ' found' : '');
+    });
+    document.getElementById('seq-char-count').textContent = e.target.value.length + ' characters';
+  }
+});
+
+function checkSeqWriting() {
+  const val = document.getElementById('seq-writing').value.toLowerCase();
+  const found = seqWords.filter(w => val.includes(w.toLowerCase()));
+  const correct = found.length;
+  showFeedback('seq-writing-feedback', correct === seqWords.length,
+    correct === seqWords.length
+      ? `🎉 Amazing, ${studentName}! You used all 5 sequencing words!`
+      : `You used ${correct}/5 words. Missing: ${seqWords.filter(w=>!val.includes(w.toLowerCase())).join(', ')}`);
+  addScore('sequencing', correct, seqWords.length);
+}
+
+/* ================================================
+   TOPIC 2: CONNECTIVES
+   ================================================ */
+const connFillData = [
+  { sentence: 'I like dogs ___ I have one at home.', answer: 'because', opts: ['and','but','because'] },
+  { sentence: 'She is smart ___ funny.', answer: 'and', opts: ['and','but','because'] },
+  { sentence: 'I wanted to go ___ it was raining.', answer: 'but', opts: ['and','but','because'] },
+  { sentence: 'He is tired ___ he worked all day.', answer: 'because', opts: ['and','but','because'] },
+  { sentence: 'We have cats ___ dogs at home.', answer: 'and', opts: ['and','but','because'] },
+  { sentence: 'I like pizza ___ I don\'t like mushrooms.', answer: 'but', opts: ['and','but','because'] },
+  { sentence: 'She can swim ___ she can dance too.', answer: 'and', opts: ['and','but','because'] },
+  { sentence: 'He didn\'t eat ___ he wasn\'t hungry.', answer: 'because', opts: ['and','but','because'] },
+];
+
+function buildConnFill() {
+  const cont = document.getElementById('conn-fill-questions');
+  cont.innerHTML = '';
+  connFillData.forEach((q, i) => {
+    const div = document.createElement('div');
+    div.className = 'exercise-question';
+    const sel = `<select id="conn-fill-${i}" style="padding:6px 12px;border:2px solid #ddd;border-radius:8px;font-family:Nunito,sans-serif;font-size:1rem;outline:none;cursor:pointer">
+      <option value="">--</option>
+      ${q.opts.map(o=>`<option value="${o}">${o}</option>`).join('')}
+    </select>`;
+    div.innerHTML = `<strong>Q${i+1}.</strong> ${q.sentence.replace('___', sel)}`;
+    cont.appendChild(div);
+  });
+}
+
+function checkConnFill() {
+  let correct = 0;
+  connFillData.forEach((q, i) => {
+    const sel = document.getElementById(`conn-fill-${i}`);
+    if (sel.value === q.answer) { correct++; sel.style.borderColor='var(--green)'; }
+    else { sel.style.borderColor='var(--primary)'; }
+  });
+  showFeedback('conn-fill-feedback', correct===connFillData.length,
+    correct===connFillData.length ? `🎉 All correct, ${studentName}!` : `${correct}/${connFillData.length} correct!`);
+  showScore('conn-fill-score', correct, connFillData.length);
+  addScore('connectives', correct, connFillData.length);
+}
+
+const connMCData = [
+  { q: 'She is happy ___ excited.', opts: ['because','but','and'], ans: 2 },
+  { q: 'I am cold ___ I forgot my jacket.', opts: ['and','because','but'], ans: 1 },
+  { q: 'He likes football ___ not tennis.', opts: ['and','because','but'], ans: 2 },
+  { q: 'She studied hard ___ she passed the test.', opts: ['and','but','and so'], ans: 0 },
+  { q: 'I want to help ___ I don\'t know how.', opts: ['and','because','but'], ans: 2 },
+  { q: 'The cat is fluffy ___ white.', opts: ['but','because','and'], ans: 2 },
+];
+
+let connMCScore = {c:0, t:0};
+function buildConnMC() {
+  const cont = document.getElementById('conn-mc-questions');
+  cont.innerHTML = '';
+  connMCData.forEach((q, i) => {
+    const div = document.createElement('div');
+    div.className = 'exercise-question';
+    const optsHTML = q.opts.map((o, j) => `<button class="mc-btn" onclick="checkConnMCItem(this,${i},${j})">${o}</button>`).join('');
+    div.innerHTML = `<strong>Q${i+1}.</strong> ${q.q}<div class="mc-options">${optsHTML}</div>`;
+    cont.appendChild(div);
+  });
+}
+function checkConnMCItem(btn, qi, oi) {
+  const q = connMCData[qi];
+  const btns = btn.parentElement.querySelectorAll('.mc-btn');
+  btns.forEach(b=>b.disabled=true);
+  if (oi===q.ans) { btn.classList.add('correct'); playCorrect(); connMCScore.c++; addScore('connectives',1,1); }
+  else { btn.classList.add('wrong'); btns[q.ans].classList.add('correct'); playWrong(); addScore('connectives',0,1); }
+  connMCScore.t++;
+  showScore('conn-mc-score', connMCScore.c, connMCScore.t);
+}
+
+const connMatchData = [
+  { left: 'I love music', right: 'and I play the guitar.', conn: 'and' },
+  { left: 'She studies a lot', right: 'but she finds it difficult.', conn: 'but' },
+  { left: 'He was late', right: 'because the bus broke down.', conn: 'because' },
+  { left: 'We played outside', right: 'and it was really fun.', conn: 'and' },
+  { left: 'I want cake', right: 'but I am on a diet.', conn: 'but' },
+  { left: 'She cried', right: 'because the film was sad.', conn: 'because' },
+];
+
+let connMatchSelected = null;
+let connMatchPairs = {};
+
+function buildConnMatch() {
+  const left = document.getElementById('conn-match-left');
+  const right = document.getElementById('conn-match-right');
+  left.innerHTML = ''; right.innerHTML = '';
+  const rightShuffled = [...connMatchData].sort(() => Math.random()-0.5);
+  connMatchData.forEach((item, i) => {
+    const lDiv = document.createElement('div');
+    lDiv.className = 'match-item';
+    lDiv.textContent = item.left;
+    lDiv.dataset.id = 'l' + i;
+    lDiv.dataset.type = 'left';
+    lDiv.onclick = () => handleConnMatch(lDiv);
+    left.appendChild(lDiv);
+  });
+  rightShuffled.forEach((item, i) => {
+    const rDiv = document.createElement('div');
+    rDiv.className = 'match-item';
+    const origIdx = connMatchData.indexOf(item);
+    rDiv.textContent = item.conn + ' ' + item.right;
+    rDiv.dataset.id = 'r' + origIdx;
+    rDiv.dataset.type = 'right';
+    rDiv.onclick = () => handleConnMatch(rDiv);
+    right.appendChild(rDiv);
+  });
+}
+
+function handleConnMatch(el) {
+  if (el.classList.contains('matched')) return;
+  if (!connMatchSelected) {
+    connMatchSelected = el;
+    el.classList.add('selected');
+  } else if (connMatchSelected === el) {
+    el.classList.remove('selected');
+    connMatchSelected = null;
+  } else if (connMatchSelected.dataset.type !== el.dataset.type) {
+    const lEl = connMatchSelected.dataset.type === 'left' ? connMatchSelected : el;
+    const rEl = connMatchSelected.dataset.type === 'right' ? connMatchSelected : el;
+    const lIdx = parseInt(lEl.dataset.id.slice(1));
+    const rIdx = parseInt(rEl.dataset.id.slice(1));
+    if (lIdx === rIdx) {
+      lEl.classList.add('matched'); rEl.classList.add('matched');
+      lEl.classList.remove('selected'); rEl.classList.remove('selected');
+      connMatchPairs[lIdx] = true;
+      playCorrect();
+    } else {
+      lEl.classList.add('wrong-match'); rEl.classList.add('wrong-match');
+      setTimeout(() => { lEl.classList.remove('wrong-match','selected'); rEl.classList.remove('wrong-match'); }, 700);
+      playWrong();
+    }
+    connMatchSelected = null;
+  } else {
+    connMatchSelected.classList.remove('selected');
+    connMatchSelected = el;
+    el.classList.add('selected');
+  }
+}
+
+function checkConnMatch() {
+  const matched = Object.keys(connMatchPairs).length;
+  const total = connMatchData.length;
+  showFeedback('conn-match-feedback', matched===total,
+    matched===total ? `🎉 All matched, ${studentName}!` : `${matched}/${total} matched so far!`);
+  showScore('conn-match-score', matched, total);
+  addScore('connectives', matched, total);
+}
+
+function buildConnWritingTags() {
+  const tags = document.getElementById('conn-word-tags');
+  tags.innerHTML = ['and','but','because'].map(w =>
+    `<span class="word-tag" id="conn-tag-${w}">${w}</span>`).join('');
+}
+
+function checkConnWriting() {
+  const val = document.getElementById('conn-writing').value.toLowerCase();
+  const words = ['and','but','because'];
+  const found = words.filter(w => val.includes(w));
+  showFeedback('conn-writing-feedback', found.length===3,
+    found.length===3 ? `🎉 Excellent, ${studentName}! You used all 3 connectives!` :
+    `You used ${found.length}/3. Missing: ${words.filter(w=>!found.includes(w)).join(', ')}`);
+  addScore('connectives', found.length, 3);
+}
+
+/* ================================================
+   TOPIC 3: PRESENT PERFECT
+   ================================================ */
+const ppFillData = [
+  { sentence: 'I ___ (eat) sushi three times.', answer: 'have eaten', blank: 'have eaten' },
+  { sentence: 'She ___ (finish) her homework.', answer: "has finished", blank: 'has finished' },
+  { sentence: 'We ___ (visit) London before.', answer: 'have visited', blank: 'have visited' },
+  { sentence: 'He ___ (not see) that film yet.', answer: "hasn't seen", blank: "hasn't seen" },
+  { sentence: '___ you ever (try) paella?', answer: 'Have... tried', blank: 'Have... tried' },
+  { sentence: 'They ___ (live) here for ten years.', answer: 'have lived', blank: 'have lived' },
+];
+
+function buildPPFill() {
+  const cont = document.getElementById('pp-fill-questions');
+  cont.innerHTML = '';
+  ppFillData.forEach((q,i) => {
+    const div = document.createElement('div');
+    div.className = 'exercise-question';
+    div.innerHTML = `<strong>Q${i+1}.</strong> ${q.sentence.replace('___', `<input type="text" id="pp-fill-${i}" placeholder="...">`)} <em style="color:#888;font-size:0.8rem">Expected: ${q.blank}</em>`;
+    cont.appendChild(div);
+  });
+}
+
+function checkPPFill() {
+  let correct = 0;
+  ppFillData.forEach((q,i) => {
+    const input = document.getElementById(`pp-fill-${i}`);
+    const val = input.value.trim().toLowerCase().replace(/\s+/g,' ');
+    const ans = q.answer.toLowerCase().replace(/\s+/g,' ');
+    if (val === ans || val === ans.replace("'","'")) {
+      correct++; input.style.borderColor='var(--green)'; input.style.background='#D4EDDA';
+    } else {
+      input.style.borderColor='var(--primary)'; input.style.background='#F8D7DA';
+    }
+  });
+  showFeedback('pp-fill-feedback', correct===ppFillData.length,
+    correct===ppFillData.length ? `🎉 Perfect, ${studentName}!` : `${correct}/${ppFillData.length} correct!`);
+  showScore('pp-fill-score', correct, ppFillData.length);
+  addScore('present_perfect', correct, ppFillData.length);
+}
+
+const ppMCData = [
+  { q: 'She ___ to France twice.', opts: ['has been','have been','was','is'], ans: 0 },
+  { q: 'They ___ their dinner yet.', opts: ['has not eat','have not eaten','did not ate','not eat'], ans: 1 },
+  { q: '___ he ever played chess?', opts: ['Did','Does','Has','Have'], ans: 2 },
+  { q: 'I ___ here since 2015.', opts: ['live','lived','have lived','has lived'], ans: 2 },
+  { q: 'We ___ just arrived.', opts: ['have','has','did','are'], ans: 0 },
+  { q: 'She ___ already seen that movie.', opts: ['have','has','is','was'], ans: 1 },
+];
+
+let ppMCScore = {c:0,t:0};
+function buildPPMC() {
+  const cont = document.getElementById('pp-mc-questions');
+  cont.innerHTML = '';
+  ppMCData.forEach((q,i) => {
+    const div = document.createElement('div');
+    div.className = 'exercise-question';
+    const optsHTML = q.opts.map((o,j) => `<button class="mc-btn" onclick="checkPPMCItem(this,${i},${j})">${o}</button>`).join('');
+    div.innerHTML = `<strong>Q${i+1}.</strong> ${q.q}<div class="mc-options">${optsHTML}</div>`;
+    cont.appendChild(div);
+  });
+}
+function checkPPMCItem(btn,qi,oi) {
+  const q=ppMCData[qi];
+  const btns=btn.parentElement.querySelectorAll('.mc-btn');
+  btns.forEach(b=>b.disabled=true);
+  if(oi===q.ans){btn.classList.add('correct');playCorrect();ppMCScore.c++;addScore('present_perfect',1,1);}
+  else{btn.classList.add('wrong');btns[q.ans].classList.add('correct');playWrong();addScore('present_perfect',0,1);}
+  ppMCScore.t++;
+  showScore('pp-mc-score',ppMCScore.c,ppMCScore.t);
+}
+
+const ppMatchData = [
+  { sent: 'I have eaten pizza many times.', use: 'Experience / Experiencia' },
+  { sent: 'She has just called me.', use: 'Recent action / Acción reciente' },
+  { sent: 'We have lived here for 5 years.', use: 'With FOR / Con FOR' },
+  { sent: 'He has worked here since 2010.', use: 'With SINCE / Con SINCE' },
+  { sent: 'Have you ever been to Japan?', use: 'Experience question / Pregunta de experiencia' },
+  { sent: 'I haven\'t finished my homework.', use: 'Negative / Negativo' },
+];
+
+let ppMatchSelected = null;
+let ppMatchPairs = {};
+
+function buildPPMatch() {
+  const left = document.getElementById('pp-match-left');
+  const right = document.getElementById('pp-match-right');
+  left.innerHTML=''; right.innerHTML='';
+  const rightShuf = [...ppMatchData].sort(()=>Math.random()-0.5);
+  ppMatchData.forEach((item,i) => {
+    const lDiv = document.createElement('div');
+    lDiv.className='match-item'; lDiv.textContent=item.sent; lDiv.dataset.id='l'+i; lDiv.dataset.type='left';
+    lDiv.onclick=()=>handlePPMatch(lDiv); left.appendChild(lDiv);
+  });
+  rightShuf.forEach(item => {
+    const origIdx=ppMatchData.indexOf(item);
+    const rDiv=document.createElement('div');
+    rDiv.className='match-item'; rDiv.textContent=item.use; rDiv.dataset.id='r'+origIdx; rDiv.dataset.type='right';
+    rDiv.onclick=()=>handlePPMatch(rDiv); right.appendChild(rDiv);
+  });
+}
+function handlePPMatch(el) {
+  if(el.classList.contains('matched'))return;
+  if(!ppMatchSelected){ppMatchSelected=el;el.classList.add('selected');}
+  else if(ppMatchSelected===el){el.classList.remove('selected');ppMatchSelected=null;}
+  else if(ppMatchSelected.dataset.type!==el.dataset.type){
+    const lEl=ppMatchSelected.dataset.type==='left'?ppMatchSelected:el;
+    const rEl=ppMatchSelected.dataset.type==='right'?ppMatchSelected:el;
+    const lIdx=parseInt(lEl.dataset.id.slice(1));
+    const rIdx=parseInt(rEl.dataset.id.slice(1));
+    if(lIdx===rIdx){lEl.classList.add('matched');rEl.classList.add('matched');lEl.classList.remove('selected');rEl.classList.remove('selected');ppMatchPairs[lIdx]=true;playCorrect();}
+    else{lEl.classList.add('wrong-match');rEl.classList.add('wrong-match');setTimeout(()=>{lEl.classList.remove('wrong-match','selected');rEl.classList.remove('wrong-match');},700);playWrong();}
+    ppMatchSelected=null;
+  } else {ppMatchSelected.classList.remove('selected');ppMatchSelected=el;el.classList.add('selected');}
+}
+function checkPPMatch() {
+  const matched=Object.keys(ppMatchPairs).length;
+  const total=ppMatchData.length;
+  showFeedback('pp-match-feedback',matched===total,matched===total?`🎉 All matched, ${studentName}!`:`${matched}/${total} matched!`);
+  addScore('present_perfect',matched,total);
+}
+
+function checkPPWriting() {
+  const val=document.getElementById('pp-writing').value;
+  const hasHave=/\bhave\b|\bhas\b/i.test(val);
+  const sentences=(val.match(/[.!?]/g)||[]).length;
+  showFeedback('pp-writing-feedback',hasHave&&sentences>=3,
+    hasHave&&sentences>=3?`🎉 Great work, ${studentName}! You used the present perfect!`:
+    !hasHave?`Make sure to use "have" or "has" in your sentences!`:`Try to write at least 3 sentences. You have ${sentences} so far.`);
+  addScore('present_perfect',hasHave&&sentences>=3?1:0,1);
+}
+
+/* ================================================
+   TOPIC 4: SINCE & FOR
+   ================================================ */
+const sfFillData = [
+  { sentence: 'I have lived here ___ 5 years.', answer: 'for' },
+  { sentence: 'She has worked here ___ 2018.', answer: 'since' },
+  { sentence: 'He has been sick ___ Monday.', answer: 'since' },
+  { sentence: 'We have known each other ___ a long time.', answer: 'for' },
+  { sentence: 'I haven\'t eaten ___ breakfast.', answer: 'since' },
+  { sentence: 'They have been married ___ 20 years.', answer: 'for' },
+  { sentence: 'She has studied English ___ she was 8.', answer: 'since' },
+  { sentence: 'I have waited ___ two hours.', answer: 'for' },
+];
+
+function buildSFFill() {
+  const cont=document.getElementById('sf-fill-questions');
+  cont.innerHTML='';
+  sfFillData.forEach((q,i)=>{
+    const div=document.createElement('div');
+    div.className='exercise-question';
+    div.innerHTML=`<strong>Q${i+1}.</strong> ${q.sentence.replace('___',`<select id="sf-fill-${i}" style="padding:6px 12px;border:2px solid #ddd;border-radius:8px;font-family:Nunito;font-size:1rem;outline:none"><option value="">--</option><option value="since">since</option><option value="for">for</option></select>`)}`;
+    cont.appendChild(div);
+  });
+}
+
+function checkSFFill() {
+  let correct=0;
+  sfFillData.forEach((q,i)=>{
+    const sel=document.getElementById(`sf-fill-${i}`);
+    if(sel.value===q.answer){correct++;sel.style.borderColor='var(--green)';}
+    else{sel.style.borderColor='var(--primary)';}
+  });
+  showFeedback('sf-fill-feedback',correct===sfFillData.length,
+    correct===sfFillData.length?`🎉 Perfect, ${studentName}!`:`${correct}/${sfFillData.length} correct!`);
+  showScore('sf-fill-score',correct,sfFillData.length);
+  addScore('since_for',correct,sfFillData.length);
+}
+
+const sfMCData = [
+  {q:'I have lived in this city ___ 2015.',opts:['for','since','ago'],ans:1},
+  {q:'She has been a doctor ___ ten years.',opts:['since','for','during'],ans:1},
+  {q:'We haven\'t seen him ___ last Christmas.',opts:['for','since','ago'],ans:1},
+  {q:'They have been friends ___ a very long time.',opts:['since','for','at'],ans:1},
+  {q:'He has worked here ___ he graduated.',opts:['for','since','during'],ans:1},
+  {q:'I have practiced piano ___ three months.',opts:['since','for','at'],ans:1},
+];
+
+// Fix mc data (all ans should be correct based on logic)
+sfMCData[0].ans=1; sfMCData[1].ans=1; sfMCData[2].ans=1;
+sfMCData[3].ans=1; sfMCData[4].ans=1; sfMCData[5].ans=1;
+// Correct: since 2015, for ten years, since last Christmas, for a very long time, since he graduated, for three months
+sfMCData[0]={q:'I have lived in this city ___ 2015.',opts:['for','since','ago'],ans:1};
+sfMCData[1]={q:'She has been a doctor ___ ten years.',opts:['since','for','during'],ans:1};
+sfMCData[2]={q:'We haven\'t seen him ___ last Christmas.',opts:['for','since','ago'],ans:1};
+sfMCData[3]={q:'They have been friends ___ a very long time.',opts:['since','for','at'],ans:1};
+sfMCData[4]={q:'He has worked here ___ he graduated.',opts:['for','since','during'],ans:1};
+sfMCData[5]={q:'I have practiced piano ___ three months.',opts:['since','for','at'],ans:1};
+
+let sfMCScore={c:0,t:0};
+function buildSFMC() {
+  const cont=document.getElementById('sf-mc-questions');
+  cont.innerHTML='';
+  sfMCData.forEach((q,i)=>{
+    const div=document.createElement('div');
+    div.className='exercise-question';
+    const optsHTML=q.opts.map((o,j)=>`<button class="mc-btn" onclick="checkSFMCItem(this,${i},${j})">${o}</button>`).join('');
+    div.innerHTML=`<strong>Q${i+1}.</strong> ${q.q}<div class="mc-options">${optsHTML}</div>`;
+    cont.appendChild(div);
+  });
+}
+function checkSFMCItem(btn,qi,oi) {
+  const q=sfMCData[qi];
+  const btns=btn.parentElement.querySelectorAll('.mc-btn');
+  btns.forEach(b=>b.disabled=true);
+  if(oi===q.ans){btn.classList.add('correct');playCorrect();sfMCScore.c++;addScore('since_for',1,1);}
+  else{btn.classList.add('wrong');btns[q.ans].classList.add('correct');playWrong();addScore('since_for',0,1);}
+  sfMCScore.t++;
+  showScore('sf-mc-score',sfMCScore.c,sfMCScore.t);
+}
+
+const sfMatchExpressions = [
+  {expr:'2010',correct:'since'},
+  {expr:'Monday',correct:'since'},
+  {expr:'3 years',correct:'for'},
+  {expr:'a long time',correct:'for'},
+  {expr:'last summer',correct:'since'},
+  {expr:'two weeks',correct:'for'},
+  {expr:'I was born',correct:'since'},
+  {expr:'ages',correct:'for'},
+];
+
+let sfMatchSelected=null;
+function buildSFMatchCont() {
+  const cont=document.getElementById('sf-match-container');
+  cont.innerHTML='';
+  const grid=document.createElement('div');
+  grid.style.cssText='display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px;';
+  sfMatchExpressions.forEach((item,i)=>{
+    const btn=document.createElement('button');
+    btn.className='mc-btn';
+    btn.textContent=item.expr;
+    btn.dataset.idx=i;
+    btn.onclick=()=>{
+      if(btn.disabled)return;
+      if(sfMatchSelected!==null)sfMatchSelected.classList.remove('selected');
+      sfMatchSelected=btn;
+      btn.classList.add('selected');
+    };
+    grid.appendChild(btn);
+  });
+  cont.appendChild(grid);
+  const btnRow=document.createElement('div');
+  btnRow.style.cssText='display:flex;gap:12px;margin-bottom:12px;';
+  ['since','for'].forEach(word=>{
+    const btn=document.createElement('button');
+    btn.className='btn-check';
+    btn.textContent=word==='since'?'⏰ SINCE':'📅 FOR';
+    btn.style.background=word==='since'?'linear-gradient(135deg,var(--blue),#1565C0)':'linear-gradient(135deg,var(--orange),#E65100)';
+    btn.onclick=()=>{
+      if(!sfMatchSelected)return;
+      const idx=parseInt(sfMatchSelected.dataset.idx);
+      const item=sfMatchExpressions[idx];
+      if(item.correct===word){
+        sfMatchSelected.classList.remove('selected');
+        sfMatchSelected.classList.add('correct');
+        sfMatchSelected.disabled=true;
+        playCorrect();
+        addScore('since_for',1,1);
+      } else {
+        sfMatchSelected.classList.add('wrong');
+        setTimeout(()=>{sfMatchSelected&&sfMatchSelected.classList.remove('wrong','selected');},700);
+        playWrong();
+        addScore('since_for',0,1);
+      }
+      sfMatchSelected=null;
+      const matched=grid.querySelectorAll('.mc-btn.correct').length;
+      showScore('sf-match-score',matched,sfMatchExpressions.length);
+    };
+    btnRow.appendChild(btn);
+  });
+  cont.appendChild(btnRow);
+}
+
+function buildSFWritingTags() {
+  const tags=document.getElementById('sf-word-tags');
+  tags.innerHTML=['since','for'].map(w=>`<span class="word-tag" id="sf-tag-${w}">${w}</span>`).join('');
+}
+
+function checkSFWriting() {
+  const val=document.getElementById('sf-writing').value.toLowerCase();
+  const hasSince=val.includes('since');
+  const hasFor=/\bfor\b/.test(val);
+  showFeedback('sf-writing-feedback',hasSince&&hasFor,
+    hasSince&&hasFor?`🎉 Excellent, ${studentName}! You used both "since" and "for"!`:
+    !hasSince?'Make sure to include "since" in one sentence!':
+    'Make sure to include "for" in one sentence!');
+  addScore('since_for',(hasSince?1:0)+(hasFor?1:0),2);
+}
+
+/* ================================================
+   TOPIC 5: IRREGULAR VERBS
+   ================================================ */
+const RULE_COLORS = {add:'rule-add',double:'rule-double',drope:'rule-drope',ied:'rule-ied'};
+const RULE_LABELS = {add:'➕ just -ed',double:'🔵 double + ed',drope:'🟠 drop -e + d',ied:'🟣 y → ied'};
+
+function buildIrregVerbGrid() {
+  const grid=document.getElementById('irreg-verb-grid');
+  grid.innerHTML='';
+  IRREGULAR_VERBS.forEach(v=>{
+    const card=document.createElement('div');
+    card.className='verb-card';
+    card.innerHTML=`
+      <span class="verb-emoji">${v.emoji}</span>
+      <strong style="font-size:1.1rem;color:var(--navy)">${v.inf}</strong>
+      <div class="verb-forms">
+        <span class="verb-form-badge badge-inf">Inf: ${v.inf}</span>
+        <span class="verb-form-badge badge-past">Past: ${v.past}</span>
+        <span class="verb-form-badge badge-pp">PP: ${v.pp}</span>
+        <span class="verb-form-badge badge-es">🇪🇸 ${v.es}</span>
+      </div>
+      <div class="verb-example">🇬🇧 ${v.ex}<br>🇪🇸 ${v.exES}</div>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+function filterIrregVerbs() {
+  const q=document.getElementById('irreg-search').value.toLowerCase();
+  const cards=document.querySelectorAll('#irreg-verb-grid .verb-card');
+  IRREGULAR_VERBS.forEach((v,i)=>{
+    const match=v.inf.includes(q)||v.past.includes(q)||v.pp.includes(q)||v.es.toLowerCase().includes(q);
+    cards[i].style.display=match?'':'none';
+  });
+}
+
+const irregFillData = [
+  {sentence:'Yesterday she ___ to the supermarket. (go)',answer:'went'},
+  {sentence:'I ___ a great book last night. (read)',answer:'read'},
+  {sentence:'He ___ the door and came in. (open → opened... but this is: He ___ to us about it. (speak))',answer:'spoke'},
+  {sentence:'They ___ the match 3-0. (win → won)',answer:'won'},
+  {sentence:'She ___ her friend at the café. (meet)',answer:'met'},
+  {sentence:'We ___ for two hours. (run)',answer:'ran'},
+];
+// Simplified
+const irregFillDataFinal = [
+  {sentence:'Yesterday she ___ to school. (go)',answer:'went'},
+  {sentence:'I ___ a book last week. (read)',answer:'read'},
+  {sentence:'He ___ to us kindly. (speak)',answer:'spoke'},
+  {sentence:'She ___ her friend at the café. (meet)',answer:'met'},
+  {sentence:'We ___ for two hours. (run)',answer:'ran'},
+  {sentence:'They ___ a letter yesterday. (write)',answer:'wrote'},
+  {sentence:'He ___ the bag to school. (bring)',answer:'brought'},
+  {sentence:'I ___ the answer immediately. (know)',answer:'knew'},
+];
+
+function buildIrregFill() {
+  const cont=document.getElementById('irreg-fill-questions');
+  cont.innerHTML='';
+  irregFillDataFinal.forEach((q,i)=>{
+    const div=document.createElement('div');
+    div.className='exercise-question';
+    div.innerHTML=`<strong>Q${i+1}.</strong> ${q.sentence.replace('___',`<input type="text" id="irreg-fill-${i}" placeholder="...">`)}`;
+    cont.appendChild(div);
+  });
+}
+function checkIrregFill() {
+  let correct=0;
+  irregFillDataFinal.forEach((q,i)=>{
+    const input=document.getElementById(`irreg-fill-${i}`);
+    if(input.value.trim().toLowerCase()===q.answer){correct++;input.style.borderColor='var(--green)';input.style.background='#D4EDDA';}
+    else{input.style.borderColor='var(--primary)';input.style.background='#F8D7DA';}
+  });
+  showFeedback('irreg-fill-feedback',correct===irregFillDataFinal.length,
+    correct===irregFillDataFinal.length?`🎉 Perfect, ${studentName}!`:`${correct}/${irregFillDataFinal.length} correct!`);
+  showScore('irreg-fill-score',correct,irregFillDataFinal.length);
+  addScore('irregular',correct,irregFillDataFinal.length);
+}
+
+const irregMCData = [
+  {q:'Past of "go":',opts:['goed','went','gone','goned'],ans:1},
+  {q:'Past of "have":',opts:['haved','had','have','has'],ans:1},
+  {q:'Past of "see":',opts:['seed','sawed','saw','seen'],ans:2},
+  {q:'Past of "bring":',opts:['bringed','brought','brung','brang'],ans:1},
+  {q:'Past participle of "take":',opts:['took','taked','taken','tooken'],ans:2},
+  {q:'Past of "speak":',opts:['speaked','spoken','spoke','spake'],ans:2},
+];
+let irregMCScore={c:0,t:0};
+function buildIrregMC() {
+  const cont=document.getElementById('irreg-mc-questions');
+  cont.innerHTML='';
+  irregMCData.forEach((q,i)=>{
+    const div=document.createElement('div');
+    div.className='exercise-question';
+    const optsHTML=q.opts.map((o,j)=>`<button class="mc-btn" onclick="checkIrregMCItem(this,${i},${j})">${o}</button>`).join('');
+    div.innerHTML=`<strong>Q${i+1}.</strong> ${q.q}<div class="mc-options">${optsHTML}</div>`;
+    cont.appendChild(div);
+  });
+}
+function checkIrregMCItem(btn,qi,oi) {
+  const q=irregMCData[qi];
+  const btns=btn.parentElement.querySelectorAll('.mc-btn');
+  btns.forEach(b=>b.disabled=true);
+  if(oi===q.ans){btn.classList.add('correct');playCorrect();irregMCScore.c++;addScore('irregular',1,1);}
+  else{btn.classList.add('wrong');btns[q.ans].classList.add('correct');playWrong();addScore('irregular',0,1);}
+  irregMCScore.t++;
+  showScore('irreg-mc-score',irregMCScore.c,irregMCScore.t);
+}
+
+const irregMatchSubset = [
+  {inf:'go',past:'went'},{inf:'see',past:'saw'},{inf:'come',past:'came'},
+  {inf:'take',past:'took'},{inf:'give',past:'gave'},{inf:'make',past:'made'},
+  {inf:'know',past:'knew'},{inf:'find',past:'found'},
+];
+let irregMatchSelected=null;
+let irregMatchPairs={};
+
+function buildIrregMatch() {
+  const left=document.getElementById('irreg-match-left');
+  const right=document.getElementById('irreg-match-right');
+  left.innerHTML=''; right.innerHTML='';
+  const rightShuf=[...irregMatchSubset].sort(()=>Math.random()-0.5);
+  irregMatchSubset.forEach((item,i)=>{
+    const lDiv=document.createElement('div');
+    lDiv.className='match-item'; lDiv.textContent=item.inf; lDiv.dataset.id='l'+i; lDiv.dataset.type='left';
+    lDiv.onclick=()=>handleIrregMatch(lDiv); left.appendChild(lDiv);
+  });
+  rightShuf.forEach(item=>{
+    const origIdx=irregMatchSubset.indexOf(item);
+    const rDiv=document.createElement('div');
+    rDiv.className='match-item'; rDiv.textContent=item.past; rDiv.dataset.id='r'+origIdx; rDiv.dataset.type='right';
+    rDiv.onclick=()=>handleIrregMatch(rDiv); right.appendChild(rDiv);
+  });
+}
+function handleIrregMatch(el) {
+  if(el.classList.contains('matched'))return;
+  if(!irregMatchSelected){irregMatchSelected=el;el.classList.add('selected');}
+  else if(irregMatchSelected===el){el.classList.remove('selected');irregMatchSelected=null;}
+  else if(irregMatchSelected.dataset.type!==el.dataset.type){
+    const lEl=irregMatchSelected.dataset.type==='left'?irregMatchSelected:el;
+    const rEl=irregMatchSelected.dataset.type==='right'?irregMatchSelected:el;
+    const lIdx=parseInt(lEl.dataset.id.slice(1));
+    const rIdx=parseInt(rEl.dataset.id.slice(1));
+    if(lIdx===rIdx){lEl.classList.add('matched');rEl.classList.add('matched');lEl.classList.remove('selected');rEl.classList.remove('selected');irregMatchPairs[lIdx]=true;playCorrect();}
+    else{lEl.classList.add('wrong-match');rEl.classList.add('wrong-match');setTimeout(()=>{lEl.classList.remove('wrong-match','selected');rEl.classList.remove('wrong-match');},700);playWrong();}
+    irregMatchSelected=null;
+  } else {irregMatchSelected.classList.remove('selected');irregMatchSelected=el;el.classList.add('selected');}
+}
+function checkIrregMatch() {
+  const matched=Object.keys(irregMatchPairs).length;
+  const total=irregMatchSubset.length;
+  showFeedback('irreg-match-feedback',matched===total,matched===total?`🎉 All matched, ${studentName}!`:`${matched}/${total} matched!`);
+  addScore('irregular',matched,total);
+}
+
+let irregFCIdx=0;
+let irregFCScore={c:0,t:0};
+function initIrregFlashcard() {
+  updateIrregFC();
+}
+function updateIrregFC() {
+  const v=IRREGULAR_VERBS[irregFCIdx];
+  document.getElementById('irreg-fc-word').textContent=v.inf;
+  document.getElementById('irreg-fc-answer').textContent=v.past;
+  document.getElementById('irreg-fc-es').textContent=v.es;
+  document.getElementById('irreg-fc-counter').textContent=(irregFCIdx+1)+' / '+IRREGULAR_VERBS.length;
+  document.getElementById('irreg-flashcard').classList.remove('flipped');
+  document.getElementById('irreg-fc-input').value='';
+  const fb=document.getElementById('irreg-fc-feedback');
+  fb.className='feedback'; fb.textContent='';
+}
+function flipIrregCard() { document.getElementById('irreg-flashcard').classList.toggle('flipped'); }
+function nextIrregCard() { irregFCIdx=(irregFCIdx+1)%IRREGULAR_VERBS.length; updateIrregFC(); }
+function prevIrregCard() { irregFCIdx=(irregFCIdx-1+IRREGULAR_VERBS.length)%IRREGULAR_VERBS.length; updateIrregFC(); }
+function checkIrregFlashcard() {
+  const v=IRREGULAR_VERBS[irregFCIdx];
+  const val=document.getElementById('irreg-fc-input').value.trim().toLowerCase();
+  const correct=v.past.toLowerCase().split('/').map(s=>s.trim()).includes(val);
+  showFeedback('irreg-fc-feedback',correct,
+    correct?`🎉 Correct! "${v.past}" — Great job, ${studentName}!`:`The correct answer is: ${v.past}`);
+  if(correct){irregFCScore.c++;addScore('irregular',1,1);}else{addScore('irregular',0,1);}
+  irregFCScore.t++;
+  showScore('irreg-fc-score',irregFCScore.c,irregFCScore.t);
+  if(correct)setTimeout(nextIrregCard,1200);
+}
+
+/* ================================================
+   TOPIC 6: REGULAR VERBS
+   ================================================ */
+function buildRegVerbGrid() {
+  const grid=document.getElementById('reg-verb-grid');
+  grid.innerHTML='';
+  REGULAR_VERBS.forEach(v=>{
+    const ruleClass=RULE_COLORS[v.rule]||'';
+    const ruleLabel=RULE_LABELS[v.rule]||'';
+    const card=document.createElement('div');
+    card.className='verb-card '+ruleClass;
+    card.innerHTML=`
+      <div class="verb-forms">
+        <span class="verb-form-badge badge-inf">Inf: ${v.inf}</span>
+        <span class="verb-form-badge badge-past">Past: ${v.past}</span>
+        <span class="verb-form-badge badge-es">🇪🇸 ${v.es}</span>
+        <span class="verb-form-badge" style="background:#f0f0f0;color:#333">Rule: ${ruleLabel}</span>
+      </div>
+      <div class="verb-example">🇬🇧 ${v.ex}<br>🇪🇸 ${v.exES}</div>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+function filterRegVerbs() {
+  const q=document.getElementById('reg-search').value.toLowerCase();
+  const cards=document.querySelectorAll('#reg-verb-grid .verb-card');
+  REGULAR_VERBS.forEach((v,i)=>{
+    const match=v.inf.includes(q)||v.past.includes(q)||v.es.toLowerCase().includes(q);
+    cards[i].style.display=match?'':'none';
+  });
+}
+
+const regFillSubset = REGULAR_VERBS.slice(0,8);
+function buildRegFill() {
+  const cont=document.getElementById('reg-fill-questions');
+  cont.innerHTML='';
+  regFillSubset.forEach((v,i)=>{
+    const div=document.createElement('div');
+    div.className='exercise-question';
+    div.innerHTML=`<strong>Q${i+1}.</strong> Yesterday she ___ to the store. (${v.inf}) → <input type="text" id="reg-fill-${i}" placeholder="...">`;
+    cont.appendChild(div);
+  });
+}
+function checkRegFill() {
+  let correct=0;
+  regFillSubset.forEach((v,i)=>{
+    const input=document.getElementById(`reg-fill-${i}`);
+    if(input.value.trim().toLowerCase()===v.past){correct++;input.style.borderColor='var(--green)';input.style.background='#D4EDDA';}
+    else{input.style.borderColor='var(--primary)';input.style.background='#F8D7DA';}
+  });
+  showFeedback('reg-fill-feedback',correct===regFillSubset.length,
+    correct===regFillSubset.length?`🎉 Perfect, ${studentName}!`:`${correct}/${regFillSubset.length} correct!`);
+  showScore('reg-fill-score',correct,regFillSubset.length);
+  addScore('regular',correct,regFillSubset.length);
+}
+
+const regMCData = [
+  {q:'Past of "stop" (double rule):',opts:['stoped','stoppped','stopped','stopt'],ans:2},
+  {q:'Past of "study" (y→ied):',opts:['studyed','studied','studid','studyed'],ans:1},
+  {q:'Past of "dance" (drop -e):',opts:['danceed','danced','dancd','dancied'],ans:1},
+  {q:'Past of "walk" (just +ed):',opts:['walkd','walking','walkked','walked'],ans:3},
+  {q:'Past of "cry" (y→ied):',opts:['cryed','cryd','cried','cryied'],ans:2},
+  {q:'Past of "drop" (double rule):',opts:['droped','dropped','droppe','droppped'],ans:1},
+];
+let regMCScore={c:0,t:0};
+function buildRegMC() {
+  const cont=document.getElementById('reg-mc-questions');
+  cont.innerHTML='';
+  regMCData.forEach((q,i)=>{
+    const div=document.createElement('div');
+    div.className='exercise-question';
+    const optsHTML=q.opts.map((o,j)=>`<button class="mc-btn" onclick="checkRegMCItem(this,${i},${j})">${o}</button>`).join('');
+    div.innerHTML=`<strong>Q${i+1}.</strong> ${q.q}<div class="mc-options">${optsHTML}</div>`;
+    cont.appendChild(div);
+  });
+}
+function checkRegMCItem(btn,qi,oi) {
+  const q=regMCData[qi];
+  const btns=btn.parentElement.querySelectorAll('.mc-btn');
+  btns.forEach(b=>b.disabled=true);
+  if(oi===q.ans){btn.classList.add('correct');playCorrect();regMCScore.c++;addScore('regular',1,1);}
+  else{btn.classList.add('wrong');btns[q.ans].classList.add('correct');playWrong();addScore('regular',0,1);}
+  regMCScore.t++;
+  showScore('reg-mc-score',regMCScore.c,regMCScore.t);
+}
+
+const regMatchSubset=REGULAR_VERBS.slice(0,8);
+let regMatchSelected=null;
+let regMatchPairs={};
+function buildRegMatch() {
+  const left=document.getElementById('reg-match-left');
+  const right=document.getElementById('reg-match-right');
+  left.innerHTML=''; right.innerHTML='';
+  const rightShuf=[...regMatchSubset].sort(()=>Math.random()-0.5);
+  regMatchSubset.forEach((v,i)=>{
+    const lDiv=document.createElement('div');
+    lDiv.className='match-item'; lDiv.textContent=v.inf; lDiv.dataset.id='l'+i; lDiv.dataset.type='left';
+    lDiv.onclick=()=>handleRegMatch(lDiv); left.appendChild(lDiv);
+  });
+  rightShuf.forEach(v=>{
+    const origIdx=regMatchSubset.indexOf(v);
+    const rDiv=document.createElement('div');
+    rDiv.className='match-item'; rDiv.textContent=v.past; rDiv.dataset.id='r'+origIdx; rDiv.dataset.type='right';
+    rDiv.onclick=()=>handleRegMatch(rDiv); right.appendChild(rDiv);
+  });
+}
+function handleRegMatch(el) {
+  if(el.classList.contains('matched'))return;
+  if(!regMatchSelected){regMatchSelected=el;el.classList.add('selected');}
+  else if(regMatchSelected===el){el.classList.remove('selected');regMatchSelected=null;}
+  else if(regMatchSelected.dataset.type!==el.dataset.type){
+    const lEl=regMatchSelected.dataset.type==='left'?regMatchSelected:el;
+    const rEl=regMatchSelected.dataset.type==='right'?regMatchSelected:el;
+    const lIdx=parseInt(lEl.dataset.id.slice(1));
+    const rIdx=parseInt(rEl.dataset.id.slice(1));
+    if(lIdx===rIdx){lEl.classList.add('matched');rEl.classList.add('matched');lEl.classList.remove('selected');rEl.classList.remove('selected');regMatchPairs[lIdx]=true;playCorrect();}
+    else{lEl.classList.add('wrong-match');rEl.classList.add('wrong-match');setTimeout(()=>{lEl.classList.remove('wrong-match','selected');rEl.classList.remove('wrong-match');},700);playWrong();}
+    regMatchSelected=null;
+  } else {regMatchSelected.classList.remove('selected');regMatchSelected=el;el.classList.add('selected');}
+}
+function checkRegMatch() {
+  const matched=Object.keys(regMatchPairs).length;
+  const total=regMatchSubset.length;
+  showFeedback('reg-match-feedback',matched===total,matched===total?`🎉 All matched, ${studentName}!`:`${matched}/${total} matched!`);
+  addScore('regular',matched,total);
+}
+
+let regFCIdx=0;
+let regFCScore={c:0,t:0};
+function initRegFlashcard() { updateRegFC(); }
+function updateRegFC() {
+  const v=REGULAR_VERBS[regFCIdx];
+  document.getElementById('reg-fc-word').textContent=v.inf;
+  document.getElementById('reg-fc-answer').textContent=v.past;
+  document.getElementById('reg-fc-es').textContent=v.es;
+  document.getElementById('reg-fc-counter').textContent=(regFCIdx+1)+' / '+REGULAR_VERBS.length;
+  document.getElementById('reg-flashcard').classList.remove('flipped');
+  document.getElementById('reg-fc-input').value='';
+  const fb=document.getElementById('reg-fc-feedback');
+  fb.className='feedback'; fb.textContent='';
+}
+function flipRegCard() { document.getElementById('reg-flashcard').classList.toggle('flipped'); }
+function nextRegCard() { regFCIdx=(regFCIdx+1)%REGULAR_VERBS.length; updateRegFC(); }
+function prevRegCard() { regFCIdx=(regFCIdx-1+REGULAR_VERBS.length)%REGULAR_VERBS.length; updateRegFC(); }
+function checkRegFlashcard() {
+  const v=REGULAR_VERBS[regFCIdx];
+  const val=document.getElementById('reg-fc-input').value.trim().toLowerCase();
+  const correct=val===v.past;
+  showFeedback('reg-fc-feedback',correct,correct?`🎉 Correct, ${studentName}! Past = "${v.past}"`:`Correct answer: ${v.past}`);
+  if(correct){regFCScore.c++;addScore('regular',1,1);}else{addScore('regular',0,1);}
+  regFCScore.t++;
+  showScore('reg-fc-score',regFCScore.c,regFCScore.t);
+  if(correct)setTimeout(nextRegCard,1200);
+}
+
+const spellChallengeData = [
+  {verb:'stop',past:'stopped',rule:'double',q:'What spelling rule does "stopped" use?'},
+  {verb:'dance',past:'danced',rule:'drope',q:'What spelling rule does "danced" use?'},
+  {verb:'study',past:'studied',rule:'ied',q:'What spelling rule does "studied" use?'},
+  {verb:'walk',past:'walked',rule:'add',q:'What spelling rule does "walked" use?'},
+  {verb:'cry',past:'cried',rule:'ied',q:'What spelling rule does "cried" use?'},
+  {verb:'drop',past:'dropped',rule:'double',q:'What spelling rule does "dropped" use?'},
+];
+let spellScore={c:0,t:0};
+function buildRegSpell() {
+  const cont=document.getElementById('reg-spell-questions');
+  cont.innerHTML='';
+  spellChallengeData.forEach((q,i)=>{
+    const div=document.createElement('div');
+    div.className='exercise-question';
+    const opts=['add','double','drope','ied'].map(r=>
+      `<button class="mc-btn" onclick="checkSpell(this,${i},'${r}')">${RULE_LABELS[r]}</button>`).join('');
+    div.innerHTML=`<strong>Q${i+1}.</strong> ${q.q} <em style="color:var(--purple)">→ ${q.verb} → <strong>${q.past}</strong></em><div class="mc-options">${opts}</div>`;
+    cont.appendChild(div);
+  });
+}
+function checkSpell(btn,qi,rule) {
+  const q=spellChallengeData[qi];
+  const btns=btn.parentElement.querySelectorAll('.mc-btn');
+  btns.forEach(b=>b.disabled=true);
+  if(rule===q.rule){btn.classList.add('correct');playCorrect();spellScore.c++;addScore('regular',1,1);}
+  else{btn.classList.add('wrong');Array.from(btns).find(b=>b.textContent===RULE_LABELS[q.rule]).classList.add('correct');playWrong();addScore('regular',0,1);}
+  spellScore.t++;
+  showScore('reg-spell-score',spellScore.c,spellScore.t);
+}
+
+/* ================================================
+   WRITING CHAR COUNTS
+   ================================================ */
+function addWritingListeners() {
+  const areas = [
+    {id:'conn-writing',countId:'conn-char-count'},
+    {id:'pp-writing',countId:'pp-char-count'},
+    {id:'sf-writing',countId:'sf-char-count'},
+  ];
+  areas.forEach(a=>{
+    const el=document.getElementById(a.id);
+    if(el) el.addEventListener('input',()=>{
+      document.getElementById(a.countId).textContent=el.value.length+' characters';
+    });
+  });
+  // SF writing word tags update
+  const sfArea=document.getElementById('sf-writing');
+  if(sfArea) sfArea.addEventListener('input',()=>{
+    const val=sfArea.value.toLowerCase();
+    ['since','for'].forEach(w=>{
+      const tag=document.getElementById('sf-tag-'+w);
+      if(tag) tag.className='word-tag'+(val.includes(w.toLowerCase())?' found':'');
+    });
+    document.getElementById('sf-char-count').textContent=sfArea.value.length+' characters';
+  });
+  const connArea=document.getElementById('conn-writing');
+  if(connArea) connArea.addEventListener('input',()=>{
+    const val=connArea.value.toLowerCase();
+    ['and','but','because'].forEach(w=>{
+      const tag=document.getElementById('conn-tag-'+w);
+      if(tag) tag.className='word-tag'+(val.includes(w)?' found':'');
+    });
+    document.getElementById('conn-char-count').textContent=connArea.value.length+' characters';
+  });
+  const ppArea=document.getElementById('pp-writing');
+  if(ppArea) ppArea.addEventListener('input',()=>{
+    document.getElementById('pp-char-count').textContent=ppArea.value.length+' characters';
+  });
+}
+
+/* ================================================
+   BACK TO TOP & SCROLL
+   ================================================ */
+window.addEventListener('scroll',()=>{
+  const btn=document.getElementById('back-to-top');
+  if(window.scrollY>400)btn.classList.add('visible');
+  else btn.classList.remove('visible');
+});
+
+/* ================================================
+   ON LOAD: attach events & check saved name
+   ================================================ */
+window.addEventListener('DOMContentLoaded',()=>{
+  // Attach start button
+  const startBtn = document.getElementById('btn-start-learning');
+  if(startBtn) startBtn.addEventListener('click', startLearning);
+
+  // Allow Enter key in name input
+  const nameInput = document.getElementById('student-name-input');
+  if(nameInput) nameInput.addEventListener('keydown', e => { if(e.key==='Enter') startLearning(); });
+
+  // Back to top button
+  const bttBtn = document.getElementById('back-to-top');
+  if(bttBtn) bttBtn.addEventListener('click', ()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+  // Search inputs
+  const irregSearch = document.getElementById('irreg-search');
+  if(irregSearch) irregSearch.addEventListener('input', filterIrregVerbs);
+  const regSearch = document.getElementById('reg-search');
+  if(regSearch) regSearch.addEventListener('input', filterRegVerbs);
+  // Grade cards & password modal
+  initGradeCards();
+
+  // Pre-fill name if previously used
+  const keys=Object.keys(localStorage).filter(k=>k.startsWith('EnglishFunZone_'));
+  if(keys.length>0){
+    try {
+      const lastKey=keys[keys.length-1];
+      const parts=lastKey.split('_');
+      const nameIdx=parts.length-2;
+      const possibleName=parts[nameIdx];
+      if(possibleName && possibleName!='progress' && nameInput) {
+        nameInput.value=possibleName;
+      }
+    } catch(e){}
+  }
+});
+
+/* ================================================
+   EXPOSE ALL FUNCTIONS TO WINDOW (for inline onclick)
+   ================================================ */
+window.startLearning=startLearning;
+window.resetProgress=resetProgress;
+window.checkSeqFill=checkSeqFill;
+window.checkSeqMCItem=checkSeqMCItem;
+window.checkSeqOrder=checkSeqOrder;
+window.checkSeqWriting=checkSeqWriting;
+window.checkConnFill=checkConnFill;
+window.checkConnMCItem=checkConnMCItem;
+window.checkConnMatch=checkConnMatch;
+window.checkConnWriting=checkConnWriting;
+window.checkPPFill=checkPPFill;
+window.checkPPMCItem=checkPPMCItem;
+window.checkPPMatch=checkPPMatch;
+window.checkPPWriting=checkPPWriting;
+window.checkSFFill=checkSFFill;
+window.checkSFMCItem=checkSFMCItem;
+window.checkSFWriting=checkSFWriting;
+window.checkIrregFill=checkIrregFill;
+window.checkIrregMCItem=checkIrregMCItem;
+window.checkIrregMatch=checkIrregMatch;
+window.flipIrregCard=flipIrregCard;
+window.nextIrregCard=nextIrregCard;
+window.prevIrregCard=prevIrregCard;
+window.checkIrregFlashcard=checkIrregFlashcard;
+window.checkRegFill=checkRegFill;
+window.checkRegMCItem=checkRegMCItem;
+window.checkRegMatch=checkRegMatch;
+window.flipRegCard=flipRegCard;
+window.nextRegCard=nextRegCard;
+window.prevRegCard=prevRegCard;
+window.checkRegFlashcard=checkRegFlashcard;
+window.checkSpell=checkSpell;
+window.filterIrregVerbs=filterIrregVerbs;
+window.filterRegVerbs=filterRegVerbs;
+
+/* ================================================
+   THIRD GRADE — PASSWORD & MODAL LOGIC
+   ================================================ */
+const TG_PASSWORD = 'TEACHER123';
+
+function initGradeCards() {
+  const g3 = document.getElementById('g3-card');
+  const g4 = document.getElementById('g4-card');
+  const pwOverlay = document.getElementById('pw-modal-overlay');
+  const csModal = document.getElementById('coming-soon-modal');
+  const pwInput = document.getElementById('pw-input');
+  const pwError = document.getElementById('pw-error');
+  const submitBtn = document.getElementById('pw-submit-btn');
+  const cancelBtn = document.getElementById('pw-cancel-btn');
+  const csClose = document.getElementById('cs-close-btn');
+
+  // Check if already unlocked
+  if(localStorage.getItem('tg_unlocked')==='1') {
+    unlockThirdGrade();
+  }
+  g3.addEventListener('click', () => {
+    if(localStorage.getItem('tg_unlocked')==='1') {
+      document.getElementById('third-grade-section').scrollIntoView({behavior:'smooth'});
+      return;
+    }
+    pwOverlay.classList.remove('hidden');
+    pwInput.value = '';
+    pwError.classList.remove('show');
+    setTimeout(()=>pwInput.focus(), 100);
+  });
+
+  g4.addEventListener('click', () => {
+    csModal.classList.remove('hidden');
+  });
+
+  submitBtn.addEventListener('click', () => {
+    if(pwInput.value.trim().toUpperCase() === TG_PASSWORD) {
+      localStorage.setItem('tg_unlocked','1');
+      pwOverlay.classList.add('hidden');
+      unlockThirdGrade();
+      setTimeout(()=>{
+        document.getElementById('third-grade-section').scrollIntoView({behavior:'smooth'});
+      }, 300);
+    } else {
+      pwError.classList.add('show');
+      pwInput.value = '';
+      pwInput.style.borderColor = '#FF6B6B';
+      pwInput.focus();
+      playWrong();
+      setTimeout(()=>{ pwInput.style.borderColor=''; }, 1000);
+    }
+  });
+
+  pwInput.addEventListener('keydown', e => { if(e.key==='Enter') submitBtn.click(); });
+  cancelBtn.addEventListener('click', () => pwOverlay.classList.add('hidden'));
+  csClose.addEventListener('click', () => csModal.classList.add('hidden'));
+  csModal.addEventListener('click', e => { if(e.target===csModal) csModal.classList.add('hidden'); });
+  pwOverlay.addEventListener('click', e => { if(e.target===pwOverlay) pwOverlay.classList.add('hidden'); });
+}
+
+function unlockThirdGrade() {
+  const sec = document.getElementById('third-grade-section');
+  sec.classList.remove('hidden');
+  const navLink = document.getElementById('nav-3g-link');
+  if(navLink) navLink.style.display = '';
+  // Update greeting
+  const greet = document.getElementById('tg-greeting');
+  if(greet && studentName) {
+    greet.textContent = `Welcome, ${studentName}! Let's learn MAY, MIGHT and WILL! 🎉`;
+  }
+  initTGExercises();
+  updateTGProgress();
+}
+
+/* ================================================
+   THIRD GRADE — PROGRESS
+   ================================================ */
+let tgProgress = { mm_fill:0, mm_fill_t:0, mm_mc:0, mm_mc_t:0, mm_match:0, mm_match_t:0,
+                   will_fill:0, will_fill_t:0, will_mc:0, will_mc_t:0, will_match:0, will_match_t:0 };
+
+function saveTGProgress() {
+  const prefix = location.pathname.replace(/\//g,'_') || '_';
+  localStorage.setItem('EnglishFunZone_'+prefix+'_tg_progress', JSON.stringify(tgProgress));
+  updateTGProgress();
+}
+
+function loadTGProgress() {
+  const prefix = location.pathname.replace(/\//g,'_') || '_';
+  const raw = localStorage.getItem('EnglishFunZone_'+prefix+'_tg_progress');
+  if(raw) tgProgress = JSON.parse(raw);
+}
+
+function addTGScore(key, correct, total) {
+  tgProgress[key] = (tgProgress[key]||0) + correct;
+  tgProgress[key+'_t'] = (tgProgress[key+'_t']||0) + total;
+  saveTGProgress();
+  if(correct > 0) launchConfetti();
+  checkTopicComplete();
+}
+
+function updateTGProgress() {
+  const keys = ['mm_fill','mm_mc','mm_match','will_fill','will_mc','will_match'];
+  let totalC = 0, totalT = 0;
+  keys.forEach(k => {
+    totalC += tgProgress[k] || 0;
+    totalT += tgProgress[k+'_t'] || 0;
+  });
+  const pct = totalT > 0 ? Math.round(totalC/totalT*100) : 0;
+  const bar = document.getElementById('tg-bar');
+  const lbl = document.getElementById('tg-score-label');
+  if(bar) bar.style.width = pct+'%';
+  if(lbl) lbl.textContent = totalC+' / '+totalT+' correct ('+pct+'%)';
+}
+
+function checkTopicComplete() {
+  // Check MM complete
+  const mmKeys = ['mm_fill','mm_mc','mm_match'];
+  const mmDone = mmKeys.every(k => (tgProgress[k+'_t']||0) > 0);
+  if(mmDone) {
+    const el = document.getElementById('mm-complete');
+    const msg = document.getElementById('mm-complete-msg');
+    if(el && !el.classList.contains('show')) {
+      el.classList.add('show');
+      const c = mmKeys.reduce((s,k)=>s+(tgProgress[k]||0),0);
+      const t = mmKeys.reduce((s,k)=>s+(tgProgress[k+'_t']||0),0);
+      if(msg) msg.textContent = `You completed all MAY & MIGHT exercises! Score: ${c}/${t} 🌟`;
+      launchConfetti();
+    }
+  }
+  // Check Will complete
+  const wKeys = ['will_fill','will_mc','will_match'];
+  const wDone = wKeys.every(k => (tgProgress[k+'_t']||0) > 0);
+  if(wDone) {
+    const el = document.getElementById('will-complete');
+    const msg = document.getElementById('will-complete-msg');
+    if(el && !el.classList.contains('show')) {
+      el.classList.add('show');
+      const c = wKeys.reduce((s,k)=>s+(tgProgress[k]||0),0);
+      const t = wKeys.reduce((s,k)=>s+(tgProgress[k+'_t']||0),0);
+      if(msg) msg.textContent = `You completed all WILL exercises! Score: ${c}/${t} 🏆`;
+      launchConfetti();
+    }
+  }
+}
+
+/* ================================================
+   THIRD GRADE — EXERCISE DATA
+   ================================================ */
+
+// MAY/MIGHT Fill
+const mmFillData = [
+  { sentence: 'It _______ rain tomorrow. (possibility)', answers: ['may','might'] },
+  { sentence: 'She _______ be at home — I\'m not sure.', answers: ['may','might'] },
+  { sentence: 'We _______ go to the beach this weekend.', answers: ['may','might'] },
+  { sentence: 'He _______ not come to school today.', answers: ['may not','might not'] },
+  { sentence: 'The dog _______ be hungry — check his bowl.', answers: ['may','might'] },
+  { sentence: 'I _______ watch a film tonight, I haven\'t decided yet.', answers: ['may','might'] },
+];
+
+// MAY/MIGHT MC
+const mmMCData = [
+  { q: 'It is cloudy. It _______ rain later.', opts: ['will definitely','may','always'], ans: 1 },
+  { q: 'She _______ come to the party — she isn\'t sure yet.', opts: ['might','wills','did'], ans: 0 },
+  { q: 'I don\'t know if Tom is home. He _______ be sleeping.', opts: ['mights','will always','might'], ans: 2 },
+  { q: 'Choose the CORRECT sentence:', opts: ['She mights go.','He may comes.','They might win the game.'], ans: 2 },
+  { q: 'Which word shows LESS certainty?', opts: ['will','might','must'], ans: 1 },
+  { q: 'We _______ not finish the project today — it\'s very long.', opts: ['may','will always','should never'], ans: 0 },
+];
+
+// MAY/MIGHT Match
+const mmMatchData = [
+  { left: 'It may snow tonight.', right: 'Possibility about weather ❄️' },
+  { left: 'She might not eat lunch.', right: 'Negative possibility 🚫' },
+  { left: 'He might score a goal.', right: 'Possibility in sport ⚽' },
+  { left: 'I may call you later.', right: 'Possible future action 📞' },
+  { left: 'They might be at school.', right: 'Uncertain location 🏫' },
+  { left: 'We may win the competition.', right: 'Hopeful possibility 🏆' },
+];
+
+// MAY/MIGHT Writing prompts
+const mmWritingData = [
+  { prompt: '🌤️ What might the weather be like this weekend? Write 2 sentences using MAY or MIGHT.', sample: 'It might be sunny on Saturday. We may go to the park if the weather is good.' },
+  { prompt: '🏫 What may happen at school tomorrow? Write 2 sentences.', sample: 'We might have a surprise quiz tomorrow. The teacher may bring a special activity.' },
+  { prompt: '🐾 Look at this clue: "The cat is near the food bowl." Write 2 sentences about what the cat might do.', sample: 'The cat might be hungry. It may eat all its food very quickly.' },
+];
+
+// WILL Fill
+const willFillData = [
+  { sentence: 'I _______ visit my grandma next Sunday. (future plan)', answers: ['will','\'ll'] },
+  { sentence: 'It _______ be very cold tomorrow. (weather prediction)', answers: ['will','\'ll'] },
+  { sentence: 'She _______ (not) eat broccoli — she hates it!', answers: ["won't",'will not'] },
+  { sentence: 'They _______ win the match — they are the best team!', answers: ['will','\'ll'] },
+  { sentence: '_______ you help me with my homework? (question)', answers: ['will'] },
+  { sentence: 'I promise I _______ clean my room this afternoon.', answers: ['will','\'ll'] },
+];
+
+// WILL MC
+const willMCData = [
+  { q: 'Tomorrow is sunny. The children _______ play outside.', opts: ['might be','will','were'], ans: 1 },
+  { q: '"I promise to help you." This is a _______.', opts: ['prediction','question','promise'], ans: 2 },
+  { q: 'Choose the CORRECT negative form:', opts: ['She wont go.','She won\'t go.','She will not going.'], ans: 1 },
+  { q: '_______ you open the window, please?', opts: ['May','Will','Might'], ans: 1 },
+  { q: '"Robots _______ do all our work in 100 years." This is a _______.', opts: ['will / prediction','might / fact','won\'t / promise'], ans: 0 },
+  { q: 'I\'m hungry. I _______ make a sandwich. (decision now)', opts: ['will','may was','might was'], ans: 0 },
+];
+
+// WILL Match
+const willMatchData = [
+  { left: 'It will snow tomorrow.', right: 'Weather prediction 🌨️' },
+  { left: 'I will help you!', right: 'Promise 🤝' },
+  { left: 'She won\'t eat vegetables.', right: 'Negative future ❌' },
+  { left: 'Will you come to my party?', right: 'Future question ❓' },
+  { left: 'I\'ll have the orange juice.', right: 'Decision made now 🥤' },
+  { left: 'Humans will live on Mars.', right: 'Future prediction 🚀' },
+];
+
+// WILL Writing prompts
+const willWritingData = [
+  { prompt: '🚀 Imagine the year 2100! Write 3 sentences about what the world WILL look like using WILL.', sample: 'People will live on the Moon. Cars will fly in the sky. Robots will do all the homework!' },
+  { prompt: '🎂 Write 3 promises you will make to your best friend using WILL.', sample: 'I will always help you with your homework. I will share my lunch with you. I will be your friend forever!' },
+  { prompt: '☀️ Look outside the window. Write 2 sentences predicting tomorrow\'s weather using WILL.', sample: 'It will be a beautiful sunny day tomorrow. The temperature will be warm and perfect for the park.' },
+];
+
+/* ================================================
+   THIRD GRADE — BUILD EXERCISES
+   ================================================ */
+function initTGExercises() {
+  loadTGProgress();
+  buildMMFill();
+  buildMMMC();
+  buildMMMatch();
+  buildMMWriting();
+  buildWillFill();
+  buildWillMC();
+  buildWillMatch();
+  buildWillWriting();
+  // Update greeting with name
+  const greet = document.getElementById('tg-greeting');
+  if(greet && studentName) greet.textContent = `Welcome, ${studentName}! Let's learn MAY, MIGHT and WILL! 🎉`;
+  updateTGProgress();
+}
+
+/* --- MAY/MIGHT FILL --- */
+function buildMMFill() {
+  const cont = document.getElementById('mm-fill-questions');
+  cont.innerHTML = '';
+  mmFillData.forEach((q,i) => {
+    const div = document.createElement('div');
+    div.className = 'exercise-question';
+    div.innerHTML = `<strong>Q${i+1}.</strong> ${q.sentence.replace('_______', `<input type="text" id="mm-fill-${i}" placeholder="may / might" autocomplete="off" style="min-width:110px">`)}`;
+    cont.appendChild(div);
+  });
+}
+window.checkMMFill = function() {
+  let correct = 0;
+  mmFillData.forEach((q,i) => {
+    const input = document.getElementById(`mm-fill-${i}`);
+    const val = input.value.trim().toLowerCase();
+    const ok = q.answers.map(a=>a.toLowerCase()).includes(val);
+    input.style.borderColor = ok ? 'var(--green)' : 'var(--primary)';
+    input.style.background = ok ? '#D4EDDA' : '#F8D7DA';
+    if(ok) correct++;
+  });
+  const total = mmFillData.length;
+  showFeedback('mm-fill-feedback', correct===total,
+    correct===total ? `🎉 Perfect, ${studentName||'student'}! All correct!` : `${correct}/${total} correct. Check your answers above!`);
+  showScore('mm-fill-score', correct, total);
+  addTGScore('mm_fill', correct, total);
+};
+window.resetMMFill = function() {
+  mmFillData.forEach((_,i) => {
+    const input = document.getElementById(`mm-fill-${i}`);
+    input.value=''; input.style.borderColor=''; input.style.background='';
+  });
+  const fb = document.getElementById('mm-fill-feedback');
+  fb.className='feedback'; fb.textContent='';
+  document.getElementById('mm-fill-score').style.display='none';
+};
+
+/* --- MAY/MIGHT MC --- */
+let mmMCScore = {c:0,t:0};
+function buildMMMC() {
+  const cont = document.getElementById('mm-mc-questions');
+  cont.innerHTML = '';
+  mmMCData.forEach((q,i) => {
+    const div = document.createElement('div');
+    div.className = 'exercise-question';
+    const optsHTML = q.opts.map((o,j) => `<button class="mc-btn" onclick="checkMMMCItem(this,${i},${j})">${o}</button>`).join('');
+    div.innerHTML = `<strong>Q${i+1}.</strong> ${q.q}<div class="mc-options">${optsHTML}</div>`;
+    cont.appendChild(div);
+  });
+}
+window.checkMMMCItem = function(btn,qi,oi) {
+  const q = mmMCData[qi];
+  const btns = btn.parentElement.querySelectorAll('.mc-btn');
+  btns.forEach(b=>b.disabled=true);
+  if(oi===q.ans){btn.classList.add('correct');playCorrect();mmMCScore.c++;addTGScore('mm_mc',1,1);}
+  else{btn.classList.add('wrong');btns[q.ans].classList.add('correct');playWrong();addTGScore('mm_mc',0,1);}
+  mmMCScore.t++;
+  showScore('mm-mc-score',mmMCScore.c,mmMCScore.t);
+};
+
+/* --- MAY/MIGHT MATCH --- */
+let mmMatchSelected = null;
+let mmMatchPairs = {};
+function buildMMMatch() {
+  const left = document.getElementById('mm-match-left');
+  const right = document.getElementById('mm-match-right');
+  left.innerHTML=''; right.innerHTML='';
+  const rightShuf = [...mmMatchData].sort(()=>Math.random()-0.5);
+  mmMatchData.forEach((item,i) => {
+    const lDiv = document.createElement('div');
+    lDiv.className='match-item'; lDiv.textContent=item.left;
+    lDiv.dataset.id='l'+i; lDiv.dataset.type='left';
+    lDiv.onclick=()=>handleMMMatch(lDiv); left.appendChild(lDiv);
+  });
+  rightShuf.forEach(item => {
+    const origIdx = mmMatchData.indexOf(item);
+    const rDiv = document.createElement('div');
+    rDiv.className='match-item'; rDiv.textContent=item.right;
+    rDiv.dataset.id='r'+origIdx; rDiv.dataset.type='right';
+    rDiv.onclick=()=>handleMMMatch(rDiv); right.appendChild(rDiv);
+  });
+}
+function handleMMMatch(el) {
+  if(el.classList.contains('matched'))return;
+  if(!mmMatchSelected){mmMatchSelected=el;el.classList.add('selected');}
+  else if(mmMatchSelected===el){el.classList.remove('selected');mmMatchSelected=null;}
+  else if(mmMatchSelected.dataset.type!==el.dataset.type){
+    const lEl=mmMatchSelected.dataset.type==='left'?mmMatchSelected:el;
+    const rEl=mmMatchSelected.dataset.type==='right'?mmMatchSelected:el;
+    const lIdx=parseInt(lEl.dataset.id.slice(1));
+    const rIdx=parseInt(rEl.dataset.id.slice(1));
+    if(lIdx===rIdx){lEl.classList.add('matched');rEl.classList.add('matched');lEl.classList.remove('selected');rEl.classList.remove('selected');mmMatchPairs[lIdx]=true;playCorrect();}
+    else{lEl.classList.add('wrong-match');rEl.classList.add('wrong-match');setTimeout(()=>{lEl.classList.remove('wrong-match','selected');rEl.classList.remove('wrong-match');},700);playWrong();}
+    mmMatchSelected=null;
+  } else {mmMatchSelected.classList.remove('selected');mmMatchSelected=el;el.classList.add('selected');}
+}
+window.checkMMMatch = function() {
+  const matched = Object.keys(mmMatchPairs).length;
+  const total = mmMatchData.length;
+  showFeedback('mm-match-feedback', matched===total,
+    matched===total ? `🎉 All matched, ${studentName||'student'}!` : `${matched}/${total} matched. Keep going!`);
+  showScore('mm-match-score', matched, total);
+  addTGScore('mm_match', matched, total);
+};
+
+/* --- MAY/MIGHT WRITING --- */
+function buildMMWriting() {
+  const cont = document.getElementById('mm-writing-prompts');
+  cont.innerHTML = '';
+  mmWritingData.forEach((p,i) => {
+    const div = document.createElement('div');
+    div.className = 'exercise-question';
+    div.style.marginBottom = '20px';
+    div.innerHTML = `
+      <p style="font-weight:700;margin-bottom:10px">${p.prompt}</p>
+      <textarea class="writing-textarea" id="mm-write-${i}" placeholder="Write your answer here..." style="min-height:100px"></textarea>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px">
+        <button class="btn-check" onclick="submitMMWriting(${i})" style="margin-top:0">Submit ✍️</button>
+        <button class="btn-check" onclick="showMMSample(${i})" style="margin-top:0;background:linear-gradient(135deg,var(--purple),#5b21b6)">Show Sample 👁️</button>
+      </div>
+      <div class="sample-answer" id="mm-sample-${i}"><strong>✅ Sample Answer:</strong><br>${p.sample}</div>
+      <div class="feedback" id="mm-write-fb-${i}"></div>
+    `;
+    cont.appendChild(div);
+  });
+}
+window.submitMMWriting = function(i) {
+  const val = document.getElementById(`mm-write-${i}`).value.toLowerCase();
+  const hasMM = /\bmay\b|\bmight\b/.test(val);
+  const sentences = (val.match(/[.!?]/g)||[]).length;
+  showFeedback(`mm-write-fb-${i}`, hasMM && sentences >= 1,
+    hasMM && sentences >= 1
+      ? `🎉 Great job, ${studentName||'student'}! You used MAY or MIGHT correctly!`
+      : !hasMM ? 'Remember to use "may" or "might" in your answer!'
+      : 'Write at least one complete sentence.');
+};
+window.showMMSample = function(i) {
+  document.getElementById(`mm-sample-${i}`).classList.toggle('show');
+};
+
+/* --- WILL FILL --- */
+function buildWillFill() {
+  const cont = document.getElementById('will-fill-questions');
+  cont.innerHTML = '';
+  willFillData.forEach((q,i) => {
+    const div = document.createElement('div');
+    div.className = 'exercise-question';
+    div.innerHTML = `<strong>Q${i+1}.</strong> ${q.sentence.replace('_______', `<input type="text" id="will-fill-${i}" placeholder="will / won't" autocomplete="off" style="min-width:100px">`)}`;
+    cont.appendChild(div);
+  });
+}
+window.checkWillFill = function() {
+  let correct = 0;
+  willFillData.forEach((q,i) => {
+    const input = document.getElementById(`will-fill-${i}`);
+    const val = input.value.trim().toLowerCase().replace(/'/g,"'");
+    const ok = q.answers.map(a=>a.toLowerCase().replace(/'/g,"'")).includes(val);
+    input.style.borderColor = ok ? 'var(--green)' : 'var(--primary)';
+    input.style.background = ok ? '#D4EDDA' : '#F8D7DA';
+    if(ok) correct++;
+  });
+  const total = willFillData.length;
+  showFeedback('will-fill-feedback', correct===total,
+    correct===total ? `🎉 Outstanding, ${studentName||'student'}! All correct!` : `${correct}/${total} correct!`);
+  showScore('will-fill-score', correct, total);
+  addTGScore('will_fill', correct, total);
+};
+window.resetWillFill = function() {
+  willFillData.forEach((_,i) => {
+    const input = document.getElementById(`will-fill-${i}`);
+    input.value=''; input.style.borderColor=''; input.style.background='';
+  });
+  const fb = document.getElementById('will-fill-feedback');
+  fb.className='feedback'; fb.textContent='';
+  document.getElementById('will-fill-score').style.display='none';
+};
+
+/* --- WILL MC --- */
+let willMCScore = {c:0,t:0};
+function buildWillMC() {
+  const cont = document.getElementById('will-mc-questions');
+  cont.innerHTML = '';
+  willMCData.forEach((q,i) => {
+    const div = document.createElement('div');
+    div.className = 'exercise-question';
+    const optsHTML = q.opts.map((o,j) => `<button class="mc-btn" onclick="checkWillMCItem(this,${i},${j})">${o}</button>`).join('');
+    div.innerHTML = `<strong>Q${i+1}.</strong> ${q.q}<div class="mc-options">${optsHTML}</div>`;
+    cont.appendChild(div);
+  });
+}
+window.checkWillMCItem = function(btn,qi,oi) {
+  const q = willMCData[qi];
+  const btns = btn.parentElement.querySelectorAll('.mc-btn');
+  btns.forEach(b=>b.disabled=true);
+  if(oi===q.ans){btn.classList.add('correct');playCorrect();willMCScore.c++;addTGScore('will_mc',1,1);}
+  else{btn.classList.add('wrong');btns[q.ans].classList.add('correct');playWrong();addTGScore('will_mc',0,1);}
+  willMCScore.t++;
+  showScore('will-mc-score',willMCScore.c,willMCScore.t);
+};
+
+/* --- WILL MATCH --- */
+let willMatchSelected = null;
+let willMatchPairs = {};
+function buildWillMatch() {
+  const left = document.getElementById('will-match-left');
+  const right = document.getElementById('will-match-right');
+  left.innerHTML=''; right.innerHTML='';
+  const rightShuf = [...willMatchData].sort(()=>Math.random()-0.5);
+  willMatchData.forEach((item,i) => {
+    const lDiv = document.createElement('div');
+    lDiv.className='match-item'; lDiv.textContent=item.left;
+    lDiv.dataset.id='l'+i; lDiv.dataset.type='left';
+    lDiv.onclick=()=>handleWillMatch(lDiv); left.appendChild(lDiv);
+  });
+  rightShuf.forEach(item => {
+    const origIdx = willMatchData.indexOf(item);
+    const rDiv = document.createElement('div');
+    rDiv.className='match-item'; rDiv.textContent=item.right;
+    rDiv.dataset.id='r'+origIdx; rDiv.dataset.type='right';
+    rDiv.onclick=()=>handleWillMatch(rDiv); right.appendChild(rDiv);
+  });
+}
+function handleWillMatch(el) {
+  if(el.classList.contains('matched'))return;
+  if(!willMatchSelected){willMatchSelected=el;el.classList.add('selected');}
+  else if(willMatchSelected===el){el.classList.remove('selected');willMatchSelected=null;}
+  else if(willMatchSelected.dataset.type!==el.dataset.type){
+    const lEl=willMatchSelected.dataset.type==='left'?willMatchSelected:el;
+    const rEl=willMatchSelected.dataset.type==='right'?willMatchSelected:el;
+    const lIdx=parseInt(lEl.dataset.id.slice(1));
+    const rIdx=parseInt(rEl.dataset.id.slice(1));
+    if(lIdx===rIdx){lEl.classList.add('matched');rEl.classList.add('matched');lEl.classList.remove('selected');rEl.classList.remove('selected');willMatchPairs[lIdx]=true;playCorrect();}
+    else{lEl.classList.add('wrong-match');rEl.classList.add('wrong-match');setTimeout(()=>{lEl.classList.remove('wrong-match','selected');rEl.classList.remove('wrong-match');},700);playWrong();}
+    willMatchSelected=null;
+  } else {willMatchSelected.classList.remove('selected');willMatchSelected=el;el.classList.add('selected');}
+}
+window.checkWillMatch = function() {
+  const matched = Object.keys(willMatchPairs).length;
+  const total = willMatchData.length;
+  showFeedback('will-match-feedback', matched===total,
+    matched===total ? `🎉 All matched, ${studentName||'student'}! Excellent!` : `${matched}/${total} matched. Keep going!`);
+  showScore('will-match-score', matched, total);
+  addTGScore('will_match', matched, total);
+};
+
+/* --- WILL WRITING --- */
+function buildWillWriting() {
+  const cont = document.getElementById('will-writing-prompts');
+  cont.innerHTML = '';
+  willWritingData.forEach((p,i) => {
+    const div = document.createElement('div');
+    div.className = 'exercise-question';
+    div.style.marginBottom = '20px';
+    div.innerHTML = `
+      <p style="font-weight:700;margin-bottom:10px">${p.prompt}</p>
+      <textarea class="writing-textarea" id="will-write-${i}" placeholder="Write your answer here..." style="min-height:100px"></textarea>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px">
+        <button class="btn-check" onclick="submitWillWriting(${i})" style="margin-top:0;background:linear-gradient(135deg,var(--orange),#E65100)">Submit ✍️</button>
+        <button class="btn-check" onclick="showWillSample(${i})" style="margin-top:0;background:linear-gradient(135deg,var(--purple),#5b21b6)">Show Sample 👁️</button>
+      </div>
+      <div class="sample-answer" id="will-sample-${i}"><strong>✅ Sample Answer:</strong><br>${p.sample}</div>
+      <div class="feedback" id="will-write-fb-${i}"></div>
+    `;
+    cont.appendChild(div);
+  });
+}
+window.submitWillWriting = function(i) {
+  const val = document.getElementById(`will-write-${i}`).value.toLowerCase();
+  const hasWill = /\bwill\b|\bwon't\b|\bwon't\b|\b'll\b/.test(val);
+  const sentences = (val.match(/[.!?]/g)||[]).length;
+  showFeedback(`will-write-fb-${i}`, hasWill && sentences >= 1,
+    hasWill && sentences >= 1
+      ? `🎉 Wonderful, ${studentName||'student'}! You used WILL correctly!`
+      : !hasWill ? 'Remember to use "will" or "won\'t" in your sentences!'
+      : 'Write at least one complete sentence with a period!');
+};
+window.showWillSample = function(i) {
+  document.getElementById(`will-sample-${i}`).classList.toggle('show');
+};
+
+/* Expose match handlers to window */
+window.handleMMMatch=handleMMMatch;
+window.handleWillMatch=handleWillMatch;
+
+</script>
+</body>
+</html>
