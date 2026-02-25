@@ -104,49 +104,246 @@ h1, h2, h3, h4 { font-family: 'Fredoka One', cursive; }
 .btn-start:hover { transform: scale(1.05); box-shadow: var(--shadow-hover); }
 
 /* ===========================
+   PAGE SWITCHING
+   =========================== */
+.page-section { display: none; }
+.page-section.active-section {
+  display: block;
+  animation: sectionFadeIn 0.35s ease;
+}
+@keyframes sectionFadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ===========================
    NAVBAR
    =========================== */
 nav {
-  position: sticky; top: 0; z-index: 1000;
+  position: sticky; top: 0; z-index: 2000;
   background: linear-gradient(90deg, #667eea, #764ba2);
-  padding: 12px 20px;
+  padding: 0 20px;
   display: flex;
   align-items: center;
-  gap: 16px;
-  box-shadow: 0 2px 20px rgba(0,0,0,0.2);
-  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.25);
+  height: 56px;
 }
 .nav-title {
   font-family: 'Fredoka One', cursive;
   color: white;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   white-space: nowrap;
+  cursor: pointer;
+  flex-shrink: 0;
 }
-.nav-links {
+/* Right side wrapper */
+.nav-right {
   display: flex;
+  align-items: center;
   gap: 6px;
-  flex-wrap: wrap;
   flex: 1;
+  justify-content: flex-end;
 }
-.nav-links a {
-  color: rgba(255,255,255,0.85);
+/* Desktop nav links */
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  list-style: none;
+  margin: 0; padding: 0;
+}
+.nav-menu > li {
+  position: relative;
+}
+.nav-menu > li > a, .nav-menu > li > button {
+  color: rgba(255,255,255,0.88);
   text-decoration: none;
   font-size: 0.82rem;
   font-weight: 700;
-  padding: 6px 12px;
-  border-radius: 50px;
-  transition: all 0.2s;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: all 0.18s;
   white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: 'Nunito', sans-serif;
+  line-height: 1;
+  height: 36px;
 }
-.nav-links a:hover { background: rgba(255,255,255,0.25); color: white; }
-.nav-student {
-  background: rgba(255,255,255,0.25);
+.nav-menu > li > a:hover,
+.nav-menu > li > button:hover,
+.nav-menu > li > a.nav-active,
+.nav-menu > li > button.nav-active {
+  background: rgba(255,255,255,0.22);
   color: white;
-  padding: 6px 16px;
+}
+.nav-menu > li > a.nav-active,
+.nav-menu > li > button.nav-active {
+  background: rgba(255,255,255,0.28);
+  box-shadow: 0 0 0 2px rgba(255,255,255,0.4);
+}
+/* Dropdown arrow */
+.dd-arrow {
+  font-size: 0.6rem;
+  transition: transform 0.25s;
+  display: inline-block;
+  margin-left: 2px;
+}
+.nav-menu > li.open .dd-arrow { transform: rotate(180deg); }
+
+/* Dropdown trigger button gets active look when open */
+.nav-menu > li.open > button {
+  background: rgba(255,255,255,0.28) !important;
+  color: white !important;
+}
+
+/* Dropdown panel — click-based only, NO CSS :hover */
+.nav-dropdown {
+  display: none;
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  min-width: 220px;
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  padding: 8px 0;
+  z-index: 3000;
+}
+.nav-menu > li.open .nav-dropdown {
+  display: block;
+  animation: dropdownFade 0.18s ease both;
+}
+@keyframes dropdownFade {
+  from { opacity:0; transform:translateY(-8px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+.nav-dropdown a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #333;
+  text-decoration: none;
+  transition: background 0.15s;
+  white-space: nowrap;
+  border-radius: 0;
+}
+.nav-dropdown a:hover { background: #F0F4FF; color: var(--purple); }
+.nav-dropdown a.nav-active { background: #EEF2FF; color: var(--purple); }
+.nav-dropdown hr {
+  border: none;
+  border-top: 1px solid #eee;
+  margin: 4px 12px;
+}
+
+/* Student name badge */
+.nav-student {
+  background: rgba(255,255,255,0.22);
+  color: white;
+  padding: 5px 14px;
   border-radius: 50px;
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: 0.82rem;
   white-space: nowrap;
+  flex-shrink: 0;
+  border: 1.5px solid rgba(255,255,255,0.3);
+}
+
+/* Hamburger */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 38px; height: 38px;
+  background: rgba(255,255,255,0.15);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  gap: 5px;
+  padding: 6px;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+.nav-hamburger:hover { background: rgba(255,255,255,0.28); }
+.ham-line {
+  display: block;
+  width: 20px; height: 2px;
+  background: white;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+/* Hamburger → X animation */
+.nav-hamburger.open .ham-line:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open .ham-line:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-hamburger.open .ham-line:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Mobile menu drawer */
+.nav-mobile-menu {
+  display: none;
+  position: fixed;
+  top: 56px; left: 0; right: 0;
+  background: linear-gradient(160deg, #667eea, #764ba2);
+  z-index: 1999;
+  padding: 10px 0 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+  max-height: calc(100vh - 56px);
+  overflow-y: auto;
+}
+.nav-mobile-menu.open { display: block; animation: mobileMenuDrop 0.25s ease; }
+@keyframes mobileMenuDrop {
+  from { opacity:0; transform:translateY(-10px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+.mob-section-label {
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: rgba(255,255,255,0.55);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 10px 20px 4px;
+}
+.nav-mobile-menu a {
+  display: block;
+  color: rgba(255,255,255,0.9);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 11px 28px;
+  transition: background 0.15s;
+  border-radius: 0;
+}
+.nav-mobile-menu a:hover { background: rgba(255,255,255,0.15); }
+.nav-mobile-menu a.nav-active { background: rgba(255,255,255,0.22); color: white; }
+.nav-mobile-menu hr { border: none; border-top: 1px solid rgba(255,255,255,0.15); margin: 6px 16px; }
+
+/* Dropdown trigger: show cursor and subtle underline hint */
+.nav-menu > li > button:has(+ .nav-dropdown) {
+  position: relative;
+}
+/* Subtle dot indicator that this button has a dropdown */
+.nav-menu > li > button .dd-arrow {
+  opacity: 0.7;
+  font-size: 0.55rem;
+  vertical-align: middle;
+}
+
+/* ===========================
+   RESPONSIVE NAV
+   =========================== */
+@media (max-width: 900px) {
+  .nav-menu { display: none; }
+  .nav-hamburger { display: flex; }
 }
 
 /* ===========================
@@ -1035,20 +1232,74 @@ footer {
 </div>
 
 <!-- NAVIGATION -->
-<nav>
-  <div class="nav-title">🌟 English Fun Zone</div>
-  <div class="nav-links">
-    <a href="#third-grade-section" id="nav-3g-link" style="display:none">🌟 3rd Grade</a>
-    <a href="#sequencing">🔢 Sequencing</a>
-    <a href="#connectives">🔗 Connectives</a>
-    <a href="#present-perfect">✅ Present Perfect</a>
-    <a href="#since-for">⏳ Since &amp; For</a>
-    <a href="#irregular">📚 Irregular</a>
-    <a href="#regular">📝 Regular</a>
-    <a href="#progress">🏆 Progress</a>
+<nav id="main-nav">
+  <div class="nav-title" onclick="showSection('home')">🌟 English Fun Zone</div>
+  <div class="nav-right">
+    <!-- Desktop menu -->
+    <ul class="nav-menu" id="nav-menu">
+      <!-- Home -->
+      <li><button class="nav-active" data-section="home" onclick="showSection('home')">🏠 Home</button></li>
+      <!-- Third Grade dropdown (hidden until unlocked) -->
+      <li id="nav-3g-li" style="display:none">
+        <button data-section="third-grade-section">🌟 3rd Grade <span class="dd-arrow">▼</span></button>
+        <div class="nav-dropdown">
+          <a data-section="third-grade-section" onclick="showSection('third-grade-section')">🌟 Third Grade Home</a>
+          <hr>
+          <a data-section="third-grade-section" onclick="showSection('third-grade-section')">🌤️ May &amp; Might</a>
+          <a data-section="third-grade-section" onclick="showSection('third-grade-section')">🚀 Will</a>
+        </div>
+      </li>
+      <!-- Grammar dropdown -->
+      <li>
+        <button>📚 Grammar <span class="dd-arrow">▼</span></button>
+        <div class="nav-dropdown">
+          <a data-section="sequencing" onclick="showSection('sequencing')">🔢 Sequencing Words</a>
+          <a data-section="connectives" onclick="showSection('connectives')">🔗 Connectives</a>
+          <a data-section="present-perfect" onclick="showSection('present-perfect')">✅ Present Perfect</a>
+          <a data-section="since-for" onclick="showSection('since-for')">⏳ Since &amp; For</a>
+        </div>
+      </li>
+      <!-- Verbs dropdown -->
+      <li>
+        <button>📝 Verbs <span class="dd-arrow">▼</span></button>
+        <div class="nav-dropdown">
+          <a data-section="irregular" onclick="showSection('irregular')">📚 Irregular Verbs</a>
+          <a data-section="regular" onclick="showSection('regular')">📝 Regular Verbs</a>
+        </div>
+      </li>
+      <!-- Progress -->
+      <li><button data-section="progress" onclick="showSection('progress')">🏆 Progress</button></li>
+    </ul>
+    <!-- Student name -->
+    <div class="nav-student" id="nav-student-name">👤 Guest</div>
+    <!-- Hamburger -->
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+      <span class="ham-line"></span>
+      <span class="ham-line"></span>
+      <span class="ham-line"></span>
+    </button>
   </div>
-  <div class="nav-student" id="nav-student-name">👤 Guest</div>
 </nav>
+
+<!-- Mobile menu drawer -->
+<div class="nav-mobile-menu" id="nav-mobile-menu">
+  <div class="mob-section-label">Navigation</div>
+  <a data-section="home" onclick="showSection('home');closeMobileMenu()">🏠 Home</a>
+  <div class="mob-section-label" id="mob-3g-label" style="display:none">Third Grade 🌟</div>
+  <a id="mob-3g-link" data-section="third-grade-section" onclick="showSection('third-grade-section');closeMobileMenu()" style="display:none">🌟 Third Grade</a>
+  <hr>
+  <div class="mob-section-label">Grammar</div>
+  <a data-section="sequencing" onclick="showSection('sequencing');closeMobileMenu()">🔢 Sequencing Words</a>
+  <a data-section="connectives" onclick="showSection('connectives');closeMobileMenu()">🔗 Connectives</a>
+  <a data-section="present-perfect" onclick="showSection('present-perfect');closeMobileMenu()">✅ Present Perfect</a>
+  <a data-section="since-for" onclick="showSection('since-for');closeMobileMenu()">⏳ Since &amp; For</a>
+  <hr>
+  <div class="mob-section-label">Verbs</div>
+  <a data-section="irregular" onclick="showSection('irregular');closeMobileMenu()">📚 Irregular Verbs</a>
+  <a data-section="regular" onclick="showSection('regular');closeMobileMenu()">📝 Regular Verbs</a>
+  <hr>
+  <a data-section="progress" onclick="showSection('progress');closeMobileMenu()">🏆 My Progress</a>
+</div>
 
 <!-- PASSWORD MODAL -->
 <div id="pw-modal-overlay" class="hidden">
@@ -1075,6 +1326,8 @@ footer {
   </div>
 </div>
 
+<!-- HOME PAGE SECTION -->
+<div id="home" class="page-section active-section">
 <!-- GRADE SELECTOR -->
 <div style="background:linear-gradient(180deg,#F0FFF4,#E8F4FF);padding-bottom:10px">
   <div style="text-align:center;padding-top:40px;padding-bottom:10px">
@@ -1094,11 +1347,12 @@ footer {
     </div>
   </div>
 </div>
+</div><!-- end #home -->
 
 <!-- =====================
      THIRD GRADE SECTION (hidden until password)
      ===================== -->
-<div id="third-grade-section" class="hidden section-band band-3g">
+<div id="third-grade-section" class="page-section section-band band-3g">
 <section>
   <!-- Header -->
   <div class="tg-section-header">
@@ -1360,7 +1614,7 @@ footer {
 <!-- =====================
      TOPIC 1: SEQUENCING WORDS
      ===================== -->
-<div class="section-band band-1" id="sequencing">
+<div class="section-band band-1 page-section" id="sequencing">
 <section>
   <div class="section-header">
     <h2 style="color: var(--primary);">🔢 Sequencing Words</h2>
@@ -1465,7 +1719,7 @@ footer {
 <!-- =====================
      TOPIC 2: CONNECTIVES
      ===================== -->
-<div class="section-band band-2" id="connectives">
+<div class="section-band band-2 page-section" id="connectives">
 <section>
   <div class="section-header">
     <h2 style="color: var(--secondary);">🔗 Simple Connectives</h2>
@@ -1573,7 +1827,7 @@ footer {
 <!-- =====================
      TOPIC 3: PRESENT PERFECT
      ===================== -->
-<div class="section-band band-3" id="present-perfect">
+<div class="section-band band-3 page-section" id="present-perfect">
 <section>
   <div class="section-header">
     <h2 style="color: var(--purple);">✅ Present Perfect</h2>
@@ -1691,7 +1945,7 @@ footer {
 <!-- =====================
      TOPIC 4: SINCE & FOR
      ===================== -->
-<div class="section-band band-4" id="since-for">
+<div class="section-band band-4 page-section" id="since-for">
 <section>
   <div class="section-header">
     <h2 style="color: var(--blue);">⏳ Since &amp; For</h2>
@@ -1794,7 +2048,7 @@ footer {
 <!-- =====================
      TOPIC 5: IRREGULAR VERBS
      ===================== -->
-<div class="section-band band-5" id="irregular">
+<div class="section-band band-5 page-section" id="irregular">
 <section>
   <div class="section-header">
     <h2 style="color: var(--pink);">📚 Irregular Verbs</h2>
@@ -1877,7 +2131,7 @@ footer {
 <!-- =====================
      TOPIC 6: REGULAR VERBS
      ===================== -->
-<div class="section-band band-6" id="regular">
+<div class="section-band band-6 page-section" id="regular">
 <section>
   <div class="section-header">
     <h2 style="color: var(--orange);">📝 Regular Verbs</h2>
@@ -1981,7 +2235,7 @@ footer {
 <!-- =====================
      PROGRESS SECTION
      ===================== -->
-<div class="section-band band-progress" id="progress">
+<div class="section-band band-progress page-section" id="progress">
 <section>
   <div class="section-header">
     <h2 style="color: var(--navy);">🏆 My Progress</h2>
@@ -2226,6 +2480,9 @@ function startLearning() {
   document.getElementById('welcome-overlay').style.display = 'none';
   updateProgressDashboard();
   initAllExercises();
+  showSection('home');
+  // Re-unlock third grade if previously unlocked
+  if(localStorage.getItem('tg_unlocked')==='1') unlockThirdGrade();
 }
 
 /* ================================================
@@ -3408,6 +3665,124 @@ function addWritingListeners() {
 }
 
 /* ================================================
+   SINGLE-PAGE NAVIGATION
+   ================================================ */
+const ALL_SECTIONS = ['home','third-grade-section','sequencing','connectives',
+  'present-perfect','since-for','irregular','regular','progress'];
+
+let currentSection = 'home';
+
+function showSection(id) {
+  // Hide all
+  ALL_SECTIONS.forEach(sid => {
+    const el = document.getElementById(sid);
+    if(el) { el.classList.remove('active-section'); }
+  });
+  // Show target
+  const target = document.getElementById(id);
+  if(target) {
+    target.classList.add('active-section');
+    currentSection = id;
+  }
+  // Scroll to top
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  // Update active nav links
+  updateNavActive(id);
+}
+
+function updateNavActive(id) {
+  // Desktop menu buttons/links
+  document.querySelectorAll('.nav-menu [data-section]').forEach(el => {
+    el.classList.toggle('nav-active', el.dataset.section === id);
+  });
+  // Dropdown links
+  document.querySelectorAll('.nav-dropdown a[data-section]').forEach(el => {
+    el.classList.toggle('nav-active', el.dataset.section === id);
+  });
+  // Mobile links
+  document.querySelectorAll('.nav-mobile-menu a[data-section]').forEach(el => {
+    el.classList.toggle('nav-active', el.dataset.section === id);
+  });
+}
+
+function closeMobileMenu() {
+  const menu = document.getElementById('nav-mobile-menu');
+  const ham = document.getElementById('nav-hamburger');
+  menu.classList.remove('open');
+  ham.classList.remove('open');
+}
+
+function initNavBehavior() {
+  const hamburger = document.getElementById('nav-hamburger');
+  const mobileMenu = document.getElementById('nav-mobile-menu');
+
+  /* ── Hamburger toggle ── */
+  hamburger.addEventListener('click', (e) => {
+    e.stopPropagation();
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+
+  /* ── Desktop dropdown: click to open/close ── */
+  document.querySelectorAll('.nav-menu > li > button').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const li = btn.closest('li');
+      const hasDropdown = li.querySelector('.nav-dropdown');
+
+      // If no dropdown it's a direct nav button — handle its data-section
+      if (!hasDropdown) {
+        const sec = btn.dataset.section;
+        if (sec) showSection(sec);
+        // Close any open dropdowns
+        document.querySelectorAll('.nav-menu > li.open').forEach(l => l.classList.remove('open'));
+        return;
+      }
+
+      e.stopPropagation();
+      const isOpen = li.classList.contains('open');
+
+      // Close all dropdowns first
+      document.querySelectorAll('.nav-menu > li.open').forEach(l => l.classList.remove('open'));
+
+      // Toggle this one
+      if (!isOpen) li.classList.add('open');
+    });
+  });
+
+  /* ── Clicking a dropdown item closes the dropdown ── */
+  document.querySelectorAll('.nav-dropdown a').forEach(a => {
+    a.addEventListener('click', () => {
+      document.querySelectorAll('.nav-menu > li.open').forEach(l => l.classList.remove('open'));
+    });
+  });
+
+  /* ── Close dropdowns when clicking anywhere outside nav ── */
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('#main-nav')) {
+      document.querySelectorAll('.nav-menu > li.open').forEach(l => l.classList.remove('open'));
+    }
+    // Close mobile menu too if click outside
+    if (!mobileMenu.contains(e.target) && !hamburger.contains(e.target)) {
+      closeMobileMenu();
+    }
+  });
+
+  /* ── Close dropdowns on Escape key ── */
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.nav-menu > li.open').forEach(l => l.classList.remove('open'));
+      closeMobileMenu();
+    }
+  });
+
+  /* ── Title click → home ── */
+  document.querySelector('.nav-title').addEventListener('click', () => showSection('home'));
+}
+
+window.showSection = showSection;
+window.closeMobileMenu = closeMobileMenu;
+
+/* ================================================
    BACK TO TOP & SCROLL
    ================================================ */
 window.addEventListener('scroll',()=>{
@@ -3439,6 +3814,10 @@ window.addEventListener('DOMContentLoaded',()=>{
   if(regSearch) regSearch.addEventListener('input', filterRegVerbs);
   // Grade cards & password modal
   initGradeCards();
+  // Nav behavior
+  initNavBehavior();
+  // Initialize single-page view (show home)
+  showSection('home');
 
   // Pre-fill name if previously used
   const keys=Object.keys(localStorage).filter(k=>k.startsWith('EnglishFunZone_'));
@@ -3492,6 +3871,8 @@ window.checkRegFlashcard=checkRegFlashcard;
 window.checkSpell=checkSpell;
 window.filterIrregVerbs=filterIrregVerbs;
 window.filterRegVerbs=filterRegVerbs;
+window.showSection=showSection;
+window.closeMobileMenu=closeMobileMenu;
 
 /* ================================================
    THIRD GRADE — PASSWORD & MODAL LOGIC
@@ -3515,7 +3896,7 @@ function initGradeCards() {
   }
   g3.addEventListener('click', () => {
     if(localStorage.getItem('tg_unlocked')==='1') {
-      document.getElementById('third-grade-section').scrollIntoView({behavior:'smooth'});
+      showSection('third-grade-section');
       return;
     }
     pwOverlay.classList.remove('hidden');
@@ -3533,9 +3914,7 @@ function initGradeCards() {
       localStorage.setItem('tg_unlocked','1');
       pwOverlay.classList.add('hidden');
       unlockThirdGrade();
-      setTimeout(()=>{
-        document.getElementById('third-grade-section').scrollIntoView({behavior:'smooth'});
-      }, 300);
+      setTimeout(()=> showSection('third-grade-section'), 200);
     } else {
       pwError.classList.add('show');
       pwInput.value = '';
@@ -3554,10 +3933,13 @@ function initGradeCards() {
 }
 
 function unlockThirdGrade() {
-  const sec = document.getElementById('third-grade-section');
-  sec.classList.remove('hidden');
-  const navLink = document.getElementById('nav-3g-link');
-  if(navLink) navLink.style.display = '';
+  // Show in nav
+  const navLi = document.getElementById('nav-3g-li');
+  if(navLi) navLi.style.display = '';
+  const mobLabel = document.getElementById('mob-3g-label');
+  if(mobLabel) mobLabel.style.display = '';
+  const mobLink = document.getElementById('mob-3g-link');
+  if(mobLink) mobLink.style.display = '';
   // Update greeting
   const greet = document.getElementById('tg-greeting');
   if(greet && studentName) {
